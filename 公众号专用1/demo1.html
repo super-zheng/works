@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=`, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" type="text/css" href="css/layui.mobile.css" />
+  <link rel="stylesheet" type="text/css" href="css/publicNum.css" />
+</head>
+<style>
+  .d1 {
+    margin-top: 50px;
+  }
+
+  .jh {
+    position: relative;
+  }
+
+  .p2 {
+    width: 0;
+    height: 19px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: blue;
+    transition: all .6s linear;
+  }
+
+  .left,
+  .right,
+  .center {
+    float: left;
+  }
+
+  .left,
+  .right {
+    width: 200px;
+    height: 200px;
+  }
+
+  .left {
+    margin-left: -200px;
+  }
+
+  .right {
+    margin-left: -100%;
+  }
+
+  .center {
+    width: 100%;
+    height: 200px;
+
+  }
+
+  .d1::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  canvas {
+    background: #ddd;
+    margin: 0 auto;
+  }
+</style>
+
+<body>
+
+  <img class="lazy" width="100" height="100" data-original="https://f10.baidu.com/it/u=403907001,2219458043&fm=76" src="imgs/0.jpg"
+    alt="">
+  <img class="lazy" width="100" height="100" data-original="https://f10.baidu.com/it/u=403907001,2219458043&fm=76" src="imgs/0.jpg"
+    alt="">
+  <img class="lazy" width="100" height="100" data-original="https://f10.baidu.com/it/u=403907001,2219458043&fm=76" src="imgs/0.jpg"
+    alt="">
+  <div class="d1">
+    <div class="center" style="background: red">1</div>
+    <div class="left" style="background: blue">2</div>
+
+    <div class="right" style="background: green">3</div>
+  </div>
+
+
+  <table class="layui-table">
+    <table class="layui-table">
+      <colgroup>
+        <col width="150">
+        <col width="200">
+        <col>
+      </colgroup>
+      <thead>
+        <tr>
+          <th>昵称</th>
+          <th>加入时间</th>
+          <th>签名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </table>
+  <div class="jh">
+    <p class="zenme">怎么激活</p>
+    <p class="p2"></p>
+  </div>
+
+  <div class="layui-inline">
+    <!-- 注意：这一层元素并不是必须的 -->
+    <input type="text" class="layui-input" id="test1">
+  </div>
+  <div class="layui-inline">
+    <!-- 注意：这一层元素并不是必须的 -->
+    <input type="text" class="layui-input" id="test2">
+  </div>
+
+  <div class="table1">
+
+    <table class="layui-table">
+
+    </table>
+
+    <div id="storeListSome"></div>
+  </div>
+
+  <table class="layui-table record">
+
+    <thead>
+      <tr>
+        <th>顾客姓名</th>
+        <th>性别</th>
+        <th>手机号</th>
+        <th>用途</th>
+        <th>左眼球柱镜</th>
+        <th>右眼球柱镜</th>
+        <th>左眼轴位</th>
+        <th>右眼轴位</th>
+        <th>瞳距</th>
+        <th>销售时间</th>
+        <th>应收</th>
+        <th>实收</th>
+        <th>未收</th>
+        <th>折扣</th>
+        <th>抹零</th>
+        <th>商品名称</th>
+        <th>球柱镜/颜色/规格</th>
+      </tr>
+    </thead>
+
+  </table>
+  <div id="qrcode"></div>
+  
+  <input type="text">
+
+
+
+
+
+  <!-- <script src="zepto.js"></script> -->
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/jquery.lazyload.min.js"></script>
+  <script src="layui/layui.all.js"></script>
+  <script src="./js/publicNum.js"></script>
+  <script src="js/myMethod.js"></script>
+  <script src="js/publicMethods.js"></script>
+  <script src="qrcode.js"></script>
+  <!-- <script src="layui/layui.js"></script> -->
+  <script>
+    $("input").on("click",function(){
+      console.log("click")
+    })
+    $("input").on("blur",function(){
+      console.log("blur")
+    })
+    window.onload = function () {
+      $('img.lazy').lazyload({
+        effect: "fadeIn"
+
+      });
+    }
+
+
+
+    var laypage = layui.laypage;
+    var layer = layui.layer;
+    var table = layui.table,
+      element = layui.element,
+      laydate = layui.laydate
+    flow = layui.flow;
+
+
+
+
+    var infor = ["吴小姐", "女", "15602293642", "远用", "-3.75~0.75", "-3.75~0.00", "10", "0", "35", "2018-07-12 15:20:02",
+      "100", "100", "100", "100", "0"
+    ];
+    var sale = [
+      ["NQAH-FG 399NOAH 2918", "C3/52塑钢"],
+      ["NQAH-FG 399NOAH 2918", "C3/52塑钢"],
+      ["NQAH-FG 399NOAH 2918", "C3/52塑钢"],
+      ["NQAH-FG 399NOAH 2918", "C3/52塑钢"]
+    ];
+
+    function load() {
+      var tbody = "<tr>";
+      infor.forEach(function (item, index) {
+        tbody += `
+      		<td rowspan=${sale.length}>${item}</td>
+      `
+      })
+
+      tbody += `
+        <td>${sale[0][0]}</td>
+				<td>${sale[0][1]}</td>
+    `;
+
+
+      tbody += "</tr>";
+      sale.shift();
+      sale.forEach(function (item) {
+
+        tbody += `
+      <tr>
+				<td>${item[0]}</td>
+				<td>${item[1]}</td>										
+			</tr>
+      `
+      })
+
+      $("#tbody").html(tbody);
+
+    }
+    load();
+
+    laypage.render({
+      elem: 'page', //注意，这里的 test1 是 ID，不用加 # 号
+      count: sale.length * 10,
+      jump: function (obj, first) {
+
+        console.log(obj.curr);
+        console.log(obj.limit);
+      }
+    });
+
+    $(".jh").mouseenter(function () {
+      $(this).children(".p2").css("width", "100%")
+    });
+    $(".jh").mouseleave(function () {
+      $(this).children(".p2").css("width", 0)
+    })
+
+
+
+
+    var arrTitle = ['品牌', '品类', '型号', '类型', '材质'];
+    var arrContent = [
+      ['宝岛', 'asdf', 'sdfsadf', 'asdf', 'asdfsad', '123', '321'],
+      ['宝岛', 'asdf', 'sdfsadf', 'asdf', 'asdfsad', '123', '321'],
+      ['宝岛', 'asdf', 'sdfsadf', 'asdf', 'asdfsad', '123', '321'],
+      ['宝岛', 'asdf', 'sdfsadf', 'asdf', 'asdfsad', '123', '321'],
+      ['宝岛', 'asdf', 'sdfsadf', 'asdf', 'asdfsad', '123', '321'],
+    ];
+
+
+    // nums 是指的每页数据的的长度
+    var nums = 10;
+    var data = arrContent;
+    //render 方法返回的是一个html格式的字符串 第一个参数是数组，第二个参数当前的显示的页数
+    function render(data, curr) {
+      console.log('OK11');
+      //thisData指的是每页数据的数组
+      // var thisData = data.concat().splice(curr * nums - nums, nums);
+      var listStr = '<thead><th>序号</th>';
+      arrTitle.forEach(function (item, index) {
+        listStr += '<th>' + item + '</th>';
+      })
+      listStr += '<th>库存数量</th><th>发货数量</th></thead><tbody>';
+      data.forEach(function (item, index) {
+        listStr += '<tr><td>' + (index + 1) + '</td>';
+        item.forEach(function (item1, index1) {
+          listStr += '<td>' + item1 + '</td>'
+        });
+        listStr += '</tr>';
+      })
+      listStr += '</tbody>';
+      return listStr;
+    }
+
+    laypage.render({
+      elem: 'storeListSome', //列表数据显示的位置
+      count: Math.ceil(arrContent.length / 10) * 100, //得到总页数
+      skip: true, //是否显示跳转
+      jump: function (obj) { //触发分页后的回调，函数返回两个参数。
+        //obj是一个object类型。包括了分页的所有配置信息。
+        //first一个Boolean类，检测页面是否初始加载。非常有用，可避免无限刷    
+        console.log(obj) //新。
+        $('.table1 table').html(render(data, obj.curr));
+      }
+    });
+
+    var now = new Date()
+    laydate.render({
+      elem: '#test1',
+      format: 'yyyy-MM-dd',
+      value: new Date(),
+      trigger: 'click',
+      done: function (value, date, endDate) {
+        //console.log(value);
+        var a = value.slice(8) / 1 + 7
+        var b = value.replace(value.slice(8), a)
+        console.log(b)
+        $("#test2").val(b)
+      }
+    });
+
+    laydate.render({
+      elem: '#test2',
+      format: 'yyyy-MM-dd',
+      value: new Date(now.getTime() + 7 * 24 * 3600 * 1000),
+      trigger: 'click',
+    });
+
+    // function a(dom) {
+    //   dom.each(function (index, item) {
+    //     $(item).dblclick(function () {
+    //       console.log(123123);
+    //       var that = $(this);
+    //       dom.find('input').remove();
+    //       var inputDom = $('<input type="text" autofocus="autofocus"/>');
+
+    //       $(this).append(inputDom);
+    //       inputDom.focus();
+    //       inputDom.val(that.text());
+    //       $(this).find('input').blur(function () {
+
+    //         that.text(that.find('input').val()).find('input').remove();
+    //       })
+    //     });
+    //   })
+    // }
+    // a($("td"))
+    var methods = new Methods()
+    let arr = Array.of(3, 4, 5, 6);
+    console.log(0.3 - 0.2 == 0.2 - 0.1);
+
+
+    // layer.confirm('纳尼？', {
+    //   btn: ['按钮一', '按钮二', '按钮三'] //可以无限个按钮
+    //     ,
+    //   btn3: function (index, layero) {
+
+    //   }
+    // }, function (index, layero) {
+    //   //按钮【按钮一】的回调
+    //   layer.close(index)
+    // }, function (index) {
+    //   //按钮【按钮二】的回调
+    // });
+
+    var right = document.getElementsByClassName("right")[0];
+    console.log(right.getBoundingClientRect())
+  
+
+  </script>
+
+
+</body>
+
+</html>

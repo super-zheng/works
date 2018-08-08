@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="css/layui.mobile.css" />
+    <link rel="stylesheet" type="text/css" href="css/publicNum.css" />
+    <style>
+        .container {
+            /* padding-bottom: 15px; */
+            box-sizing: border-box;
+            font-family: Arial;
+            background: #F5F5F5;
+        }
+
+        .header {
+            height: 50px;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px 0 10px;
+        }
+
+        .header i {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            background: url(./imgs/store2.png) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .p1 {
+            flex: 1;
+            padding-left: 8px;
+        }
+
+        .xiao {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 1px solid #4DDF46;
+            color: #4DDF46;
+            text-align: center;
+            line-height: 26px;
+        }
+
+
+        .ordernum {
+            padding-right: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .processing {
+            color: #FC3433;
+        }
+
+        .detail {
+
+            box-sizing: border-box;
+            background: #fff;
+            margin-top: 10px;
+            padding: 5px 10px;
+        }
+
+        .people {
+            display: flex;
+            margin-bottom: 8px;
+        }
+
+        .cashier {
+            margin-left: 45px;
+        }
+
+        .goods {
+            margin-top: 5px;
+        }
+
+        .pic {
+            width: 108px;
+            height: 100px;
+            background: url(./imgs/Icon_Default_productr.png) no-repeat;
+            background-size: 100% 100%;
+            position: relative;
+        }
+
+        .goods-name {
+            width: 30%;
+            text-align: center;
+            color: #fff;
+            background: rgba(0, 95, 138, 0.4);
+            padding: 0 6px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .goods-item {
+            display: flex;
+            position: relative;
+            margin-bottom: 5px;
+            background: #fff;
+            padding: 5px 10px;
+            box-sizing: border-box;
+        }
+
+
+        .goods-detail {
+            margin-left: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price {
+            display: flex;
+            justify-content: space-between;
+            padding-right: 22px;
+            margin-top: 10px;
+        }
+
+        .money {
+            color: #FB5824;
+        }
+
+        .more {
+            position: absolute;
+            right: 12px;
+            top: 50px;
+        }
+
+        .discount {
+
+            color: #FC3433;
+            /*width: 43px;*/
+            height: 23px;
+            line-height: 23px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .pinpai {
+            display: flex;
+            justify-content: space-between;
+            padding-right: 5px;
+        }
+
+        .should {
+            color: #FE7F58;
+        }
+
+        .pd2 p:nth-child(2) {
+            color: #5DE356;
+        }
+
+        .weishou {
+            color: #FC3433;
+        }
+
+        .zero {
+            padding-right: 10px;
+        }
+
+        .price-detail {
+            color: #737373;
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 5px;
+        }
+
+        .pd2 {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .pd2 p {
+            margin-left: 9px;
+        }
+
+        .price-box {
+            background: #fff;
+            padding: 5px 10px 5px 0;
+            box-sizing: border-box;
+        }
+
+        /* 结算方式 */
+
+        .setelement {
+            background: #fff;
+            padding: 0 10px 20px 10px;
+        }
+
+        .cash {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 7px;
+            color: #737373;
+        }
+
+        .cash-p1 {}
+
+        .alipay {
+            padding-bottom: 5px;
+        }
+
+        .jiesuan {
+            font-weight: bold;
+        }
+
+        .jiesuan::after {
+            content: "";
+            display: inline-block;
+            width: 75%;
+
+            border: 1px solid #D9D9D9;
+            margin-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        /* 验光单号 */
+
+        .optometry {
+            display: none;
+            padding-bottom: 20px;
+            margin-top: 4px;
+            box-sizing: border-box;
+            background: #FFF;
+        }
+
+
+
+        .single-number {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            padding: 10px 10px 0 10px;
+            box-sizing: border-box;
+        }
+
+        .single-number p {
+            font-size: 16px;
+        }
+
+        .completed {
+
+            color: #67E361;
+
+            line-height: 23px;
+            text-align: center;
+        }
+
+        .completed1 {
+            color: #FE2E2F;
+        }
+
+        .avatar {
+            width: 66px;
+            height: 66px;
+            border-radius: 50%;
+            border: 1px solid red;
+        }
+
+        .vip-detail {
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .infor {
+            flex: 1;
+            padding: 0 10px 0 10px;
+
+            font-size: 14px;
+        }
+
+        .name,
+        .beizhu {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .beizhu {
+            margin-top: 6px;
+            justify-content: flex-start;
+        }
+
+        .jifen {
+            margin-left: 30px;
+        }
+
+        /* .beizhu p {
+            white-space: nowrap;
+        } */
+
+        .input {
+            width: 130px;
+            height: 35px;
+            font-size: 12px;
+            border: 1px solid #BBBBBB;
+        }
+
+
+        .time-picker {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #picker {
+            border-radius: 5px;
+            width: 250px;
+            height: 30px;
+            border: 1px solid #BBBBBB;
+            color: #888;
+            background: #F5F5F5;
+        }
+
+        .table1 {
+            margin: auto;
+            margin-top: 16px;
+            width: 95%;
+        }
+
+        .table1 th,
+        .table1 td {
+            font-size: 12px;
+            /*white-space: nowrap;*/
+        }
+
+
+        .layui-form-item .layui-form-label {
+            overflow: visible;
+        }
+
+        .label {
+            text-align: left;
+        }
+
+        .yanguang {
+            padding-right: 5px;
+            margin-top: 20px;
+            text-align: center;
+
+        }
+
+        .desc {
+            width: 95%;
+            min-height: 50px;
+            padding: 5px 0 0 5px;
+            border: 1px solid #bbb;
+        }
+
+        /* 加工单号 */
+
+        .process {
+            display: none;
+            padding-bottom: 5px;
+            box-sizing: border-box;
+            /* border-bottom: 1px dashed #bbb; */
+            background: #fff;
+            margin-top: -5px;
+        }
+
+        .toggle {
+            display: block;
+        }
+
+        .jgxinxi {
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            /*border-bottom: 1px solid #D5D5D5;*/
+            height: 40px;
+            background: #fff;
+
+        }
+
+        .jgxinxi p:nth-child(1) {
+            font-size: 16px;
+        }
+
+        .jgxinxi i {
+            background: url(imgs/down.png) no-repeat;
+            background-size: 100% 100%;
+            width: 40px;
+            height: 40px;
+            margin: auto;
+        }
+
+        .jgxinxi1 {
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            /*border-bottom: 1px solid #D5D5D5;*/
+            height: 40px;
+            background: #fff;
+        }
+
+        .jgxinxi1 p:nth-child(1) {
+            font-size: 16px;
+        }
+
+        .jgxinxi1 i {
+            background: url(imgs/down.png) no-repeat;
+            background-size: 100% 100%;
+            width: 40px;
+            height: 40px;
+            margin: auto;
+        }
+
+
+        .principal {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .danju-time {
+            margin-top: 7px;
+            padding-left: 10px;
+        }
+
+        .goods-d2 {
+            margin-top: 3px;
+            margin-bottom: 8px;
+            padding-bottom: 10px;
+        }
+
+        .self {
+            color: #00A0E7;
+            /* position: absolute;
+            top: 0px;
+            right: 10px; */
+        }
+
+        .table1 td,
+        .table1 th {
+            text-align: center;
+        }
+
+        .list-title {
+            /*color: #FF4081;*/
+            padding-left: 12px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .list {
+            margin-top: 10px;
+        }
+
+        .offer {
+            margin-top: 42px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <i></i>
+            <p class="p1">洛亚视光-江南西店</p>
+            <p class="xiao">销</p>
+        </div>
+
+        <div class="detail">
+            <div class="ordernum">
+                <p>销售单号：123456789123456</p>
+                <p class="processing">加工中</p>
+            </div>
+            <div class="people">
+                <p>销售人员：卢佳豪</p>
+                <p class="cashier">收银员：卢佳豪</p>
+            </div>
+            <div class="time">
+                销售时间：2018-07-15 01:20:30
+            </div>
+        </div>
+
+        <div class="goods">
+            <div class="goods-item">
+                <div class="pic">
+                    <p class="goods-name">镜片</p>
+                </div>
+                <div class="goods-detail">
+                    <div class="pinpai">
+                        <p>品牌：蔡司</p>
+                        <p class="discount">9.0折</p>
+                    </div>
+                    <p>品类：双光 非球面</p>
+                    <p>折射率：299蔡司</p>
+                    <p>球柱镜：0.00，-0.25</p>
+                    <div class="price">
+                        <p class="money">价格：￥100.00</p>
+                        <p>1件</p>
+                    </div>
+                </div>
+
+                <div class="more">》</div>
+            </div>
+
+            <div class="goods-item">
+                <div class="pic">
+                    <p class="goods-name">镜架</p>
+                </div>
+                <div class="goods-detail">
+                    <div class="pinpai">
+                        <p>品牌：蔡司</p>
+                        <p class="discount">9.0折</p>
+                    </div>
+                    <p>品类：双光 非球面</p>
+                    <p>折射率：299蔡司</p>
+                    <p>球柱镜：0.00，-0.25</p>
+                    <div class="price">
+                        <p class="money">价格：￥100.00</p>
+                        <p>1件</p>
+                    </div>
+                </div>
+
+                <div class="more">》</div>
+            </div>
+
+        </div>
+
+        <div class="price-box">
+            <div class="price-detail">
+                <p>优惠价 ￥400.00</p>
+                <p>套餐：无</p>
+                <p>整单折扣：无</p>
+                <p class="zero">抹零：无</p>
+            </div>
+
+            <div class="price-detail pd2">
+                <p class="should">应 收：￥360.00</p>
+                <p>已收：￥160.00</p>
+                <p class="weishou">未收：￥0</p>
+            </div>
+        </div>
+
+        <!-- 结算方式 -->
+        <div class="setelement">
+            <h3 class="jiesuan">结算方式</h3>
+            <div class="cash">
+                <p class="cash-p1">现金：￥160.00</p>
+                <p>微信：￥160.00</p>
+                <p>支付宝：￥160.00</p>
+            </div>
+            <div class="cash alipay">
+                <p>银行卡：￥160.00</p>
+                <p>优惠券：￥160.00</p>
+                <p>折扣券：￥160.00</p>
+            </div>
+        </div>
+
+        <!-- 验光单号 -->
+
+        <div class="jgxinxi1">
+            <p>验光信息</p>
+            <i></i>
+        </div>
+        <div class="optometry">
+            <div class="single-number">
+                <p>验光单号:123456789123456</p>
+                <p class="completed">已完成</p>
+            </div>
+
+            <div class="vip-detail">
+                <div class="avatar"></div>
+                <div class="infor">
+                    <div class="name">
+                        <p>会员姓名：王大（男)</p>
+                        <p>TCL:185****4962</p>
+                    </div>
+                    <div class="beizhu">
+                        <p>
+                            <input placeholder="备注" type="text" class="input" />
+                        </p>
+                        <p class="jifen">积分：100</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="time-picker">
+                <p>验光师：卢佳豪</p>
+                <div class="layui-inline">
+                    <input placeholder="验光时间" type="text" class="layui-input" id="picker">
+                </div>
+            </div>
+
+            <table class="layui-table table1" lay-size="sm">
+                <thead>
+                    <tr>
+                        <th>近用</th>
+                        <th>球镜SHR</th>
+                        <th>柱镜CYL</th>
+                        <th>轴位AX</th>
+                        <th>矫正视力CVA</th>
+                        <th>下加光ADD</th>
+                        <th>瞳高</th>
+                        <th>瞳距PD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>R</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="yanguang">
+                <textarea class="desc" placeholder="验光备注"></textarea>
+            </div>
+        </div>
+
+        <!-- 加工单号 -->
+        <div class="jgxinxi">
+            <p>加工信息</p>
+            <i></i>
+        </div>
+        <div class="process">
+
+            <div class="single-number">
+                <p>加工单号：123456789123456</p>
+                <p class="completed completed1">质检中</p>
+            </div>
+            <div class="principal">
+                <p>创建人：卢佳豪</p>
+                <p>收件人：卢佳豪</p>
+                <p>派送人：卢佳豪</p>
+            </div>
+            <p class="danju-time">单据时间：2018-07-15 01:20:30</p>
+
+            <table class="layui-table table1" lay-size="sm">
+                <thead>
+                    <tr>
+                        <th>近用</th>
+                        <th>球镜SHR</th>
+                        <th>柱镜CYL</th>
+                        <th>轴位AX</th>
+                        <th>矫正视力CVA</th>
+                        <th>下加光ADD</th>
+                        <th>瞳高</th>
+                        <th>瞳距PD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>R</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="list">
+                <div class="goods-item goods-d2">
+                    <div class="pic">
+                        <p class="goods-name">L</p>
+                    </div>
+                    <div class="goods-detail">
+                        <div class="pinpai">
+                            <p>品牌：蔡司</p>
+                            <p class="discount self">自提供</p>
+                        </div>
+                        <p>品类：双光 非球面</p>
+                        <p>品类：双光 非球面</p>
+                        <p>球柱镜：0.00，-0.25</p>
+                        <div class="price">
+                            <p class="money">价格：￥100.00</p>
+                        </div>
+                    </div>
+
+                    <div class="more">》</div>
+                </div>
+
+                <div class="goods-item goods-d2">
+                    <div class="pic">
+                        <p class="goods-name">R</p>
+                    </div>
+                    <div class="goods-detail">
+                        <div class="pinpai">
+                            <p>品牌：蔡司</p>
+                            <p class="discount self">加工中心提供</p>
+                        </div>
+                        <p>品类：双光 非球面</p>
+                        <p>品类：双光 非球面</p>
+                        <p>球柱镜：0.00，-0.25</p>
+                        <div class="price">
+                            <p class="money">价格：￥100.00</p>
+                        </div>
+                    </div>
+
+                    <div class="more">》</div>
+                </div>
+            </div>
+
+            <p class="list-title">加工工艺: 割边 钻孔*2</p>
+
+            <div class="yanguang">
+                <textarea class="desc" placeholder="镜片加工备注"></textarea>
+            </div>
+            <div>
+                <div class="goods-item goods-d2">
+                    <div class="pic">
+                        <p class="goods-name">镜架</p>
+                    </div>
+                    <div class="goods-detail">
+                        <div class="pinpai">
+                            <p>品牌：暴龙</p>
+
+                        </div>
+
+                        <p>型号：JB1003</p>
+                        <p>色号：C1/50TR</p>
+                        <div class="price">
+                            <p class="money">价格：￥100.00</p>
+                        </div>
+                    </div>
+
+                    <div class="more">》</div>
+                </div>
+            </div>
+            <p class="list-title">加工类型: 金框标准加工</p>
+            <table class="layui-table table1" lay-size="sm">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>边缘厚度</th>
+                        <th>中心厚度</th>
+                        <th>基弯</th>
+                        <th>厚薄</th>
+                        <th>基弯相配</th>
+                        <th>方向</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>R</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="yanguang">
+                <textarea class="desc" placeholder="镜框加工备注"></textarea>
+            </div>
+
+            <table class="layui-table table1" lay-size="sm">
+                <colgroup>
+                    <col width="200">
+                    <col width="100">
+                    <col>
+                    <col width="100">
+
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>球柱镜/色号/规格</th>
+                        <th>件数</th>
+                        <th>单价</th>
+                        <th>折扣</th>
+                        <th>小计</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>蔡司 1.56 双光 非球面（镜片）
+                            <br> 1.00,-0.25
+                        </td>
+                        <td>1片</td>
+                        <td>￥100.00</td>
+                        <td>9.0折</td>
+                        <td>￥90.00</td>
+                    </tr>
+                    <tr>
+                        <td>镜片加工工艺名称
+                            <br> 割边
+                            <br> 割孔
+                        </td>
+                        <td>
+                            <br> 1
+                            <br> 2
+                        </td>
+                        <td>
+                            <br> ￥10.00
+                            <br> ￥10.00
+                        </td>
+                        <td>
+                            <br> 无
+                            <br> 无
+                        </td>
+                        <td>
+                            <br> ￥10.00
+                            <br> ￥10.00
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            镜框加工工艺名称
+                            <br> 金框标准加工
+                        </td>
+                        <td>
+                            <br> 1片
+                        </td>
+                        <td>
+                            <br> ￥10.00
+                        </td>
+                        <td>
+                            <br> 无
+                        </td>
+                        <td>
+                            <br> ￥10.00
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+            <div class="offer">
+                <div class="price-detail">
+                    <p>优惠价：￥400.00</p>
+                    <p>套餐：无</p>
+                    <p>整单折扣：无</p>
+                    <p class="zero">抹零：无</p>
+                </div>
+
+                <div class="price-detail pd2">
+                    <p class="should">应 收：￥360.00</p>
+                    <p>已收：￥160.00</p>
+                    <p class="weishou">未收：￥0</p>
+                </div>
+            </div>
+
+            <div class="setelement">
+                <h3 class="jiesuan">结算方式</h3>
+                <div class="cash">
+                    <p class="cash-p1">现金：￥160.00</p>
+                    <p>微信：￥160.00</p>
+                    <p>支付宝：￥160.00</p>
+                </div>
+                <div class="cash alipay">
+                    <p>银行卡：￥160.00</p>
+                    <p>优惠券：￥160.00</p>
+                    <p>折扣券：￥160.00</p>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <script src="layui/layui.all.js"></script>
+    <script src="zepto.js"></script>
+    <script>
+        var laydate = layui.laydate,
+            form = layui.form;
+        laydate.render({
+            elem: '#picker',
+            format: "yyyy-MM-dd HH:mm:ss",
+            done: function (value, date, endDate) {
+                // console.log(value)
+                $("#picker").val("验光时间:" + value);
+            }
+        });
+
+        $(".jgxinxi").on("tap", "i", function () {
+
+            $(".process").toggleClass("toggle")
+            if ($(".process").hasClass("toggle")) {
+                $(this).css("background", "url(imgs/up.png) no-repeat")
+            } else {
+                $(this).css("background", "url(imgs/down.png) no-repeat")
+            }
+
+        })
+
+        $(".jgxinxi1").on("tap", "i", function () {
+
+            $(".optometry").toggleClass("toggle")
+            if ($(".optometry").hasClass("toggle")) {
+                $(this).css("background", "url(imgs/up.png) no-repeat")
+            } else {
+                $(this).css("background", "url(imgs/down.png) no-repeat")
+            }
+
+        })
+    </script>
+</body>
+
+</html>

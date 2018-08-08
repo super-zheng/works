@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>新建加工单</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" type="text/css" href="css/layui.mobile.css" />
+		<link rel="stylesheet" type="text/css" href="css/publicNum.css"/>
+		<style>
+			body {
+				background-color: #E5E5E5;
+			}
+			
+			.baseMsg {
+				background-color: white;
+				padding: 5px;
+			}
+			
+			.baseMsg label {
+				padding-left: 0; 
+				padding-right: 10px;
+			}
+			
+			.layui-form-item .layui-input-block.w200 {
+				width: 200px;
+			}
+			
+			.baseMsg .layui-form-item {
+				margin-bottom: 0;
+			}
+			
+			.p9 {
+				padding: 9px 0;
+			}
+			
+			.layui-form-item .layui-input-block {
+				margin-left: 90px;
+			}
+			
+			.title {
+				text-align: center;
+				font-size: 16px;
+				line-height: 36px;
+				font-weight: 900;
+				padding-top: 5px;
+			}
+			
+			.dingpeidan {
+				margin-top: 10px;
+				background-color: #fff;
+			}
+			
+			.dingpeidan .layui-table th,
+			.dingpeidan .layui-table td {
+				padding: 10px 0;
+				text-align: center;
+				min-width: 30px;
+			}
+			
+			.userType ul {
+				text-align: center;
+			}
+			
+			.userType ul li {
+				display: inline-block;
+				padding: 5px 10px;
+				margin: 0px 10px;
+				width: 80px;
+				box-sizing: border-box;
+				border: 1px solid #25A9E1;
+				color: #25A9E1;
+				border-radius: 5px;
+			}
+			
+			.userType ul li.userTypeCheck {
+				background-color: #25A9E1;
+				color: white;
+			}
+			
+			.jingpianMsg {
+				margin-top: 10px;
+				background-color: #fff;
+			}
+			
+			.sconedTitle {
+				color: #25A9E1;
+				font-weight: 900;
+				text-align: center;
+				font-family: "microsoft yahei";
+			}
+			
+			.glassImgDetail li {
+				width: 50%;
+				float: left;
+			}
+			
+			.glassImgDetail li img {
+				width: 150px;
+				height: 150px;
+				display: block;
+				margin: 10px auto;
+			}
+			
+			.jpArgs {
+				padding: 7px 10px;
+			}
+			
+			.jpArgs1 {
+				padding: 11px;
+			}
+			
+			.choseSrouce {
+				text-align: center;
+				padding: 10px 0px;
+			}
+			
+			.definBtn {
+				padding: 7px 10px;
+				display: inline-block;
+				width: 100px;
+				border: 1px solid #25A9E1;
+				color: #25A9E1;
+				margin: 5px 10px;
+				border-radius: 4px;
+			}
+			
+			.choseSrouce .check {
+				color: white;
+				background-color: #25A9E1;
+			}
+			
+			.jpDetails {
+				margin-bottom: 10px;
+			}
+			
+			.jingjiaMsg {
+				margin-top: 10px;
+				background-color: #fff;
+			}
+			
+			.jingjiaChose {
+				width: 300px;
+				margin: 0 auto;
+			}
+			
+			.jingjiaChose li {
+				float: left;
+				width: 33.333%;
+				height: 100px;
+			}
+			
+			.jingjiaChose li img {
+				height: 80px;
+				width: 80px;
+				display: block;
+				margin: 10px auto;
+			}
+			
+			.gongyi {
+				margin-top: 10px;
+				background-color: #fff;
+			}
+			
+			.gongyi .icon {
+				background: url(imgs/off_btn.png) no-repeat 0 0;
+				background-size: 100% 100%;
+				display: inline-block;
+				height: 22.4px;
+				width: 35px;
+				vertical-align: middle;
+				margin: 0px 8px;
+				margin-top: -2px;
+			}
+			
+			.gongyi .iconCheck {
+				background: #fff url(./imgs/onblueBtn.png) 0 0px no-repeat;
+				background-size: 100% 100%;
+			}
+			
+			.checkMain {
+				float: left;
+				height: 38px;
+				line-height: 38px;
+				position: absolute;
+				left: 10px;
+				top: 0px;
+				color: #25A9E1;
+				font-weight: 900;
+				text-align: right;
+				width: 115px;
+			}
+			
+			.gongyi .details {
+				float: left;
+				height: 38px;
+			}
+			
+			.gongyiList>li {
+				overflow: hidden;
+				padding-left: 120px;
+				position: relative;
+			}
+			
+			.gongyiList .gongyiInput {
+				float: left;
+				width: 40px;
+				height: 26px;
+				margin-top: 4px;
+				margin-left: 5px;
+			}
+			
+			.gongyiList .showPrice {
+				float: left;
+				height: 38px;
+				font-size: 12px;
+				line-height: 38px;
+				margin-left: 10px;
+				margin-right: 20px;
+				color: orange;
+			}
+			
+			.gongyiList .smallIconUncheck {
+				display: inline-block;
+				background: url(./imgs/nocheck_icon.png) no-repeat 0 0;
+				background-size: 100% 100%;
+				width: 20px;
+				height: 20px;
+				vertical-align: middle;
+				margin: 0px 5px;
+			}
+			
+			.gongyiList .smallIconCheck {
+				background: url(./imgs/check_icon.png) no-repeat 0 0;
+				background-size: 100% 100%;
+			}
+			
+			.gongyiList .moxing {
+				height: 38px;
+				line-height: 38px;
+				float: left;
+			}
+			
+			.gongyiList .moxingText {
+				/*padding-left: 10px;*/
+			}
+			
+			.gongyi .layui-unselect {
+				float: left;
+			}
+			
+			.otherReq {
+				margin-top: 10px;
+				background-color: #fff;
+			}
+			
+			.otherReq .checkRL {
+				width: 150px;
+				height: 38px;
+				line-height: 38px;
+				border: 1px solid #25A9E1;
+				border-radius: 4px;
+				margin: 0 auto;
+				text-align: center;
+			}
+			
+			.otherReq .checkRL .jingjiaR,
+			.otherReq .checkRL .jingjiaL {
+				width: 50%;
+				float: left;
+				height: 38px;
+				line-height: 38px;
+				color: #25A9E1;
+			}
+			
+			.otherReq .checkRL .jingjiaR.check {
+				background-color: #25A9E1;
+				border-top-left-radius: 4px;
+				border-bottom-left-radius: 4px;
+				color: white;
+			}
+			
+			.otherReq .checkRL .jingjiaL.check {
+				background-color: #25A9E1;
+				border-top-right-radius: 4px;
+				border-bottom-right-radius: 4px;
+				color: white;
+			}
+			
+			.otherReq .layui-form-item .layui-input-block {
+				margin-left: 70px;
+			}
+			
+			.otherReq .jingjiaArgs {
+				margin-top: 20px;
+				position: relative;
+			}
+			
+			.otherReq .jingjiaArgs .layui-form-item .layui-form-label {
+				padding: 5px;
+				width: 60px;
+			}
+			
+			.otherReq .jingjiaArgs .layui-form-item .layui-input {
+				width: 90px;
+			}
+			
+			.otherReq .jingjiaArgs li {
+				float: left;
+				width: 50%;
+				box-sizing: border-box;
+			}
+			
+			.otherReq .jingjiaArgs:before {
+				content: '';
+				height: 90%;
+				border-left: 1px solid #ccc;
+				position: absolute;
+				left: 49%;
+			}
+			
+			.beizhu {
+				padding-left: 60px;
+				padding-right: 20px;
+				position: relative;
+			}
+			.beizhu textarea{
+				resize: none;
+			}
+			.beizhu .beizhuMark{
+				position: absolute;
+				left: 10px;
+				top:5px;
+			}
+			.fr{
+				float: right;
+			}
+			.fl{
+				float: left;
+			}
+			.allPrice{
+				background-color: #fff;
+				padding: 10px 0;
+				text-align: right;
+				padding-right: 20px;
+			}
+			.save{
+				margin-right: 20px;
+			}
+			.bgWhite{
+				background-color: white;
+				height: 70px;
+			}
+			.checkJingjiaImg{
+				box-sizing: border-box;
+				border:1px solid #25A9E1;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="container">
+			<form class="layui-form layui-clear">
+				<div class="baseMsg">
+					<div class="layui-form-item">
+						<label class="layui-form-label">店铺名称：</label>
+						<div class="layui-input-block w200">
+							<select name="store" id="storeID" lay-verify="required">
+								<option value="">九洲眼镜</option>
+
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">结算方式：</label>
+						<div class="layui-input-block" id="jiesuan_type">
+							<input type="radio" name="jiesuan" value="现结" title="现结">
+							<input type="radio" name="jiesuan" value="周结" title="周结" checked>
+							<input type="radio" name="jiesuan" value="月结" title="月结">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">店铺地址：</label>
+						<div class="layui-input-block">
+							<p class="p9 layui-elip" id="address"></p>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">联系方式：</label>
+						<div class="layui-input-block">
+							<p class="p9 layui-elip" id="tel"></p>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">箱号：</label>
+						<div class="layui-input-block">
+							<p class="p9 layui-elip" id="xiang"></p>
+						</div>
+					</div>
+
+				</div>
+				<div class="dingpeidan">
+					<div class="title">订配信息填写</div>
+					<div class="userType">
+						<ul>
+							<li class="userTypeCheck" name="0">近用</li>
+							<li name="1">远用</li>
+							<li name="2">多焦点</li>
+						</ul>
+					</div>
+					<table class="layui-table">
+						<thead>
+							<tr>
+								<th></th>
+								<th>球镜</th>
+								<th>柱镜</th>
+								<th>轴位</th>
+								<th>下加光</th>
+								<th>瞳距</th>
+								<th>近用瞳距</th>
+								<th>瞳高</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr id="r_dp">
+								<td>R</td>
+								<td id="optometry_sph_right" name="SPH"></td>
+								<td id="optometry_cyl_right" name="CYL"></td>
+								<td id="optometry_OA_right" name="AX"></td>
+								<td id="optometry_R" name="ADD"></td>
+								<td id="optometry_PD_right" name="PD"></td>
+								<td id="optometry_o1" name="jingyong"></td>
+								<td id="optometry_PH_right" name="VD"></td>
+							</tr>
+							<tr id="l_dp">
+								<td>L</td>
+								<td id="optometry_sph_left" name="SPH"></td>
+								<td id="optometry_cyl_left" name="CYL"></td>
+								<td id="optometry_OA_left" name="AX"></td>
+								<td id="optometry_ADD"  name="ADD"></td>
+								<td id="optometry_PD_left" name="PD"></td>
+								<td id="optometry_PDjin" name="jingyong"></td>
+								<td id="optometry_PH_left" name="VD"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="jingpianMsg">
+					<div class="title">镜片信息</div>
+					<div class="jingpianDetail layui-row">
+						<div class="layui-col-xs12 layui-col-sm6 layui-col-md6">
+							<div class="sconedTitle">右（R）</div>
+							<div class="jpDetails">
+								<ul class="glassImgDetail layui-clear">
+									<li>
+										<img src="imgs/background.jpg" alt="" />
+
+									</li>
+									<li>
+										<div class="jpArgs"><span>品牌</span>：<b></b></div>
+										<div class="jpArgs"><span>品类</span>：<b></b></div>
+										<div class="jpArgs"><span>SPH</span>：<b></b></div>
+										<div class="jpArgs"><span>CYL</span>：<b></b></div>
+										<div class="jpArgs"><span>ADD</span>：<b></b></div>
+									</li>
+								</ul>
+								<div class="choseSrouce">
+									<div class="definBtn check" name="Rjiagong">来片加工</div>
+									<div class="definBtn " name="Rcenter">加工中心提供</div>
+
+								</div>
+
+							</div>
+						</div>
+						<div class="layui-col-xs12 layui-col-sm6 layui-col-md6">
+							<div class="sconedTitle">左（L）</div>
+							<div class="jpDetails">
+								<ul class="glassImgDetail layui-clear">
+									<li>
+										<img src="imgs/background.jpg" alt="" />
+
+									</li>
+									<li>
+										<div class="jpArgs"><span>品牌</span>：<b></b></div>
+										<div class="jpArgs"><span>品类</span>：<b></b></div>
+										<div class="jpArgs"><span>SPH</span>：<b></b></div>
+										<div class="jpArgs"><span>CYL</span>：<b></b></div>
+										<div class="jpArgs"><span>ADD</span>：<b></b></div>
+									</li>
+								</ul>
+								<div class="choseSrouce">
+									<div class="definBtn check" name="Ljiagong">来片加工</div>
+									<div class="definBtn" name="Lcenter">加工中心提供</div>
+
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="jingjiaMsg">
+					<div class="title">镜架信息</div>
+					<div class="jjDetails layui-row">
+						<ul class="glassImgDetail layui-clear layui-col-xs12 layui-col-sm6 layui-col-md6">
+							<li>
+								<img src="imgs/background.jpg" alt="" />
+
+							</li>
+							<li>
+								<div class="jpArgs1"><span>品牌</span>：<b></b></div>
+								<div class="jpArgs1"><span>型号</span>：<b></b></div>
+								<div class="jpArgs1"><span>系列号</span>：<b></b></div>
+								<div class="jpArgs1"><span>类型</span>：<b></b></div>
+							</li>
+						</ul>
+						<div class="layui-col-xs12 layui-col-sm6 layui-col-md6">
+							<ul class="jingjiaChose layui-clear">
+								<li name="ic_oblong.png"><img src="imgs/ic_oblong.png" alt="" /></li>
+								<li name="ic_oval.png"><img src="imgs/ic_oval.png" alt="" /></li>
+								<li name="ic_aviator.png"><img src="imgs/ic_aviator.png" alt="" /></li>
+								<li name="ic_catseyes.png"><img src="imgs/ic_catseyes.png" alt="" /></li>
+								<li name="ic_round.png"><img src="imgs/ic_round.png" alt="" /></li>
+								<li name="ic_cutawayretangle.png"><img src="imgs/ic_cutawayretangle.png" alt="" /></li>
+								<li name="ic_rectagle.png"><img src="imgs/ic_rectagle.png" alt="" /></li>
+								<li name="ic_cutawayoval.png"><img src="imgs/ic_cutawayoval.png" /></li>
+								<li name="ic_zhanwuphoto.png"><img src="imgs/ic_zhanwuphoto.png" /></li>
+
+							</ul>
+
+							<div class="choseSrouce">
+								<div class="definBtn check" name="jingjiajiagong">来架加工</div>
+								<div class="definBtn" name="jingjiacenter">加工中心提供</div>
+
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="gongyi layui-clear">
+					<div class="title">加工工艺</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">镜片类型：</label>
+						<div class="layui-input-block">
+							<select name="lensType" id="lensType" lay-verify="required">
+							</select>
+						</div>
+					</div>
+					<ul class="gongyiList"></ul>
+				</div>
+				<div class="otherReq">
+					<div class="title">其他要求</div>
+					<div class="checkRL">
+						<div class="jingjiaR check" name="0">右（R）</div>
+						<div class="jingjiaL" name="1">左（L）</div>
+
+					</div>
+					<ul class="jingjiaArgs layui-clear">
+						<li>
+							<div class="layui-form-item">
+								<label class="layui-form-label">边缘厚度</label>
+								<div class="layui-input-block">
+									<input type="text" name1="gframe_EdgeThickness_R" name2="gframe_EdgeThickness_L" required lay-verify="required" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">中心厚度</label>
+								<div class="layui-input-block">
+									<input type="text" name1="gframe_CenterThickness_R" name2="gframe_CenterThickness_L" required lay-verify="required" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">基弯要求</label>
+								<div class="layui-input-block">
+									<input type="text" name1="gframe_jiwan_R" name2="gframe_jiwan_L" required lay-verify="required" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="layui-form-item">
+								<label class="layui-form-label">基弯相配</label>
+								<div class="layui-input-block">
+									<input type="text" name1="gframe_jiwanMatch_R" name2="gframe_jiwanMatch_L" required lay-verify="required" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">厚薄相配</label>
+								<div class="layui-input-block">
+									<input type="text" name1="gframe_thicknessMatch_R" name2="gframe_thicknessMatch_L" required lay-verify="required" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item">
+								<label class="layui-form-label">方向</label>
+								<div class="layui-input-block">
+									<input type="text" name1="gframe_aspect_R" name2="gframe_aspect_L" required lay-verify="required" autocomplete="off" class="layui-input">
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="beizhu">
+						<span class="beizhuMark">备注：</span>
+						<textarea   class="layui-textarea" id="ity_remark"></textarea>
+					</div>
+				</div>
+				<p class=" allPrice"><span>总价</span>：<b></b></p>
+				<div class="bgWhite"><button class="layui-btn save fr layui-bg-orange" type="button" id="save">保 存</button></div>
+			</form>
+
+		</div>
+
+		<script src="layui/layui.all.js"></script>
+		<script src="zepto.js"></script>
+		<script src="js/publicNum.js"></script>
+		<script>
+		
+		
+		//全局变量保存
+		var store_id = 0;//页面传过来的店铺ID
+		var storeId_x = {};//查出加工店铺的信息如电话地址等
+		var url = 'http://jingliyun.cn/jlyyj/index.php/Home/JavaInterface/';//全局url路径定义
+		var can_num = {"1":"1","5":"1","6":"1","7":"1","10":"1","13":"1","17":"1","18":"1"}//判断工艺是否需要填值
+		var price = {};//保存加工价、总价、商品、镜架、镜片价格
+		//var goodsAll = {"L":{"goods_id":},"R":{},"F":{}};//保存商品信息
+		
+		
+			//由于模块都一次性加载，因此不用执行 layui.use() 来加载对应模块，直接使用即可：
+			var jly_publicNum = new jly_publicNum();
+			;
+//			console.log(jly_publicNum.yanguang);
+			(function() {
+				//jly_publicNum.yanguang(function(obj){
+				//	console.log(obj);
+				//})
+				var initObj= {
+				'R': {
+					'CYL': '+0.00',
+					'PD': '36',
+					'SPH': '+0.00',
+					'AX': '0',
+					'ADD': '0.75',
+					'jingyong': '15',
+					'VD': '32',
+				},
+				'L': {
+					'CYL': '+0.00',
+					'PD': '36',
+					'SPH': '+0.00',
+					'AX': '0',
+					'ADD': '0.75',
+					'jingyong': '15',
+					'VD': '34',
+				},
+				'hebing': true
+			}
+				$('.dingpeidan .layui-table').tap(function(){
+					var that = this;
+					jly_publicNum.yanguang(function(obj){
+						initObj = obj;
+						$(that).find('tbody tr').each(function(index,item){
+							$(item).find('td').each(function(index1,item1){
+								if($(item1).attr('name')){
+									if(index==0){
+										$(item1).text(initObj.R[$(item1).attr('name')]);
+										console.log(item1)
+									}else if(index==1){
+										$(item1).text(initObj.L[$(item1).attr('name')]);
+									}
+								}
+							})
+							
+						})
+						if(initObj.hebing){
+							$($(that).find('tbody tr')[0]).find('td[name=PD]').attr('rowspan','2');
+							$($(that).find('tbody tr')[1]).find('td[name=PD]').hide();
+						}else{
+							$($(that).find('tbody tr')[0]).find('td[name=PD]').attr('rowspan','1');
+							$($(that).find('tbody tr')[1]).find('td[name=PD]').show();
+						}
+					},initObj)
+				})
+				
+				
+				
+				//镜架图片选择事件注册
+				
+				$('.jingjiaChose li').tap(function(){
+					var that = this;
+					$('.jingjiaChose li').each(function(index,item){
+						if($(that).attr('name')!=$(item).attr('name')){
+							$(item).removeClass('checkJingjiaImg');
+						}
+					})
+					if($(this).attr('name')!='ic_zhanwuphoto'){
+						$(this).toggleClass('checkJingjiaImg');
+					}
+					
+					console.log(123123123)
+				})
+				
+				
+				//近用远用多焦点事件
+				$('.userType ul li').tap(function(){
+					$('.userType ul li').removeClass('userTypeCheck');
+					$(this).addClass('userTypeCheck');
+					
+				})
+				var jingjiaArgs = {
+					eyes:'0',
+					gframe_EdgeThickness_R:'',
+					gframe_CenterThickness_R:'',
+					gframe_jiwan_R:'',
+					gframe_jiwanMatch_R:'',
+					gframe_thicknessMatch_R:'',
+					gframe_aspect_R:'',
+					gframe_EdgeThickness_L:'',
+					gframe_CenterThickness_L:'',
+					gframe_jiwan_R:'',
+					gframe_jiwanMatch_L:'',
+					gframe_thicknessMatch_L:'',
+					gframe_aspect_L:''
+				}
+				//镜架参数获取
+				$('.checkRL div').tap(function(){
+					var that =this;
+					$(this).parent().find('div').each(function(index,item){
+						if($(that).attr('name')!=$(item).attr('name')){
+							$(item).removeClass('check');
+						}
+					})
+					$(this).addClass('check');
+					jingjiaArgs.eyes = $(this).attr('name');
+					
+					$('.jingjiaArgs input').each(function(index,item){
+						$(item).val(jingjiaArgs[$(item).attr('name'+(jingjiaArgs.eyes/1+1))]);
+					})
+					
+				})
+				
+				$('.jingjiaArgs input').keyup(function(){				
+					jingjiaArgs[$(this).attr('name'+(jingjiaArgs.eyes/1+1))]=$(this).val();					
+				})
+				var layer = layui.layer,
+					
+					form = layui.form;
+					
+					// 来架 来片 加工中心
+				$('.definBtn').tap(function(){
+					$(this).toggleClass('check')
+					var that = this;
+					$(this).parent().find('.definBtn').each(function(index,item){
+						if($(that).attr('name')!=$(item).attr('name')){
+							$(item).removeClass('check');
+						}
+					})
+					
+					var name = $(this).attr('name');
+					if(name=='Rjiagong'){
+						//右眼来片加工
+						if($(this).hasClass('check')){
+							console.log($(this).text())
+							layer.open({
+								title:false,
+								type:2,
+								closeBtn: 0,
+								anim: 1,
+								area:['100%','100%'],
+								content:['goodsChose.html', 'no']
+							})
+						}
+						
+					}else if(name=='Rcenter'){
+						//右眼加工中心提供
+						if($(this).hasClass('check')){
+							console.log($(this).text())
+						}
+					}else if(name=='Ljiagong'){
+						//左眼来片加工
+						if($(this).hasClass('check')){
+							console.log($(this).text())
+						}
+					}else if(name=='Lcenter'){
+						//左眼加工中心提供
+						if($(this).hasClass('check')){
+							console.log($(this).text())
+						}
+					}else if(name=='jingjiajiagong'){
+						//来架加工
+						if($(this).hasClass('check')){
+							console.log($(this).text())
+						}
+					}else if(name=='jingjiacenter'){
+						//镜架加工中心提供
+						if($(this).hasClass('check')){
+							console.log($(this).text())
+						}
+					}
+				})
+				
+				var arr = [{
+						'name': '模型加工',
+						'id': 'moxing',
+						'gongyi': [{
+								'type': '无框标准加工',
+								'price': '1',
+								'check': false,
+								'id': '20'
+							},
+							{
+								'type': '半框标准加工',
+								'price': '1',
+								'check': false,
+								'id': '21'
+							},
+							{
+								'type': '全框标准加工',
+								'price': '1',
+								'check': false,
+								'id': '22'
+							}
+						],
+						'check': false
+					},
+					{
+						'name': '钻孔',
+						'price': '1',
+						'num': '',
+						'check': false,
+						'id': '1'
+					},
+					{
+						'name': '倒边',
+						'id': 'daobian',
+						'gongyi': [{
+								'type': '倒边A',
+								'price': '1',
+								'check': false,
+								'id': '2'
+							},
+							{
+								'type': '倒边B',
+								'price': '1',
+								'check': false,
+								'id': '3'
+							},
+							{
+								'type': '倒边C',
+								'price': '1',
+								'check': false,
+								'id': '4'
+							}
+						],
+						'num': '',
+						'check': false
+					},
+					{
+						'name': '割边',
+						'num': '',
+						'price': '1',
+						'check': false,
+						'id': '5'
+					},
+					{
+						'name': '改型',
+						'id': 'gaixing',
+						'gongyi': [{
+								'type': '左右改型',
+								'num': '',
+								'price': '1',
+								'check': false,
+								'id': '6'
+							},
+							{
+								'type': '上下改型',
+								'num': '',
+								'price': '1',
+								'check': false,
+								'id': '7'
+							}
+						],
+						'check': false
+					},
+					{
+						'name': '染色单色',
+						'id': 'randanse',
+						'gongyi': [{
+								'details': [
+
+									{
+										'type': '来色板',
+										'price': '1',
+										'check': false,
+										'id': '8'
+									},
+									{
+										'type': '来色架',
+										'price': '1',
+										'check': false,
+										'id': '9'
+									}
+								]
+
+							},
+							{
+								'type': '色度',
+								'price': '1',
+								'check': false,
+								'id': '10',
+								'num': ''
+							}
+						],
+						'check': false
+					},
+					{
+						'name': '染色双色',
+						'id': 'ranshuangse',
+						'gongyi': [{
+								'details': [
+
+									{
+										'type': '来色板',
+										'price': '1',
+										'check': false,
+										'id': '11'
+									},
+									{
+										'type': '来色架',
+										'price': '1',
+										'check': false,
+										'id': '12'
+									}
+								]
+
+							},
+							{
+								'type': '色度',
+								'price': '1',
+								'num': '',
+								'check': false,
+								'id': '13'
+							}
+						],
+						'check': false
+					},
+					{
+						'name': '抛边',
+						'price': '1',
+						'check': false,
+						'id': '14'
+					},
+					{
+						'name': '潜水镜',
+						'price': '1',
+						'check': false,
+						'id': '15'
+					},
+					{
+						'name': '批花',
+						'price': '1',
+						'check': false,
+						'id': '16'
+					},
+					{
+						'name': '倒角',
+						'num': '',
+						'price': '1',
+						'check': false,
+						'id': '17'
+					}, {
+						'name': '特殊基弯',
+						'num': '',
+						'price': '3',
+						'check': false,
+						'id': '18'
+					},
+					{
+						'name': '投保费',
+						'price': '2',
+						'check': false,
+						'id': '19'
+					}
+				]
+				gongyi(arr, true)
+
+				function gongyi(arr, boolean) {
+					var gongyiStr = '';
+					console.log(123);
+					arr.forEach(function(item, index) {
+						var id = item.id;
+
+						if((id == '15' || id == '16' || id == '19' || id == '14') && item.price != -1) { //抛边，潜水镜，批花，投保费
+							gongyiStr += '<li  class="clearfix" data-num="' + index + '">' +
+								'<div class="checkMain fl" name="' + item.id + '">' +
+								'<span>' + item.name + '</span>' +
+								'<div class="icon iconNoCheck ' + (item.check ? 'iconCheck' : '') + '" ></div>' +
+								'</div>' +
+								'<div class="details fl">' +
+								'<div class="showPrice"><span>价格</span>：<span class="priceText">' + item.price + '</span><span>元</span></div>' +
+								'</div>' +
+								'</li>';
+
+						} else if((id == "1" || id == "5" || id == "17" || id == "18") && item.price != -1) { //钻孔，割边，倒角，特殊基弯
+							gongyiStr += '<li  class="clearfix" data-num="' + index + '">' +
+								'<div class="checkMain fl" name="' + item.id + '">' +
+								'<span>' + item.name + '</span>' +
+								'<div class="icon iconNoCheck ' + (item.check ? 'iconCheck' : '') + '" ></div>' +
+								'</div>' +
+								'<div class="details fl">' +
+								'<input type="text" class="gongyiInput layui-input" value="' + item.num + '" ' + (item.check ? '' : 'readonly') + '>' +
+								'<div class="showPrice"><span>价格</span>：<span class="priceText">' + item.price + '</span><span>元</span></div>' +
+								'</div>' +
+								'</li>';
+						} else if(id == 'moxing') { //模型加工
+							if(item.gongyi.some(function(x) {
+									return x.price != -1
+								})) {
+								gongyiStr += '<li  class="clearfix" data-num="' + index + '"><div class="checkMain fl" name="' + item.id + '"><span >' + item.name + '</span><div class="icon iconNoCheck ' + (item.check ? 'iconCheck' : '') + '" ></div></div>';
+
+								item.gongyi.forEach(function(item1, index1) {
+									if(item1.price != -1) {
+										gongyiStr += '<div class="details fl">' +
+											'<div class="moxing" num="' + index1 + '"><span class="smallIconUncheck ' + (item1.check ? 'smallIconCheck' : '') + '"></span><span class="moxingText">' + item1.type + '</span></div>' +
+											'<div class="showPrice"><span class="priceText">' + item1.price + '</span><span>元</span></div>' +
+											'</div>'
+									}
+								})
+								gongyiStr += '</li>';
+							}
+
+						} else if(id == 'daobian') { //倒边渲染
+							if(item.gongyi.some(function(x) {
+									return x.price != -1
+								})) {
+								gongyiStr += '<li  class="clearfix" data-num="' + index + '"><div class="checkMain fl" name="' + item.id + '"><span >' + item.name + '</span><div class="icon iconNoCheck ' + (item.check ? 'iconCheck' : '') + '" ></div></div>';
+
+								item.gongyi.forEach(function(item1, index1) {
+									if(item1.price != -1) {
+										gongyiStr += '<div class="details fl">' +
+											'<div class="moxing" num="' + index1 + '"><span class="smallIconUncheck ' + (item1.check ? 'smallIconCheck' : '') +  '"></span><span class="moxingText">' + item1.type + '</span></div>' +
+											'<div class="showPrice"><span class="priceText">' + item1.price + '</span><span>元</span></div>' +
+											'</div>'
+									}
+								})
+								gongyiStr += '<div class="details fl"><input type="text" class="gongyiInput layui-input" value="' + item.num + '" ' + (item.check ? '': 'readonly') + '></div></li>';
+							}
+						} else if(id == 'gaixing') { //改型
+
+							if(item.gongyi.some(function(x) {
+									return x.price != -1
+								})) {
+								gongyiStr += '<li  class="clearfix" data-num="' + index + '"><div class="checkMain fl" name="' + item.id + '"><span >' + item.name + '</span><div class="icon iconNoCheck ' + (item.check ? 'iconCheck' : '') + '" ></div></div>';
+								item.gongyi.forEach(function(item1, index1) {
+									if(item1.price != -1) {
+										gongyiStr += '<div class="details fl">' +
+											'<div class="moxing" num="' + index1 + '"><span class="smallIconUncheck ' + (item1.check ? 'smallIconCheck' : '') + '"></span><span class="moxingText">' + item1.type + '</span></div>' +
+											'<div class="showPrice"><span class="priceText">' + item1.price + '</span><span>元</span></div>' +
+											'</div>' +
+											'<div class="details fl"> <input type="text" class="gongyiInput layui-input" value="' + item1.num + '" ' + (item1.check ? '' : 'readonly') + ' num="' + index1 + '"></div>'
+									}
+								})
+								gongyiStr += '</li>'
+							}
+						} else if(id == 'ranshuangse' || id == 'randanse') { //染单色 染双色
+							if(item.gongyi[0].details.some(function(x) {
+									return x.price != -1
+								}) || item.gongyi[1].price != -1) {
+								console.log(item.gongyi[1].price);
+								gongyiStr += '<li  class="clearfix" data-num="' + index + '"><div class="checkMain fl" name="' + item.id + '"><span >' + item.name + '</span><div class="icon iconNoCheck ' + (item.check ? 'iconCheck' : '') + '" ></div></div>';
+								item.gongyi[0].details.forEach(function(item1, index1) {
+									if(item1.price != -1) {
+
+										gongyiStr += '<div class="details fl">' +
+											'<div class="moxing" num="' + index1 + '" type="1"><span class="smallIconUncheck ' + (item1.check ? 'smallIconCheck' : '') + '"></span><span class="moxingText">' + item1.type + '</span></div>' +
+											'<div class="showPrice"><span class="priceText">' + item1.price + '</span><span>元</span></div>' +
+											'</div>'
+									}
+								})
+								if(item.gongyi[1].price != -1) {
+									gongyiStr += '<div class="details fl">' +
+										'<div class="moxing ranse" type="2"><span class="moxingText">' + item.gongyi[1].type + '</span> <div class="icon iconNoCheck ' + (item.gongyi[1].check ? 'iconCheck' : '') + '" ></div></div>' +
+										'<input type="text" class="gongyiInput layui-input" value="' + item.gongyi[1].num + '" placeholder="%" ' + (item.gongyi[1].check ? '' : 'readonly') + '>' +
+										'<div class="showPrice"><span class="priceText">' + item.gongyi[1].price + '</span><span>元</span></div>' +
+										'</div>'
+								}
+								gongyiStr += '</li>'
+							}
+						}
+					});
+
+					$('.gongyiList').html(gongyiStr);
+
+					if(boolean) {
+						$('.checkMain').tap(function() {
+							var that = this;
+
+							var index = $(this).parent()[0].dataset.num;
+							arr[index].check = !arr[index].check;
+							if(!arr[index].check) {
+								switchFale(index / 1)
+							} else {
+								if(index == 0 || index == 2 || index == 4) { //默认选中的项
+
+									for(var i = 0; i < arr[index].gongyi.length; i++) {
+										if(arr[index].gongyi[i].price != -1) {
+											arr[index].gongyi[i].check = true;
+											break;
+										}
+									}
+								}
+							}
+							goodsGongyiRender(arr)
+						});
+						$('.moxing').tap(function() { //二级按钮点击事件监听
+							var that = this;
+							switch($(that).parents('li')[0].dataset.num / 1) {
+								case 0: //模型加工
+									if(arr[0].check) {
+										arr[0].gongyi.forEach(function(item, index) {
+											item.check = false;
+										})
+										arr[0].gongyi[$(that).attr('num')].check = true;
+									}
+									break;
+								case 2: //倒边
+									if(arr[2].check) {
+										arr[2].gongyi.forEach(function(item, index) {
+											item.check = false;
+										})
+										arr[2].gongyi[$(that).attr('num')].check = true;
+									}
+									break;
+								case 4: //改型
+									if(arr[4].check) {
+										var mark = arr[4].gongyi[$(that).attr('num')].num;
+										arr[4].gongyi.forEach(function(item, index) {
+											item.num = '';
+											item.check = false;
+										})
+										arr[4].gongyi[$(that).attr('num')].check = true;
+										arr[4].gongyi[$(that).attr('num')].num = mark;
+									}
+									break;
+								case 5: //染色单色
+									if(arr[5].check) {
+										var type = $(that).attr('type');
+										if(type == 1) {
+											var i = $(that).attr('num');
+											arr[5].gongyi[0].details.forEach(function(item2, index2) {
+												item2.check = false;
+											})
+											arr[5].gongyi[0].details[i].check = true;
+										} else if(type == 2) {
+											arr[5].gongyi[1].check = !arr[5].gongyi[1].check;
+											arr[5].gongyi[1].num = '';
+										}
+									}
+									break;
+								case 6: //染色双色
+									if(arr[6].check) {
+										var type = $(that).attr('type');
+										if(type == 1) {
+											var i = $(that).attr('num');
+											arr[6].gongyi[0].details.forEach(function(item2, index2) {
+												item2.check = false;
+											})
+											arr[6].gongyi[0].details[i].check = true;
+										} else if(type == 2) {
+											arr[6].gongyi[1].check = !arr[6].gongyi[1].check;
+											arr[6].gongyi[1].num = '';
+										}
+									}
+									break;
+
+							}
+							goodsGongyiRender(arr);
+						})
+
+						$('.gongyiInput').keyup(function() {
+							var reg = $(this).val().match(/\d+\.?\d{0,2}/);
+							var txt = '';
+							if(reg != null) {
+								txt = reg[0];
+							}
+							$(this).val(txt);
+							var that = this;
+							var index = $(that).parents('li')[0].dataset.num / 1;
+							if(arr[index].check) {
+								if(index == 1 || index == 2 || index == 3 || index == 10 || index == 11) {
+									arr[index].num = $(that).val();
+									console.log(arr[index]);
+								}
+								if(index == 4) {
+									arr[4].gongyi[$(that).attr("num")].num = $(that).val();
+								}
+								if(index == 5 || index == 6) {
+									arr[index].gongyi[1].num = $(that).val();
+								}
+							}
+
+						}).change(function() {
+							$(this).keypress();
+							var v = $(this).val();
+							if(/\.$/.test(v)) {
+								$(this).val(v.substr(0, v.length - 1));
+							}
+							var that = this;
+							var index = $(that).parents('li')[0].dataset.num / 1;
+							if(arr[index].check) {
+								if(index == 1 || index == 2 || index == 3 || index == 10 || index == 11) {
+									arr[index].num = $(that).val();
+									console.log(arr[index]);
+								}
+								if(index == 4) {
+									arr[4].gongyi[$(that).attr("num")].num = $(that).val();
+								}
+								if(index == 5 || index == 6) {
+									arr[index].gongyi[1].num = $(that).val();
+								}
+							}
+
+						});
+					}
+
+				}
+
+				function goodsGongyiRender(arr) {
+					var gongyiStr = '';
+					arr.forEach(function(item, index) {
+						var id = item.id;
+
+						if((id == '15' || id == '16' || id == '19' || id == '14') && item.price != -1) { //抛边，潜水镜，批花，投保费
+							gongyiStr += '<li  class="clearfix" data-num="' + index + '">' +
+								'<div class="checkMain fl" name="' + item.id + '">' +
+								'<span>' + item.name + '</span>' +
+								'<div class="icon iconNoCheck ' + (item.check ? 'iconCheck' : '') + '" ></div>' +
+								'</div>' +
+								'<div class="details fl">' +
+								'<div class="showPrice"><span>价格</span>：<span class="priceText">' + item.price + '</span><span>元</span></div>' +
+								'</div>' +
+								'</li>';
+
+						} else if((id == "1" || id == "5" || id == "17" || id == "18") && item.price != -1) { //钻孔，割边，倒角，特殊基弯
+							gongyiStr += '<li  class="clearfix" data-num="' + index + '">' +
+								'<div class="checkMain fl" name="' + item.id + '">' +
+								'<span>' + item.name + '</span>' +
+								'<div class="icon iconNoCheck ' + (item.check ? 'iconCheck' : '') + '" ></div>' +
+								'</div>' +
+								'<div class="details fl">' +
+								'<input type="text" class="gongyiInput layui-input" value="' + item.num + '" ' + (item.check ? '' : 'readonly') + '>' +
+								'<div class="showPrice"><span>价格</span>：<span class="priceText">' + item.price + '</span><span>元</span></div>' +
+								'</div>' +
+								'</li>';
+						} else if(id == 'moxing') { //模型加工
+							if(item.gongyi.some(function(x) {
+									return x.price != -1
+								})) {
+								gongyiStr += '<li  class="clearfix" data-num="' + index + '"><div class="checkMain fl" name="' + item.id + '"><span >' + item.name + '</span><div class="icon iconNoCheck ' + (item.check ? 'iconCheck' : '') + '" ></div></div>';
+
+								item.gongyi.forEach(function(item1, index1) {
+									if(item1.price != -1) {
+										gongyiStr += '<div class="details fl">' +
+											'<div class="moxing" num="' + index1 + '"><span class="smallIconUncheck ' + (item1.check ? 'smallIconCheck' : '') + '"></span><span class="moxingText">' + item1.type + '</span></div>' +
+											'<div class="showPrice"><span class="priceText">' + item1.price + '</span><span>元</span></div>' +
+											'</div>'
+									}
+								})
+								gongyiStr += '</li>';
+							}
+
+						} else if(id == 'daobian') { //倒边渲染
+							if(item.gongyi.some(function(x) {
+									return x.price != -1
+								})) {
+								gongyiStr += '<li  class="clearfix" data-num="' + index + '"><div class="checkMain fl" name="' + item.id + '"><span >' + item.name + '</span><div class="icon iconNoCheck ' + (item.check ? 'iconCheck' : '') + '" ></div></div>';
+
+								item.gongyi.forEach(function(item1, index1) {
+									if(item1.price != -1) {
+										gongyiStr += '<div class="details fl">' +
+											'<div class="moxing" num="' + index1 + '"><span class="smallIconUncheck ' + (item1.check ? 'smallIconCheck' : '') + '"></span><span class="moxingText">' + item1.type + '</span></div>' +
+											'<div class="showPrice"><span class="priceText">' + item1.price + '</span><span>元</span></div>' +
+											'</div>'
+									}
+								})
+								gongyiStr += '<div class="details fl"><input type="text" class="gongyiInput layui-input" value="' + item.num + '" ' + (item.check ? '' : 'readonly') + '></div></li>';
+							}
+						} else if(id == 'gaixing') { //改型
+
+							if(item.gongyi.some(function(x) {
+									return x.price != -1
+								})) {
+								gongyiStr += '<li  class="clearfix" data-num="' + index + '"><div class="checkMain fl" name="' + item.id + '"><span >' + item.name + '</span><div class="icon iconNoCheck ' + (item.check ? 'iconCheck' : '') + '" ></div></div>';
+								item.gongyi.forEach(function(item1, index1) {
+									if(item1.price != -1) {
+										gongyiStr += '<div class="details fl">' +
+											'<div class="moxing" num="' + index1 + '"><span class="smallIconUncheck ' + (item1.check ? 'smallIconCheck' : '') + '"></span><span class="moxingText">' + item1.type + '</span></div>' +
+											'<div class="showPrice"><span class="priceText">' + item1.price + '</span><span>元</span></div>' +
+											'</div>' +
+											'<div class="details fl"> <input type="text" class="gongyiInput layui-input" value="' + item1.num + '" ' + (item1.check ? '' : 'readonly') + ' num="' + index1 + '"></div>'
+									}
+								})
+								gongyiStr += '</li>'
+							}
+						} else if(id == 'ranshuangse' || id == 'randanse') { //染单色 染双色
+							if(item.gongyi[0].details.some(function(x) {
+									return x.price != -1
+								}) || item.gongyi[1].price != -1) {
+								console.log(item.gongyi[1].price);
+								gongyiStr += '<li  class="clearfix" data-num="' + index + '"><div class="checkMain fl" name="' + item.id + '"><span >' + item.name + '</span><div class="icon iconNoCheck ' + (item.check ? 'iconCheck' : '') + '" ></div></div>';
+								item.gongyi[0].details.forEach(function(item1, index1) {
+									if(item1.price != -1) {
+
+										gongyiStr += '<div class="details fl">' +
+											'<div class="moxing" num="' + index1 + '" type="1"><span class="smallIconUncheck ' + (item1.check ? 'smallIconCheck' : '') + '"></span><span class="moxingText">' + item1.type + '</span></div>' +
+											'<div class="showPrice"><span class="priceText">' + item1.price + '</span><span>元</span></div>' +
+											'</div>'
+									}
+								})
+								if(item.gongyi[1].price != -1) {
+									gongyiStr += '<div class="details fl">' +
+										'<div class="moxing ranse" type="2"><span class="moxingText">' + item.gongyi[1].type + '</span> <div class="icon iconNoCheck ' + (item.gongyi[1].check ? 'iconCheck' : '') + '" ></div></div>' +
+										'<input type="text" class="gongyiInput layui-input" value="' + item.gongyi[1].num + '" placeholder="%" ' + (item.gongyi[1].check ? '' : 'readonly') + '>' +
+										'<div class="showPrice"><span class="priceText">' + item.gongyi[1].price + '</span><span>元</span></div>' +
+										'</div>'
+								}
+								gongyiStr += '</li>'
+							}
+						}
+					});
+
+					$('.gongyiList').html(gongyiStr);
+
+					$('.checkMain').tap(function() {
+						var that = this;
+
+						var index = $(this).parent()[0].dataset.num;
+						arr[index].check = !arr[index].check;
+						if(!arr[index].check) {
+							switchFale(index / 1)
+						} else {
+							if(index == 0 || index == 2 || index == 4) { //默认选中的项
+
+								for(var i = 0; i < arr[index].gongyi.length; i++) {
+									if(arr[index].gongyi[i].price != -1) {
+										arr[index].gongyi[i].check = true;
+										break;
+									}
+								}
+							}
+						}
+						goodsGongyiRender(arr)
+					});
+					$('.moxing').tap(function() { //二级按钮点击事件监听
+						var that = this;
+						switch($(that).parents('li')[0].dataset.num / 1) {
+							case 0: //模型加工
+								if(arr[0].check) {
+									arr[0].gongyi.forEach(function(item, index) {
+										item.check = false;
+									})
+									arr[0].gongyi[$(that).attr('num')].check = true;
+								}
+								break;
+							case 2: //倒边
+								if(arr[2].check) {
+									arr[2].gongyi.forEach(function(item, index) {
+										item.check = false;
+									})
+									arr[2].gongyi[$(that).attr('num')].check = true;
+								}
+								break;
+							case 4: //改型
+								if(arr[4].check) {
+									var mark = arr[4].gongyi[$(that).attr('num')].num;
+									arr[4].gongyi.forEach(function(item, index) {
+										item.num = '';
+										item.check = false;
+									})
+									arr[4].gongyi[$(that).attr('num')].check = true;
+									arr[4].gongyi[$(that).attr('num')].num = mark;
+								}
+								break;
+							case 5: //染色单色
+								if(arr[5].check) {
+									var type = $(that).attr('type');
+									if(type == 1) {
+										var i = $(that).attr('num');
+										arr[5].gongyi[0].details.forEach(function(item2, index2) {
+											item2.check = false;
+										})
+										arr[5].gongyi[0].details[i].check = true;
+									} else if(type == 2) {
+										arr[5].gongyi[1].check = !arr[5].gongyi[1].check;
+										arr[5].gongyi[1].num = '';
+									}
+								}
+								break;
+							case 6: //染色双色
+								if(arr[6].check) {
+									var type = $(that).attr('type');
+									if(type == 1) {
+										var i = $(that).attr('num');
+										arr[6].gongyi[0].details.forEach(function(item2, index2) {
+											item2.check = false;
+										})
+										arr[6].gongyi[0].details[i].check = true;
+									} else if(type == 2) {
+										arr[6].gongyi[1].check = !arr[6].gongyi[1].check;
+										arr[6].gongyi[1].num = '';
+									}
+								}
+								break;
+
+						}
+						goodsGongyiRender(arr);
+					})
+
+					$('.gongyiInput').keyup(function() {
+						var reg = $(this).val().match(/\d+\.?\d{0,2}/);
+						var txt = '';
+						if(reg != null) {
+							txt = reg[0];
+						}
+						$(this).val(txt);
+						var that = this;
+						var index = $(that).parents('li')[0].dataset.num / 1;
+						if(arr[index].check) {
+							if(index == 1 || index == 2 || index == 3 || index == 10 || index == 11) {
+								arr[index].num = $(that).val();
+								console.log(arr[index]);
+							}
+							if(index == 4) {
+								arr[4].gongyi[$(that).attr("num")].num = $(that).val();
+							}
+							if(index == 5 || index == 6) {
+								arr[index].gongyi[1].num = $(that).val();
+							}
+						}
+
+					}).change(function() {
+						$(this).keypress();
+						var v = $(this).val();
+						if(/\.$/.test(v)) {
+							$(this).val(v.substr(0, v.length - 1));
+						}
+						var that = this;
+						var index = $(that).parents('li')[0].dataset.num / 1;
+						if(arr[index].check) {
+							if(index == 1 || index == 2 || index == 3 || index == 10 || index == 11) {
+								arr[index].num = $(that).val();
+								console.log(arr[index]);
+							}
+							if(index == 4) {
+								arr[4].gongyi[$(that).attr("num")].num = $(that).val();
+							}
+							if(index == 5 || index == 6) {
+								arr[index].gongyi[1].num = $(that).val();
+							}
+						}
+
+					});
+
+				}
+
+				function switchFale(index) {
+					switch(index / 1) {
+						case 0:
+							arr[index].gongyi.forEach(function(item1, index1) {
+								item1.check = false;
+							})
+							break;
+						case 1:
+							arr[index].num = '';
+							break;
+						case 2:
+							arr[index].gongyi.forEach(function(item1, index1) {
+								item1.check = false;
+							})
+							arr[index].num = '';
+							break;
+						case 3:
+							arr[index].num = '';
+							break;
+						case 4:
+							arr[index].gongyi.forEach(function(item1, index1) {
+								item1.check = false;
+								item1.num = '';
+							})
+							break;
+						case 5:
+							arr[index].gongyi[0].details.forEach(function(item1, index1) {
+								item1.check = false;
+							})
+							arr[index].gongyi[1].check = false;
+							arr[index].gongyi[1].num = '';
+							break;
+						case 6:
+							arr[index].gongyi[0].details.forEach(function(item1, index1) {
+								item1.check = false;
+							})
+							arr[index].gongyi[1].check = false;
+							arr[index].gongyi[1].num = '';
+							break;
+						case 10:
+							arr[index].num = '';
+							break;
+						case 11:
+							arr[index].num = '';
+							break;
+					}
+				}
+				
+				if(GetRequest().store_id){
+					store_id = GetRequest().store_id;
+					load_dian();
+				}
+				//查找可加工店铺
+				function load_dian(){
+					var id = '{"code":"A11","accesstoken":"SELECT a.*,b.store_name as s_name1,c.store_name as s_name2,b.store_address,b.store_phone FROM tb_storemachining a left join tb_store b on a.sm_multid=b.store_id  left join tb_store c on a.sm_storeid=c.store_id where sm_status=0 and sm_storeid='+store_id+'"}';
+				
+					$.ajax({
+						url:url+'findgoods2', 
+						type:'get',
+						dataType:'jsonp',
+						jsonpCallback:'successCallback2',
+						async:false,
+						data:{"id":id},					
+						success : function(data) {
+							if(data.code==200){
+								var list = data.data;
+								var str = "";
+								for(var i=0;i<list.length;i++){
+									storeId_x[list[i].sm_multid+""] = {"tel":list[i].store_phone,"address":list[i].store_address};
+									str += '<option value='+list[i].sm_multid+'>'+list[i].s_name1+'</option>'
+								}
+								load_lensType(list[0].sm_multid);
+								$("#storeID").html(str);
+								form.render();
+							}else{
+								jly.confirm(languageObj.b40)
+							}
+							
+							
+							
+						}
+					});
+				}
+				//查找选择店铺所对应的镜片类型
+				function load_lensType(s_id){
+					var id = '{"code":"A11","accesstoken":"select * from tb_processconfig where store_id = '+s_id+'  and pc_status=0 group BY pc_lensType"}';
+					$.ajax({
+						url:url+'findgoods1',
+						type:'get',
+						dataType:'jsonp',
+						jsonpCallback:'successCallback',
+						data:{"id":id},					
+						success : function(data) {
+						
+							if(data.code==200){
+								
+								var list = data.data;
+								var str = "";
+								for(var i=0;i<list.length;i++){
+									if(i == 0){
+										load_gon(list[i].pc_lensName);
+									}
+									str += "<option value='"+list[i].pc_lensName+"'>"+list[i].pc_lensName+"</option>"
+								}
+								$("#lensType").html(str);
+								form.render();
+								
+								
+							}else{
+								
+							}
+							
+						}
+					});
+				}
+				
+				//查找选择店铺所对应的镜片类型的加工工艺
+				function load_gon(lensType){
+					
+					arr = [
+							{
+								'name':'模型加工',
+								'id':'moxing',
+								'gongyi':[
+									{
+										'type':'无框标准加工',
+										'price':'-1',
+										'check':false,
+										'id':'20'
+									},
+									{
+										'type':'半框标准加工',
+										'price':'-1',
+										'check':false,
+										'id':'21'
+									},
+									{
+										'type':'全框标准加工',
+										'price':'-1',
+										'check':false,
+										'id':'22'
+									}
+								],
+								'check':false
+							},
+							{
+								'name':'钻孔',
+								'price':'-1',
+								'num':'',
+								'check':false,
+								'id':'1'
+							},
+							{
+								'name':'倒边',
+								'id':'daobian',
+								'gongyi':[
+									{
+										'type':'倒边A',
+										'price':'-1',
+										'check':false,
+										'id':'2'
+									},
+									{
+										'type':'倒边B',
+										'price':'-1',
+										'check':false,
+										'id':'3'
+									},
+									{
+										'type':'倒边C',
+										'price':'-1',
+										'check':false,
+										'id':'4'
+									}
+								],
+								'num':'',
+								'check':false
+							},
+							{
+								'name':'割边',
+								'num':'',
+								'price':'-1',
+								'check':false,
+								'id':'5'
+							},
+							{
+								'name':'改型',
+								'id':'gaixing',
+								'gongyi':[
+									{
+										'type':'左右改型',
+										'num':'',
+										'price':'-1',
+										'check':false,
+										'id':'6'
+									},
+									{
+										'type':'上下改型',
+										'num':'',
+										'price':'-1',
+										'check':false,
+										'id':'7'
+									}
+								],
+								'check':false
+							},
+							{
+								'name':'染色单色',
+								'id':'randanse',
+								'gongyi':[
+									{ 
+										'details':[
+
+											{
+												'type':'来色板',
+												'price':'-1',
+												'check':false,
+												'id':'8'
+											},
+											{
+												'type':'来色架',
+												'price':'-1',
+												'check':false,
+												'id':'9'
+											}
+										]
+										
+									},
+									{
+										'type':'色度',
+										'price':'-1',
+										'check':false,
+										'id':'10',
+										'num':''
+									}
+								],
+								'check':false
+							},
+							{
+								'name':'染色双色',
+								'id':'ranshuangse',
+								'gongyi':[
+									{ 
+										'details':[
+
+											{
+												'type':'来色板',
+												'price':'-1',
+												'check':false,
+												'id':'11'
+											},
+											{
+												'type':'来色架',
+												'price':'-1',
+												'check':false,
+												'id':'12'
+											}
+										]
+										
+									},
+									{
+										'type':'色度',
+										'price':'-1',
+										'num':'',
+										'check':false,
+										'id':'13'
+									}
+								],
+								'check':false
+							},
+							{
+								'name':'抛边',
+								'price':'-1',
+								'check':false,
+								'id':'14'
+							},
+							{
+								'name':'潜水镜',
+								'price':'-1',
+								'check':false,
+								'id':'15'
+							},
+							{
+								'name':'批花',
+								'price':'-1',
+								'check':false,
+								'id':'16'
+							},
+							{
+								'name':'倒角',
+								'num':'',
+								'price':'-1',
+								'check':false,
+								'id':'17'
+							},{
+								'name':'特殊基弯',
+								'num':'',
+								'price':'-1',
+								'check':false,
+								'id':'18'
+							},
+							{
+								'name':'投保费',
+								'price':'-1',
+								'check':false,
+								'id':'19'
+							}
+						]
+						
+
+					var id = '{"code":"A11","accesstoken":"select * from tb_processconfig where store_id = '+$("#storeID").val()+'  and pc_status=0 and pc_lensName=\''+lensType+'\'"}';
+					
+					$.ajax({
+						url:'http://jingliyun.cn/jlyyj/index.php/Home/JavaInterface/findgoods2', 
+						type:'get',
+						dataType:'jsonp',
+						jsonpCallback:'successCallback2',
+						data:{"id":id},					
+						success : function(data) {
+							if(data.code==200){
+								var list = data.data;
+								for (var o = 0; o < list.length; o++) {
+									
+									for(var i=0;i<arr.length;i++){
+										var id_1 = arr[i]["id"];//一级的ID
+										if(id_1 == list[o].pc_processType){
+											arr[i]["price"] = list[o].pc_price;
+											arr[i]["pc_id"] = list[o].pc_id;
+											continue;
+										}else{
+											//进入第二级循环
+											var gongyi_1 = arr[i]["gongyi"];
+											if(gongyi_1){
+												for (var u = 0; u < gongyi_1.length; u++) {
+													//定义、获取第二级参数
+													var id_2 = gongyi_1[u]["id"];
+													var num_2 = gongyi_1[u]["num"];
+													var check_2 = arr[i]["gongyi"][u]["check"];
+													if(id_2 == list[o].pc_processType){
+														arr[i]["gongyi"][u]["price"] = list[o].pc_price;
+														arr[i]["gongyi"][u]["pc_id"] = list[o].pc_id;
+														continue;
+													}else{
+														//进入第三级循环
+														var details =  gongyi_1[u]["details"];
+														if(details){
+															for (var y = 0; y < details.length; y++) {
+																//定义、获取第三级参数
+																var id_3 = details[y]["id"];
+																if(id_3 == list[o].pc_processType){
+																	arr[i]["gongyi"][u]["details"][y]["price"] = list[o].pc_price;
+																	arr[i]["gongyi"][u]["details"][y]["pc_id"] = list[o].pc_id;
+																	continue;
+																}
+															}//第三级循环结束
+														}
+														
+													}//else2
+												}//for2
+											}
+											
+										}//else1
+									}
+									
+								} 
+								
+								
+								
+								
+								 goodsGongyiRender(arr)
+								
+							}
+							
+						},error:function(XMLHttpRequest, textStatus, errorThrown){
+						}
+					});
+				}
+				
+				
+				//选择店铺和选择镜片类型下拉框
+				form.on("select",function(e){
+					if(!$(e)[0].value){
+						return;
+					}
+					if($(e)[0].elem.id == "storeID"){
+						load_lensType($(e)[0].value)
+						$("#address").html(storeId_x[$(e)[0].value+""]["address"]);
+						$("#tel").html(storeId_x[$(e)[0].value+""]["tel"]);
+					}else if($(e)[0].elem.id == "lensType"){
+						load_gon($(e)[0].value)
+					}
+				})
+				//点击保存
+				$("#save").on("click",function(){
+					
+					var jie_s = $("#jiesuan_type").find("input");
+					var jiesuan_type = 0;
+					for(var i=0;i<jie_s.length;i++){
+						if(jie_s[i].checked){
+							jiesuan_type = i;
+						}
+					}
+					var imgs = $(".jingjiaChose").find(".checkJingjiaImg");
+					var img = "";
+					if(imgs.length >0){
+						img = $(imgs).attr("name")
+					}
+					
+					//定配单，SPH、CYL等数据获取
+					var R_li =  $("#r_dp").find("td");
+					var L_li =  $("#l_dp").find("td");
+					var RL_LI = {};
+					for(var i = 1;i<L_li.length;i++){
+						if($(L_li[i]).attr("id")){
+							RL_LI[$(L_li[i]).attr("id")] = $(L_li[i]).html();
+							RL_LI[$(R_li[i]).attr("id")] = $(R_li[i]).html();
+						}
+						
+					}
+					//多焦点、远用、近用获取
+					var jp_type = $(".userType").find(".userTypeCheck").attr("name");
+					RL_LI["optometry_use"] = jp_type;
+					
+					console.log(RL_LI)
+					var array = getArrDate();
+					
+					//镜架参数获取
+					var gframe_canshu = [];
+					gframe_canshu["gframe_type_img"] = img;
+					for(var i in jingjiaArgs){
+						if(i != "eyes"){
+							gframe_canshu.push({"name":i,"value":jingjiaArgs[i]})
+						}
+					}
+					
+					
+					//保存接口需要的值
+					var save_json = {};
+					save_json["optjson"] = RL_LI;
+					save_json["ity_remark"] = $("#ity_remark").val();
+					save_json["goodsArray"] = "";
+					save_json["glasses_price"] = "";
+					save_json["lens_price"] = "";
+					save_json["gframe_price"] = "";
+					save_json["price"] = "";
+					save_json["array"] = array;
+					save_json["gframe_canshu"] = gframe_canshu;
+					save_json["eyesjson"] = "";
+					save_json["supplyjson"] = "";
+					save_json["source"] = 0;
+					save_json["store_id2"] = $("#storeID").val();
+					save_json["store_id1"] = store_id;
+					save_json["user_id"] = GetRequest().user_id;
+					console.log(save_json)
+					
+					
+				})
+				
+				
+				//获取需要保存的工艺
+				function getArrDate(){
+					var array = [];
+					var jiagong_price = 0;
+					for(var i=0;i<arr.length;i++){
+						var id_1 = arr[i]["id"];//一级的ID
+						if(id_1*0 == 0){
+							var num_1 = arr[i]["num"];//只有一层的输入值
+							var check_1 = arr[i]["check"];//只有一层的选择框
+							var price_1 = arr[i]["price"];
+							var pc_id_1 = arr[i]["pc_id"];
+							if(num_1){
+								array.push({"pc_id":pc_id_1,"params":num_1});
+								jiagong_price += price_1/1;
+							}else if(check_1){
+								if(can_num[id_1] != 1){
+									array.push({"pc_id":pc_id_1,"params":""});
+									jiagong_price += price_1/1;
+								}
+								
+							}
+						}else{
+							//进入第二级循环
+							var gongyi_1 = arr[i]["gongyi"];
+							for (var u = 0; u < gongyi_1.length; u++) {
+								//定义、获取第二级参数
+								var id_2 = gongyi_1[u]["id"];
+								var num_2 = gongyi_1[u]["num"];
+								var check_2 =  gongyi_1[u]["check"];
+								var price_2 =  gongyi_1[u]["price"];
+								var pc_id_2 = gongyi_1[u]["pc_id"];
+								if(id_2&&id_2*0 == 0){
+									if(num_2){
+										array.push({"pc_id":pc_id_2,"params":num_2});
+										jiagong_price += price_2/1;
+									}else if(check_2){
+										if(can_num[id_2] != 1){
+											array.push({"pc_id":pc_id_2,"params":""});
+											jiagong_price += price_2/1;
+										}
+										
+									}
+								}else{
+									//进入第三级循环
+									var details =  gongyi_1[u]["details"];
+									for (var y = 0; y < details.length; y++) {
+										//定义、获取第三级参数
+										var id_3 = details[y]["id"];
+										var num_3 = details[y]["num"]
+										var check_3 = details[y]["check"]
+										var price_3 = details[y]["price"]
+										var pc_id_3 = details[y]["pc_id"]
+										if(id_3){
+											if(num_3){
+												array.push({"pc_id":pc_id_3,"params":num_3});
+												jiagong_price += price_3/1;
+											}else if(check_3){
+												if(can_num[id_3] != 1){
+													array.push({"pc_id":pc_id_3,"params":""});
+													jiagong_price += price_3/1;
+												}
+												
+											}
+											
+										}
+									}//第三级循环结束
+								}//else2
+							}//for2
+						}//else1
+					}
+					$("#jiagong_price").html(jiagong_price);
+					if(!price["goods_price"]){
+						price["goods_price"] = 0;
+					}
+					$("#price").html(jiagong_price/1+price["goods_price"]/1)
+					price["jiagong_price"] = jiagong_price;
+					return array;
+				}
+				
+				
+				
+			})()
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							//获取随机数
+		function suiji(n){
+	   		var rand = "";
+	   	   	for(var i = 0; i < n; i++){
+	   	   	    var r = Math.floor(Math.random() * 10);
+
+	   	   	    rand += r;
+
+	   	   	}
+	   	   	return rand;
+	   	}
+		//----------时间格式转换(把long型转换成yyyy-MM-dd格式)---------
+		//----------------------------------------------------
+		Date.prototype.Format = function (fmt) { //author: meizz 
+			 var o = {
+				"M+": this.getMonth() + 1, //月份 
+				"d+": this.getDate(), //日 
+				"H+": this.getHours(), //小时
+				"m+": this.getMinutes(), //分 
+				"s+": this.getSeconds(), //秒 
+				"q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+				"S": this.getMilliseconds() //毫秒 
+			 };
+			if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+			for (var k in o)
+			if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+			return fmt;
+		}
+		//--------------获取上个页面url ?后面的值------------------------
+		//----------------------------------------------------
+		function GetRequest() { 
+			var url = decodeURI(location.search); //获取url中"?"符后的字串 
+			var theRequest = new Object(); 
+			if (url.indexOf("?") != -1) { 
+				var str = url.substr(1); 
+				strs = str.split("&"); 
+				for(var i = 0; i < strs.length; i ++) { 
+					theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]); 
+				} 
+			} 
+			return theRequest; 
+		}
+			
+		</script>
+	</body>
+
+</html>

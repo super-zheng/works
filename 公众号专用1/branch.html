@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>武汉分店</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="css/layui.mobile.css" />
+    <link rel="stylesheet" type="text/css" href="css/publicNum.css" />
+    <style>
+        html,
+        body,
+        .container {
+            height: 100%;
+            font-family: 微软雅黑;
+        }
+
+        .container {
+            background: #F8F8F8;
+            overflow: auto;
+        }
+
+        .header {
+            height: 50px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            padding: 0 10px 0 10px;
+            /* box-shadow: 10px 10px 5px #888888; */
+        }
+
+        .header i {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            background: url(./imgs/saixuan.png) no-repeat;
+        }
+
+        .xiao {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 1px solid green;
+            color: green;
+            text-align: center;
+        }
+
+        h3 {
+            font-weight: bold;
+            flex: 1;
+            padding-left: 10px;
+        }
+
+        .detail {
+            height: 120px;
+            padding: 0 10px 0 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .time,
+        .infor,
+        .status {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .person {
+            text-align: right;
+        }
+
+        .none .box {
+            display: none;
+        }
+
+        .opt {
+            width: 94%;
+            background: #fff;
+            border-radius: 5px;
+            margin: 0 auto;
+            padding: 10px 0 10px 0;
+            margin-bottom: 8px;
+        }
+
+        .box {
+
+            display: flex;
+            justify-content: space-between
+        }
+
+        .box ul {
+            padding: 0 10px 0 10px;
+            width: 50%;
+        }
+
+        .right {
+            border-right: 1px solid #eee;
+        }
+
+        .box li {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .left li:first-child {
+            justify-content: flex-end;
+        }
+
+        .sale-header {
+            box-sizing: border-box;
+            padding: 0 10px 0 10px;
+            background: #fff;
+            display: flex;
+            height: 50px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .table {
+            width: 94%;
+            margin: 0 auto;
+        }
+
+        .table th {
+            font-size: 12px;
+        }
+
+        .table td {
+            width: 15%;
+            font-size: 10px;
+        }
+
+        /* .layui-table td, .layui-table th{
+            font-size: 10px;
+        } */
+
+        .mol {
+            text-align: right;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <i></i>
+            <h3>宝岛眼镜武汉分店</h3>
+            <div class="xiao">销</div>
+        </div>
+
+        <div class="detail">
+            <div class="time">
+                <p>编号: 2018070915083523</p>
+                <p>时间: 2018-07-09 15:08:50</p>
+            </div>
+            <div class="infor">
+                <p class="name">会员姓名: 陈雷</p>
+                <p class="tel">会员电话: 125896562</p>
+                <p class="integral">会员积分: 55</p>
+            </div>
+            <div class="status">
+                <p>
+                    <span>单据状态: 已审核</span>&nbsp;&nbsp;&nbsp;
+                    <span>支付状态: 已支付</span>
+                </p>
+            </div>
+            <div class="person">
+                <span> 销售员: 李丽</span>&nbsp;&nbsp;&nbsp;
+                <span>验光师: 陈文导</span>
+            </div>
+        </div>
+
+        <div class="opt">
+            <p>验光信息</p>
+            <div class="box">
+                <ul class="right">
+                    <li>右(R)</li>
+                    <li>
+                        <span>环镜(sph)</span>
+                        <span>+0.00</span>
+                    </li>
+                    <li>
+                        <span>轴位</span>
+                        <span>+0.00</span>
+                    </li>
+                    <li>
+                        <span>瞳距</span>
+                        <span>+0.00</span>
+                    </li>
+                    <li>
+                        <span>瞳高</span>
+                        <span>+0.00</span>
+                    </li>
+                </ul>
+                <ul class="left">
+                    <li>左(L)</li>
+                    <li>
+                        <span>环镜(cyl)</span>
+                        <span>+0.00</span>
+                    </li>
+                    <li>
+                        <span>下加光(add)</span>
+                        <span>+0.00</span>
+                    </li>
+                    <li>
+                        <span>近用瞳距pd</span>
+                        <span>+0.00</span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="opt">
+            <p>加工信息</p>
+            <div class="box">
+                <ul class="right">
+                    <li>右(R)</li>
+                    <li>
+                        <span>环镜(sph)</span>
+                        <span>+0.00</span>
+                    </li>
+                    <li>
+                        <span>轴位</span>
+                        <span>+0.00</span>
+                    </li>
+                    <li>
+                        <span>瞳距</span>
+                        <span>+0.00</span>
+                    </li>
+                    <li>
+                        <span>瞳高</span>
+                        <span>+0.00</span>
+                    </li>
+                    <li>加工工艺:</li>
+                </ul>
+                <ul class="left">
+                    <li>左(L)</li>
+                    <li>
+                        <span>环镜(cyl)</span>
+                        <span>+0.00</span>
+                    </li>
+                    <li>
+                        <span>下加光(add)</span>
+                        <span>+0.00</span>
+                    </li>
+                    <li>
+                        <span>近用瞳距pd</span>
+                        <span>+0.00</span>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="sale">
+            <div class="sale-header">
+                <p>商品销售详情</p>
+                <p>商品件数:3件</p>
+            </div>
+
+            <table class="layui-table table" lay-even lay-skin="nob">
+                <!-- <colgroup>
+                    <col width="80">
+                    <col width="100">
+                    <col width="100">
+                    <col width="50">
+                    <col width="100">
+                    <col>
+                </colgroup> -->
+                <thead>
+                    <tr>
+                        <th>类型</th>
+                        <th>品牌/型号/系列</th>
+                        <th>球柱镜/色号/规格</th>
+                        <th>数量</th>
+                        <th>单价</th>
+                        <th>折扣价
+                            <br>(折扣)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>镜片</td>
+                        <td>1.56防蓝光非球面镜片</td>
+                        <td>-3.50 +0.00</td>
+                        <td>1</td>
+                        <td>410</td>
+                        <td>418.00
+                            <br>(无折扣)</td>
+                    </tr>
+                    <tr>
+                        <td>镜片</td>
+                        <td>1.56防蓝光非球面镜片</td>
+                        <td>-3.50 +0.00</td>
+                        <td>1</td>
+                        <td>410</td>
+                        <td>418.00
+                            <br>(无折扣)</td>
+                    </tr>
+                    <tr>
+                        <td>镜架</td>
+                        <td>暴龙BJ61013 F</td>
+                        <td>B30酒红</td>
+                        <td>1</td>
+                        <td>558</td>
+                        <td>558.00
+                            <br>(无折扣)</td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="6">整单折扣: 无折扣</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">优惠价: 1394.00元</td>
+
+                        <td colspan="3" class="mol">抹零: 0.00元</td>
+                    </tr>
+                    <tr>
+
+                        <td colspan="6" class="mol">已付金额: 1394.00元</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="mol">已销售</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script src="layui/layui.all.js"></script>
+    <script src="zepto.js"></script>
+    <script>
+        $(".opt").on("tap", "p", function () {
+            $(this).parent().toggleClass("none")
+
+        })
+    </script>
+</body>
+
+</html>

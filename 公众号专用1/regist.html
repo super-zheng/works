@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<link rel="stylesheet" href="css/base.css">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<script>
+		window.onload  = window.resize = getRem;
+		function getRem() {
+			let html = document.documentElement;
+			var w = html.getBoundingClientRect().width / 1;
+			window.rem = w / 20;
+			html.style.fontSize = window.rem + 'px';
+			console.log(html.style.fontSize)
+		}
+		// getRem();
+		
+	</script>
+	<style>
+		html,body,.container{
+			height: 100%;
+			width: 100%;
+		}
+		.container{
+			
+			background: url(./imgs/background.jpg) 0 0 no-repeat;
+			-webkit-background-size: 100% 100%;
+			background-size: 100% 100%;
+			line-height: 100%;
+			display: flex;
+			text-align: center;
+			font-size: .64rem;
+            top:0;
+            left: 0;
+            text-overflow: auto;
+			/*vertical-align: middle;*/
+		}
+		.main{
+			width:16rem;
+			height: 24rem;
+			margin: 0rem auto;
+			margin-top: 3rem;
+			background-color: #fff;
+			border-radius: 10px;
+			/*display: inline-block;*/
+			/*vertical-align: middle;*/
+		}
+		.title{
+			margin-top: 0.9rem;
+			font-size: .85rem;
+		}
+		form{
+			padding: 1.17rem;
+			box-sizing: border-box;
+		}
+		.from-item{
+			position: relative;
+			padding-left: 1rem;
+			margin-bottom: .7rem;
+		}
+		.mastMark{
+			position: absolute;
+			left: 0;
+			top:.6rem;
+			height: .7rem;
+			width: .7rem;
+		}
+		.input{
+			position: relative;
+		}
+		.formInput{
+			width: 100%;
+			height:2rem;
+			border:.05rem solid #aaa;
+			border-radius: 5px;
+			padding-left: 2rem;
+			box-sizing: border-box;
+			font-size: .64rem;
+			color:#5e5e5e;
+		}
+		.icon{
+			position: absolute;
+			top:.5rem;
+			left:.4rem;
+			width: 1rem;
+			height: 1rem;
+		}
+		.title span{
+			margin: 0 .3rem;
+		}
+		.line{
+			position: relative;
+			
+		}
+		.line:before{
+			content:'';
+			width: .05rem;
+			height: .6rem;
+			background-color: #ccc;
+			position: absolute;
+			left: -.3rem;
+			top:.2rem;
+		}
+		.yanzheng{
+			padding-right: 5rem;
+		}
+		.otherBtn{
+			width: 5rem;
+			height: 2rem;
+			position: absolute;
+			right: 0;
+			top:0;
+			text-align: center;
+			border-radius: 5px;
+			line-height: 2rem;
+		}
+		.otherBtn:before{
+			content: '';
+			height: 1.2rem;
+			width: .05rem;
+			position: absolute;
+			left: 0;
+			top:.6em;
+			background-color: #ccc;
+		}
+		.otherBtn:active{
+            /*box-shadow: inset 0 .1rem .2rem #fff,inset 0 .1rem .2rem #fff;*/
+            /*transform: translateY(-1px);*/
+            background-color: #CCC;
+            color: white;
+        }
+        .from-checkBox{
+        	text-align: left;
+        	font-size: .8rem;
+        	padding-left: 3rem;
+        }
+        .label{
+        	position: absolute;
+        	left: 0;
+        	top: 0;
+        }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="main">
+			<h3 class="title"><span>用</span><span class="line">户</span><span class="line">注</span><span class="line">册</span></h3>
+			<form action="">
+				<div class="from-item">
+					<img src="./imgs/bitianxiang_icon.png" alt="" class="mastMark">	
+					<div class="input">
+						<input type="text" class="formInput" placeholder="用户名/手机号/邮箱">
+						<img src="imgs/username_icon.png" alt="" class="icon">
+					</div>
+					
+				</div>
+				<div class="from-item">
+					<img src="./imgs/bitianxiang_icon.png" alt="" class="mastMark">	
+					<div class="input">
+						<input type="text" class="formInput" placeholder="身份证号">
+						<img src="imgs/userid_icon.png" alt="" class="icon">
+					</div>
+					
+				</div>
+				<div class="from-item">
+					<img src="./imgs/bitianxiang_icon.png" alt="" class="mastMark">	
+					<div class="input">
+						<input type="password" class="formInput" placeholder="登录密码">
+						<img src="imgs/password_icon.png" alt="" class="icon">
+					</div>
+					
+				</div>
+				<div class="from-item">
+					<img src="./imgs/bitianxiang_icon.png" alt="" class="mastMark">	
+					<div class="input">
+						<input type="password" class="formInput" placeholder="请再次输入密码">
+						<img src="imgs/password_icon.png" alt="" class="icon">
+					</div>
+					
+				</div>
+				<div class="from-item">
+					<img src="./imgs/bitianxiang_icon.png" alt="" class="mastMark">	
+					<div class="input">
+						<input type="text" class="formInput yanzheng" placeholder="请输入验证码" >
+						<img src="imgs/yanzhengma_icon.png" alt="" class="icon">
+						<div class="otherBtn">获取验证码</div>
+					</div>
+					
+				</div>
+				<div class="from-item from-checkBox">
+					<span class="label">注册意向：</span>
+					<i></i>
+				</div>
+				
+
+	
+
+
+
+			</form>
+		</div>
+	</div>
+	<script src="zepto.js"></script>
+	<script>
+	// window.resize =function(e){
+	// 	e.preventDefault();
+	// }
+	$(function(){
+		// console.log($('html').css('font-size'))
+		// var windowHeight1 = $('body')[0].getBoundingClientRect().height;
+		// console.log($('body')[0].getBoundingClientRect())
+		// $('body').css('min-height',$('html').css('font-size').replace('px','')*20*16/9+'px');
+		
+      
+
+	})
+
+
+	</script>
+</body>
+</html>

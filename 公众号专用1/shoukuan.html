@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>待取件</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" type="text/css" href="css/layui.mobile.css" />
+		<link rel="stylesheet" type="text/css" href="css/publicNum.css" />
+		<style>
+			body{
+				color:#5E5E5E;
+			}
+			.shoukuanDetail {
+				margin-top: 10px;
+				padding-bottom: 10px;
+				border-bottom: 1px solid #CCCCCC;
+				color:#5E5E5E;
+			}
+			.td,.tr{
+				color:#5E5E5E;
+			}
+			.shoukuanDetail li {
+				line-height: 26px;
+				padding-left: 10px;
+			}
+			
+			b {
+				font-weight: 400;
+			}
+			
+			.colorOrange {
+				color: orange;
+			}
+			
+			.layui-table thead tr th,
+			.layui-table tbody tr td {
+				background-color: #fff;
+				border: none;
+				padding: 0;
+				line-height: 30px;
+				box-sizing: border-box;
+				
+			
+			}
+			.layui-table tbody tr td:nth-child(1),.layui-table thead tr th:nth-child(1){
+				padding-left: 10px;
+			}
+			.textCenter{
+				text-align: center;
+			}
+			.font20{
+				font-size: 30px;
+			}
+			.mt10{
+				margin-top: 10px;
+			}
+			.moneyDetail{
+				display: flex;
+				justify-content: space-between;
+				border-bottom: 1px solid #ccc;
+			}
+			.moneyDetail div{
+				padding: 10px ;
+			}
+			.payType{
+				display: flex;
+				padding:10px 20px ;
+				height: 60px ;
+				line-height: 60px;
+				justify-content: space-between;
+			}
+			.unCheck{
+				display: inline-block;
+				background: url(./imgs/nocheck_icon.png) no-repeat 0 0;
+				background-size: 100% 100%;
+				width: 20px;
+				height: 20px;
+			}
+			.cardBox img{
+				width: 60px;
+				height: 60px;
+				margin-right: 10px;
+			}
+			.checBtn{
+				padding:0 10px;
+			}
+			.jiesuanType p{
+				padding-left: 10px;
+				margin-top: 20px;
+			}
+			.btnBox{
+				width: 100%;
+				box-sizing: border-box;
+				padding: 10px;
+			}
+			.btnBox button{
+				width: 100%;
+				background-color: #25A9E1;
+			}
+			.btnBox1{
+				width: 100%;
+				box-sizing: border-box;
+				padding: 10px;
+			}
+			.btnBox1 button{
+				width: 100%;
+				
+			}
+			.check{
+				background: url(./imgs/check_icon.png) no-repeat 0 0;
+				background-size: 100% 100%;
+			}
+			.payType:active{
+				background-color: #eee;
+			}
+			.title1{
+				background-color: #25A9E1;
+				text-align: center;
+				line-height: 40px;
+				color:white;
+				font-size: 20px;
+				position: relative;
+			}	
+			.returnBtn{
+				position: absolute;
+				left: 0px;
+				top:0px;
+				line-height: 40px;
+				height: 40px;
+				padding:0px 20px; 
+			}
+			.returnBtn img{
+				width: 11.5px;
+				height: 20px;
+				vertical-align: top;
+				margin-top: 10px;
+			}
+			.topChoseType{
+				border: 1px solid #ccc;
+				display: flex;
+				justify-content: space-between
+			}
+			.topChoseType li{
+				width: 50%;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+			}
+			.topChoseType li.check{
+				background-color: #25A9E1;
+				color: white;
+			}
+			.showEWM {
+				display: flex;
+				justify-content: space-around;
+				height: 200px;
+				padding-top: 50px;
+				display: none;
+			}
+			.showEWM li{
+				width:100px;
+				height:100px;
+				text-align: center;
+				line-height: 100px;
+				color:#25A9E1;
+				border:1px dashed #25A9E1;
+				border-radius: 50%;
+			}
+			.showEWM li:active{
+				background-color: #25A9E1;
+				color:white;
+			}
+			.ewm{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				margin: 0 auto;
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="container">
+
+			<div class="title1"> <i class="returnBtn"><img src="./imgs/return.png" alt="" ></i><span>收款</span></div>
+			<ul class="shoukuanDetail">
+				<li><span>店铺名称</span>：<b id="store_name"></b></li>
+				<li><span>结算方式</span>：<b id="pay_type">现结</b></li>
+				<li><span>账户余额</span>：<b class="colorOrange" id="yue">￥0</b></li>
+				<li><span>累计账单金额</span>：<b class="colorOrange" id="totels">￥0</b></li>
+				<li><span>积分</span>：<b class="colorOrange" id="alljifen">0</b></li>
+			</ul>
+
+			<table class="layui-table" style="border:0;">
+				<colgroup>
+					<col width="70%">
+					<col width="15%">
+					<col width="15%">
+				</colgroup>
+				<thead>
+					<tr>
+						<th><span>本次订单金额</span>：<b>￥<span id="ddje">0</span></b></th>
+						<th>单价</th>
+						<th>结算价</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>右眼镜片：<span id="lens1"></span></td>
+						<td class="colorOrange">￥<span class="lens_1"></span></td>
+						<td class="colorOrange">￥<span class="lens_11"></span></td>
+					</tr>
+					<tr>
+						<td>右眼镜片：<span id="lens2"></span></td>
+						<td class="colorOrange">￥<span class="lens_2"></span></td>
+						<td class="colorOrange">￥<span class="lens_22"></span></td>
+					</tr>
+					<tr>
+						<td>镜架：<span id="grame"></span></td>
+						<td class="colorOrange">￥<span class="grame_1"></span></td>
+						<td class="colorOrange">￥<span class="grame_11"></span></td>
+					</tr>
+					<tr>
+						<td>加工费</td>
+						<td class="colorOrange"></td>
+						<td class="colorOrange">￥<span id="jgf"></span></td>
+					</tr>
+					<tr>
+						<td>配送费</td>
+						<td class="colorOrange"></td>
+						<td class="colorOrange">￥0</td>
+					</tr>
+					<tr>
+						<td>总计</td>
+						<td class="colorOrange">￥<span id="total1"></span></td>
+						<td class="colorOrange">￥<span id="total2"></span></td>
+					</tr>
+					
+				</tbody>
+			</table>
+			<div class="zongjine">
+				<p class="textCenter">本订单收款总金额（元）</p>
+				<h2 class="textCenter colorOrange font20 mt10" id="total3">0.00</h2>
+				<div class="moneyDetail">
+					<div class="nowOrder"><span>本订单积分：</span> <b class="colorOrange" id="thisjf">0</b><span>分</span></div>
+					<div class="allMoney">
+						<span>累计账单金额</span> <b class="colorOrange">￥0</b>
+					</div>
+				</div>
+			</div>
+			<div class="jiesuanType">
+				<p>选择结算方式：</p>
+				<ul>
+					<li class="payType">
+						<div class="cardBox">
+							<img src="./imgs/ic-money.png" alt="" />
+							<span>现金</span>
+						</div>
+						<div class="checBtn">
+							<i class="unCheck check" value="1" id="types1"></i>
+						</div>
+					</li>
+					<li class="payType">
+						<div class="cardBox">
+							<img src="./imgs/ic-alipay.png" alt="" />
+							<span>支付宝</span>
+						</div>
+						<div class="checBtn">
+							<i class="unCheck" value="2" id="types2"></i>
+						</div>
+					</li>
+					<li class="payType">
+						<div class="cardBox">
+							<img src="./imgs/ic-wechat.png" alt="" />
+							<span>微信</span>
+						</div>
+						<div class="checBtn">
+							<i class="unCheck" value="3" id="types3"></i>
+						</div>
+					</li>
+					<li class="payType">
+						<div class="cardBox">
+							<img src="./imgs/ic-bank-card.png" alt="" />
+							<span>银行卡</span>
+						</div>
+						<div class="checBtn">
+							<i class="unCheck" value="4" id="types4"></i>
+						</div>
+					</li>
+					<li class="payType">
+						<div class="cardBox">
+							<img src="./imgs/ic-zhoujie.png" alt="" />
+							<span>周结算</span>
+						</div>
+						<div class="checBtn">
+							<i class="unCheck" value="11" id="types11"></i>
+						</div>
+					</li>
+					<li class="payType">
+						<div class="cardBox">
+							<img src="./imgs/ic-yuejie.png" alt="" />
+							<span>月结算</span>
+						</div>
+						<div class="checBtn">
+							<i class="unCheck" value="12" id="types12"></i>
+						</div>
+					</li>
+					<!-- <li class="payType">
+						<div class="cardBox">
+							<img src="./imgs/ic-balance.png" alt="" />
+							<span>余额</span>
+						</div>
+						<div class="checBtn">
+							<i class="unCheck" value="14"></i>
+						</div>
+					</li> -->
+					
+					
+				</ul>
+				
+			</div>
+			<div class="btnBox">
+				<button class="layui-btn" type="button">确认收款</button>
+			</div>
+		</div>
+		<script src="layui/layui.all.js"></script>
+		<script src="zepto.js"></script>
+		<script src="js/publicNum.js"></script>
+		<script>
+			var layer = layui.layer,
+				form = layui.form;
+				
+				
+			setTimeout(function(){
+				layer.open({
+					title:'请选择支付方式',
+					typeL:2,
+					area:['300px','400px'],
+					content:'<div class="tipMsg"><ul class="topChoseType"><li >直接支付</li><li class="check"> 平台支付</li></ul><ul class="showEWM"><li>显示付款码</li><li>扫一扫</li></ul><div class="ewm"></div></div>'
+				})
+			},1000)
+			var store_id = GetRequest().store_id;
+			var store_id1 = GetRequest().store_id1;
+			var user_id = GetRequest().user_id1;
+			var targetid = null;
+			var ity_id = GetRequest().ity_id;
+			var url_top = "http://10.0.8.9/tptestnew5.0";
+			//var url_top = "http://www.jingliyun.cn/jlyyj/index.php";
+			var payTypes = {1:2,2:3,3:4,4:5,11:0,12:1};
+			var payTypes1 = {2:1,3:2,4:3,5:4,0:11,1:12};
+			var paySettingWay = 0;
+			var param = null;
+			var pays = 0;
+			var flag = true;
+				$('.payType').tap(function(){
+					$('.payType .unCheck').removeClass('check');
+					$(this).find('.unCheck').addClass('check');
+				})
+				load();
+				function load(){
+					var id = '{"ity_id":"'+ity_id+'"}';
+					console.log(id)
+					$.ajax({
+						url : url_top+"/Home/JavaInterface/getJGDetail",
+						type:'get',
+						dataType:'jsonp',
+						//async:false,
+						jsonpCallback:'successCallback',
+						data: {"id":id},
+						success:function(data){
+							console.log(data);
+							if(data.code==200){
+								var list = data.data[0];
+								var baseinfo = list.baseinfo;
+								var get_store = list.get_store;
+								var gongyi = list.gongyi;
+								var goodsinfo = list.goodsinfo;
+								var opt = list.opt;
+								var lens_price = baseinfo.lens_price?baseinfo.lens_price:0;
+								var gframe_price = baseinfo.gframe_price?baseinfo.gframe_price:0;
+								var jgf = (baseinfo.ity_paidPrice+baseinfo.ity_unpaidPrice)-(lens_price/1+gframe_price/1);
+								console.log(baseinfo.ity_operatTime3);
+								if(baseinfo.ity_operatTime3&&(baseinfo.ity_operatTime3>0&&baseinfo.ity_operatTime3<6)){
+									$('.payType .unCheck').removeClass('check');
+									$("#"+payTypes1[baseinfo.ity_operatTime3]).addClass('check');
+								}
+								pays = baseinfo.ity_paidPrice+baseinfo.ity_unpaidPrice;
+								if((pays-baseinfo.ity_paidPrice)==0){
+									flag = false;
+									$(".btnBox").find('button').html('已收款');
+									$(".btnBox").find('button').addClass('layui-btn-primary');
+								}
+								//console.log(jgf)
+								$("#jgf").html(jgf);
+								$("#ddje").html(baseinfo.ity_paidPrice+baseinfo.ity_unpaidPrice);
+								var all_price = 0;
+								for (var i = 0,len=goodsinfo.length; i < len; i++) {
+									var tigong = "";
+									if(goodsinfo[i].goodsSeriesid==0){
+										tigong='自提供';
+									}
+									if(goodsinfo[i].send_goods_user_id==1){
+										$("#lens1").html((tigong=="")?goodsinfo[i].lens_brand+goodsinfo[i].lens_model+goodsinfo[i].lens_refractivity+'('+goodsinfo[i].degree_cyl+')':tigong);
+										$('.lens_1').html((goodsinfo[i].price)?goodsinfo[i].price:0);
+										$('.lens_11').html((goodsinfo[i].price)?goodsinfo[i].price:0);
+									}else if(goodsinfo[i].send_goods_user_id==2){
+										$("#lens2").html((tigong=="")?goodsinfo[i].lens_brand+goodsinfo[i].lens_model+goodsinfo[i].lens_refractivity+'('+goodsinfo[i].degree_cyl+')':tigong);
+										$('.lens_2').html((goodsinfo[i].price)?goodsinfo[i].price:0);
+										$('.lens_22').html((goodsinfo[i].price)?goodsinfo[i].price:0);
+									}else{
+										$("#grame").html((tigong=="")?goodsinfo[i].gframe_brand+goodsinfo[i].gframe_model+goodsinfo[i].gframe_material+goodsinfo[i].colorNumber:tigong);
+										$('.grame_1').html((goodsinfo[i].price)?goodsinfo[i].price:0);
+										$('.grame_11').html((goodsinfo[i].price)?goodsinfo[i].price:0);
+										console.log(goodsinfo[i].price)
+									}
+									all_price += (goodsinfo[i].price)?goodsinfo[i].price:0;
+								}
+								$("#total1").html(all_price);
+								$("#total2").html(all_price+jgf);
+								$("#total3").html((all_price+jgf).toFixed(2));
+								$("#thisjf").html(Math.ceil((all_price+jgf)/10));
+								for (var i = 0; i < get_store.length; i++) {
+									if(get_store[i].store_id==store_id){
+										$("#store_name").html(get_store[i].store_name);
+									}else{
+										targetid = get_store[i].store_id;
+									}
+								};
+							}else if(data.code == 400){
+								layer.msg("查询异常")
+							}else if(data.code == 201){
+								layer.msg("未查到该单信息")
+							}
+						}
+					});
+				}
+				$(".btnBox").tap(function(){
+					if($(".btnBox").find('button').hasClass('layui-btn-primary')||pays==0){
+						layer.msg("无需支付");
+						return false;
+					}
+					var obj = $('.jiesuanType').find('.check');
+					var payM_type = $('.jiesuanType').find('.check').attr("value");
+					console.log(payM_type);
+					console.log(pays);
+					if(obj.length==0){
+						layer.msg("请选择收款方式");
+					}else{
+						saveThis(payM_type,pays);
+					}
+
+				});
+				$(".returnBtn").tap(function(){
+					//location.href = "jiagongliucheng.html?store_id="+store_id1+"&type=2";
+
+					window.setTimeout(location.href = "jiagongliucheng.html?store_id="+store_id1+"&type=2&user_id="+user_id,1000);
+				});
+				function saveThis(payM_type,payM_price){
+					var paymathod = {};
+					paymathod['store_id'] = store_id;
+					paymathod['targetid'] = targetid;
+					paymathod['payM_orderType'] = 11;
+					paymathod['ity_id'] = ity_id;
+					paymathod['payM_type'] = payM_type;
+					paymathod['payM_price'] = payM_price;
+					paymathod['payM_time'] = new Date(new Date()).Format("yyyy-MM-dd HH:mm:ss");
+					var json = {};
+					json['ity_paidPrice'] = pays;
+					json['ity_unpaidPrice'] = 0.00;
+					json['ity_operatTime3']=payTypes[payM_type];
+					if(payM_type==11||payM_type==12){
+						json['ity_status'] = -1;
+					}else{
+						json['ity_status'] = 0;
+					}
+					var id = {};
+					id["paymathod"] = paymathod;
+					id["json"] = json;
+					//payAndstatus
+					$.ajax({
+						url : url_top+"/Home/JavaInterface/payAndstatus",
+						type:'get',
+						dataType:'jsonp',
+						//async:false,
+						jsonpCallback:'successCallback3',
+						data: {"id":JSON.stringify(id)},
+						success:function(data){
+							console.log(data)
+							if(data.code==200){
+								layer.msg("收款完成");
+								window.setTimeout(location.href = "jiagongliucheng.html?store_id="+store_id1+"&type=2&user_id="+user_id,1000);
+							}else{
+								layer.msg('服务繁忙');
+							}
+						}
+					});
+				}
+				findAuthToken();
+				function findAuthToken(){
+					if(!store_id){
+						layer.msg("请选择店铺");
+						return ;
+					}
+					var id = '{"store_id":"'+store_id+'"}';
+					console.log(id)
+					$.ajax({
+						url : url_top+"/Home/JavaInterface/findAuthToken",
+						type:'get',
+						dataType:'jsonp',
+						//async:false,
+						jsonpCallback:'successCallback2',
+						data: {"id":id},
+						success:function(data){
+							console.log(data)
+							if(data.code==200){
+								var list = data.data;								
+								paySettingWay = list.type;
+								if(list.type!=0){
+									param = list.param;
+								}
+							}else{
+								layer.msg('服务繁忙');
+							}
+						}
+					});
+				}
+				function GetRequest() { 
+					var url = decodeURI(location.search); //获取url中"?"符后的字串 
+					var theRequest = new Object(); 
+					if (url.indexOf("?") != -1) { 
+						var str = url.substr(1); 
+						strs = str.split("&"); 
+						for(var i = 0; i < strs.length; i ++) { 
+							theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]); 
+						} 
+					} 
+					return theRequest; 
+				}
+				Date.prototype.Format = function (fmt) { //author: meizz 
+				     var o = {
+				        "M+": this.getMonth() + 1, //月份 
+				        "d+": this.getDate(), //日 
+				        "H+": this.getHours(), //小时
+				        "m+": this.getMinutes(), //分 
+				        "s+": this.getSeconds(), //秒 
+				        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+				        "S": this.getMilliseconds() //毫秒 
+				     };
+				    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+				    for (var k in o)
+				    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+				    return fmt;
+				}
+		</script>
+	</body>
+
+</html>

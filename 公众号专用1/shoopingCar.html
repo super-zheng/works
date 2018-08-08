@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+	/>
+	<title>购物车</title>
+	<link rel="stylesheet" href="layui/css/layui.css">
+	<link rel="stylesheet" type="text/css" href="css/layui.mobile.css" />
+	<link rel="stylesheet" type="text/css" href="css/publicNum.css" />
+	<style>
+		html,
+		body,
+		.container {
+			height: 100%;
+		}
+
+		.container {
+			padding-bottom: 60px;
+			background: #EEEEEE;
+			overflow: auto;
+			box-sizing: border-box;
+		}
+
+		.listItem {
+			height: 90px;
+			display: flex;
+			background: #fff;
+		}
+
+		.listItem:not(:first-child) {
+			margin-top: 3px;
+		}
+
+		.leftCheck {
+			height: 100%;
+			width: 40px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.checkIcon {
+			display: block;
+			width: 28px;
+			height: 28px;
+			background: url(./imgs/nocheck_icon.png);
+		}
+
+		.rightDetail {
+			flex: 1;
+			height: 100%;
+			display: flex;
+		}
+
+		.goodImg {
+			width: 90px;
+			height: 100%;
+		}
+
+		.detail {
+			height: 100%;
+			flex: 1;
+		}
+
+		.detail .detailbox {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+		}
+
+		.title,
+		.subtitle {
+			padding-left: 10px;
+			font-size: 15px;
+		}
+
+		.num {
+			/* padding-right: 10px; */
+			width: 50px;
+		}
+		
+	
+
+		.numIterm {
+			width: 100%;
+			height: 100%;
+		}
+
+		.numbox {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+		}
+
+
+		.store {
+			color: orange;
+			display: flex;
+			justify-content: space-between;
+			padding: 0 40px 0 10px;
+		}
+
+		.footer {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+			height: 70px;
+			position: fixed;
+			bottom: 0;
+			background: #fff;
+		}
+
+		.delete {
+			background: #FDA64D;
+			width: 65px;
+			height: 40px;
+			color: #fff;
+			font-size: 18px;
+			outline: none;
+			border: none;
+			border-radius: 5px;
+		}
+
+		.order {
+			background: #25A7DC;
+			width: 65px;
+			height: 40px;
+			color: #fff;
+			font-size: 18px;
+			outline: none;
+			border: none;
+			border-radius: 5px;
+			margin-right: 10px;
+		}
+
+		.selectAll {
+			line-height: 50px;
+			margin-left: -20px;
+
+		}
+
+		.total {
+			line-height: 50px;
+			font-weight: 500;
+		}
+
+		.total span {
+			color: #F8B327;
+			font-size: 18px;
+		}
+
+		.bgpic .checkIcon {
+			background-image: url(./imgs/check_icon.png);
+		}
+
+		.price {
+			font-size: 16px;
+		}
+
+		.setting {
+			display: none;
+			width: 28px;
+			height: 28px;
+			background-image: url("imgs/edit.png");
+		}
+
+		.block .setting {
+			display: block;
+		}
+
+		.count {
+			flex: 1;
+			display: none;
+		}
+
+		.countbox {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.count input {
+			width: 40px;
+			height: 25px;
+			line-height: 25px;
+			padding-left: 5px;
+			border: 1px solid #DADADA;
+		}
+
+		.count span {
+			display: inline-block;
+			width: 25px;
+			height: 25px;
+			font-size: 20px;
+			background: #23A9DE;
+			border-radius: 3px;
+			margin: 10px;
+			color: #fff;
+			text-align: center;
+		}
+
+		.bgcolor {
+			background: #23A9DE;
+		}
+
+		.finish {
+			width: 100%;
+			height: 100%;
+			line-height: 80px;
+			display: none;
+			color: #fff;
+			font-size: 15px;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<ul class="lists">
+			<!-- <li class="listItem">
+				<div class="leftCheck">
+					<i class="checkIcon"></i>
+				</div>
+
+				<div class="rightDetail">
+					<img src="imgs/chenlei.png" alt="" class="goodImg" />
+
+					<div class="detail">
+						<div class="detailbox">
+							<p class="title">${item.title}</p>
+							<p class="subtitle">${item.detail}</p>
+							<div class="store">
+								<p class="price">¥${item.price}</p>
+								<p>库存 ${item.stock}</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="count">
+						<div class="countbox">
+							<span>-</span>
+							<input type="text">
+							<span>+</span>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div class="num">
+					<div class="numIterm">
+						<div class="numbox">
+							<div class="img">
+								<i class="setting"></i>
+							</div>
+							<p>x${item.num}</p>
+						</div>
+					</div>
+
+					<div class="finish">
+						完成
+					</div>
+				</div>
+			</li> -->
+		</ul>
+
+		<div class="footer">
+			<div class="leftCheck">
+				<i class="checkIcon"></i>
+			</div>
+			<p class="selectAll">全选</p>
+			<p class="total">合计
+				<span>￥0</span>
+			</p>
+			<button class="delete">删除</button>
+			<button class="order">下单</button>
+		</div>
+
+	</div>
+
+	<script src="layui/layui.all.js"></script>
+	<script src="zepto.js"></script>
+	<script>
+		var layer = layui.layer,
+			form = layui.form;
+
+
+
+		var arr = [
+			{ check: false, title: 'aaaaaaa1', detail: 'bbbbbbb1', price: 15, stock: 4, num: 10, id: 1 },
+			{ check: false, title: 'aaaaaaa2', detail: 'bbbbbbb2', price: 60, stock: 5, num: 1, id: 2 },
+			{ check: false, title: 'aaaaaaa3', detail: 'bbbbbbb3', price: 20, stock: 4, num: 7, id: 3 },
+			{ check: false, title: 'aaaaaaa4', detail: 'bbbbbbb4', price: 30, stock: 7, num: 6, id: 4 },
+			{ check: false, title: 'aaaaaaa5', detail: 'bbbbbbb5', price: 58, stock: 48, num: 1, id: 5 },
+			{ check: false, title: 'aaaaaaa6', detail: 'bbbbbb6', price: 85, stock: 74, num: 8, id: 6 },
+			{ check: false, title: 'aaaaaaa7', detail: 'bbbbbb7', price: 18, stock: 120, num: 5, id: 7 },
+			{ check: false, title: 'aaaaaaa8', detail: 'bbbbbb8', price: 19, stock: 1, num: 2, id: 8 },
+			{ check: false, title: 'aaaaaaa9', detail: 'bbbbbb9', price: 12, stock: 9, num: 5, id: 9 }
+		]
+		//动态渲染
+		function render(arr) {
+			var html = "";
+			for (item of arr) {
+				html += `<li class="listItem ${item.check ? 'bgpic block' : ''}" name="${item.id}">
+				<div class="leftCheck">
+					<i class="checkIcon" data-id="${item.id}"></i>
+				</div>
+
+				<div class="rightDetail">
+					<img src="imgs/chenlei.png" alt="" class="goodImg" />
+
+					<div class="detail">
+						<div class="detailbox">
+							<p class="title">${item.title}</p>
+							<p class="subtitle">${item.detail}</p>
+							<div class="store">
+								<p class="price">¥ ${item.price}</p>
+								<p class="stock">库存 ${item.stock}</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="count">
+						<div class="countbox">
+							<span data-id="${item.id}">-</span>
+							<input type="text" value="${item.num}" data-id="${item.id}">
+							<span data-id="${item.id}">+</span>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div class="num">
+					<div class="numIterm">
+						<div class="numbox">
+							<div class="img"  data-id="${item.id}">
+								<i class="setting"></i>
+							</div>
+							<p>x${item.num}</p>
+						</div>
+					</div>
+
+					<div class="finish">
+						完成
+					</div>
+				</div>
+			</li>	`
+			}
+			$(".lists").html(html);
+		}
+		render(arr);
+
+		//全选按钮点击事件
+		$(".footer").on("tap", ".checkIcon", function () {
+			var footer = $(this).parents(".footer");
+			var total = 0;
+			footer.toggleClass("bgpic");
+			if (footer.hasClass("bgpic")) {
+				$(".listItem").addClass("bgpic block");
+				// footer.siblings(".lists").find(".listItem").addClass("block");
+				arr = arr.map(function (item, index) {
+					item.check = true;
+					return item;
+				});
+
+			} else {
+				$(".listItem").removeClass("bgpic block");
+				// footer.siblings(".lists").find(".listItem").removeClass("block");
+				arr = arr.map(function (item, index) {
+					item.check = false;
+					return item
+				})
+			}
+			$(".footer").find(".total span").html("￥" + " " + add(arr));
+		});
+
+		//单选按钮
+		$(".lists").on("tap", ".listItem .checkIcon", function () {
+			var listItem = $(this).parents(".listItem");
+			var id = $(this).data("id");
+			listItem.toggleClass("bgpic");
+			if (listItem.hasClass("bgpic")) {
+				listItem.addClass("block");
+			} else {
+				listItem.removeClass("block");
+				listItem.find(".detail").show();
+				listItem.find(".count").hide();
+				listItem.find(".numIterm").show();
+				listItem.find(".finish").hide();
+				listItem.find(".num").removeClass("bgcolor");
+			}
+			arr.forEach(function (item, index) {
+				if (item.id == id) {
+					item.check = !item.check;
+				}
+			})
+			$(".footer").find(".total span").html("￥" + " " + add(arr));
+
+			if (arr.every(function (item) { return item.check })) {
+				$(".footer").addClass("bgpic");
+
+			} else {
+				$(".footer").removeClass("bgpic");
+			}
+		})
+
+		//加减按钮点击事件
+		$(".lists").on("tap", ".count span", function () {
+			var id = $(this).data("id");
+			var input = $(this).siblings("input");
+			if (!input.val() == "") {
+				if ($(this).html() == "+") {
+					input.val(parseFloat(input.val()) + 1);
+					arr.forEach(function (item) {
+						if (item.id == id)
+							item.num = input.val();
+					});
+					$(".footer").find(".total span").html("￥" + " " + add(arr));
+					$(this).parents(".rightDetail").siblings(".num").find("p")
+						.html(input.val())
+
+				} else {
+					var n = input.val(parseFloat(input.val()) - 1);
+					n.val() < 0 && n.val(0);
+					arr.forEach(function (item) {
+						if (item.id == id)
+							item.num = input.val();
+					});
+					$(".footer").find(".total span").html("￥" + " " + add(arr));
+				}
+			}
+		});
+
+
+		//点击完成操作
+		$(".lists").on("tap", ".num .finish", function () {
+			var num = $(this).parent(".num");
+			$(this).hide();
+			$(this).siblings(".numIterm").show();
+			num.removeClass("bgcolor");
+			num.siblings(".rightDetail").find(".detail").show();
+			num.siblings(".rightDetail").find(".count").hide();
+			//重新计算总价
+			$(".footer").find(".total span").html("￥" + " " + add(arr));
+			render(arr);
+
+		});
+
+
+
+		//input keyup 事件
+		$(".lists").on("keyup", ".count input", function () {
+			var o = $(this).val();
+			var id = $(this).data("id");		
+			var temp_amount = '';
+			if (/[^\d]/.test(o)) { //替换非数字字符
+				var temp_amount = o.replace(/[^\d]/g, '');
+			} else if (/^[0]*/g.test(o)) {
+				var temp_amount = RegExp.rightContext;
+			}
+			$(this).val(temp_amount);
+
+			arr.forEach(function (item) {
+				if (item.id == id)
+					item.num = o;
+			});
+			$(".footer").find(".total span").html("￥" + " " + add(arr));
+		});
+
+
+		//操作图标绑定事件
+		$(".lists").on("tap", ".listItem .num .img", function () {
+			var id = $(this).data('id');
+			var num = $(this).parents(".num");
+			var numIterm = $(this).parents(".numIterm");
+			var otherSibling = num.parents(".listItem").siblings()
+			num.siblings(".rightDetail").find(".detail").hide();
+
+			num.siblings(".rightDetail").find(".count").show();
+
+			// $('li[name='+id+'] .detail').hide();
+			// $('li[name='+id+'] .count').show();
+			// console.log(id);
+			// console.log($('li[name='+id+'] .detail'));
+			num.toggleClass("bgcolor");
+			numIterm.hide();
+			numIterm.siblings(".finish").show();
+
+			otherSibling.find(".finish").hide();
+			otherSibling.find(".numIterm").show();
+			otherSibling.find(".num").removeClass("bgcolor");
+
+			otherSibling.find(".count").hide();
+			otherSibling.find(".detail").show();
+
+		});
+
+		//计算总价
+		function add(arr) {
+			var checkArr = arr.filter(function (item) {
+				return item.check;
+			})
+			var total = 0;
+			for (var i of checkArr) {
+				total += i.price * i.num;
+			}
+			//	console.log(arr)
+			return total
+		}
+
+
+		//删除操作
+		$(".container").on("tap", ".footer .delete", function () {
+			var len = arr.length;
+			var arr1 = arr.filter(function (item) {
+				return !item.check;
+			});
+			if (len == arr1.length) {
+				layer.msg('请选择要删除的商品');
+			} else {
+				layer.open({
+					type: 1,
+					title: "是否确定删除",
+					btn: ['确定', '取消'],
+					yes: function (index, layero) {
+						arr = arr1;
+						if (arr.length != 0) {
+							$(".footer").find(".total span").html("￥" + " " + add(arr));
+						} else {
+							$(".footer").find(".total span").html("￥" + " " + 0);
+							$(".footer").removeClass("bgpic");
+						}
+
+						render(arr);
+						layer.close(index)
+					},
+				})
+			}
+
+
+		});
+
+
+
+		//下单操作
+		$(".container").on("tap", ".footer .order", function () {
+			var checkArr = arr.filter(function (item) {
+				return item.check;
+			});
+
+			if (checkArr.length == 0) {
+				layer.msg('请选择要下单商品');
+			} else {
+				layer.open({
+					type: 1,
+					title: "是否确定下单",
+					btn: ['确定', '取消'],
+					yes: function (index, layero) {
+
+						layer.close(index)
+					},
+				})
+				console.log(checkArr);
+			}
+
+
+
+		})
+
+	</script>
+</body>
+
+</html>

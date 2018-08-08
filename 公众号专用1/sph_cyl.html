@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <style>
+    .clearfix:after {
+      visibility: hidden;
+      display: block;
+      font-size: 0;
+      content: " ";
+      clear: both;
+      height: 0;
+    }
+
+    .clearfix {
+      zoom: 1
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .zjTitle {
+      font-size: 12px;
+      margin: 0 auto;
+    }
+
+    .QZth {
+      background-color: #26a9e1;
+      color: white;
+      height: 30px;
+      line-height: 30px;
+      float: left;
+      text-align: center;
+      border: 1px solid #fff;
+      box-sizing: border-box;
+      width: 41px;
+    }
+
+    .QZtd {
+      font-size: 14px;
+    }
+
+    .QZlabel {
+      /* margin-left: 8rpx; */
+      font-size: 9px;
+      padding: 0px 4px;
+      position: relative;
+
+    }
+
+    .text1 {
+      transform: scale(0.7);
+      position: absolute;
+      left: -1px;
+      top: 7px;
+      line-height: 9px;
+    }
+
+    .text2 {
+      transform: scale(0.7);
+      position: absolute;
+      right: -1px;
+      bottom: 7px;
+      line-height: 9px;
+    }
+
+    .tdLabel {
+      font-size: 12px;
+      background-color: #26a9e1;
+      color: white;
+      /* margin-left: 8rpx; */
+    }
+
+    .QZtd {
+      height: 30px;
+      line-height: 30px;
+      float: left;
+      text-align: center;
+      border: 1px solid #fff;
+      box-sizing: border-box;
+      width: 41px;
+
+    }
+
+    .QZtbody {
+      font-size: 12px;
+      margin: 0 auto;
+    }
+
+    .QZtd.td {
+      background-color: #eee;
+    }
+
+    .QZtd.td {
+      position: relative;
+      font-size: 14px;
+      height: 30px;
+    }
+
+    /* .qj{
+  position: absolute;
+  left: 0;
+  top:0;
+  line-height: 18rpx;
+}
+.zj{
+  position: absolute;
+  right: 0;
+  bottom:0;
+  line-height: 16 rpx;
+} */
+
+    .changeBtn {
+      width: 75px;
+      height: 37px;
+    }
+
+    .funcBtns {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      font-size: 16px;
+
+    }
+
+    .endShow {
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+    }
+
+    .endShow .info {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      width: 75px;
+      font-size: 16px;
+      height: 50px;
+      color: #777;
+      justify-content: space-around;
+    }
+
+    .QZtd.green {
+      color: green;
+      font-weight: 900;
+    }
+
+    .QZtd.red {
+      color: red;
+      font-weight: 900;
+    }
+
+    .endBtn {
+      position: fixed;
+      bottom: 15px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 0 15px 0 10px;
+    }
+
+    .btn {
+      width: 100px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      border-radius: 5px;
+    }
+
+    .requery {
+      background-color: #26a9e1;
+      color: white;
+    }
+
+    .cancel {
+      border: 1px solid #777;
+      color: #777;
+    }
+
+    .QZtd.checktd {
+      background-color: #777;
+      color: white;
+    }
+
+    .saomaImg {
+      width: 50px;
+      height: 40px;
+    }
+
+    .header-1 {
+      background: #fff;
+    }
+
+    .header-2 {
+      background: #EEEEEE;
+      color: #000;
+    }
+
+    #img2 {
+      display: none;
+    }
+
+    .input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 12px;
+    }
+
+    .d2,
+    .zjBox {
+      display: flex;
+    }
+
+    .d2 p {
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="QZtable">
+    <div style="height: 30px;line-height: 30px"> 球柱镜选择</div>
+    <div class='zjTitle clearfix'>
+      <div class='QZth QZlabel'>
+        <p class='text1'>球镜</p>
+        <p class='text2'>柱镜</p>
+      </div>
+      <div class="zjBox clearfix">
+        <!-- <div class='QZth th'>${zj}</div> -->
+      </div>
+    </div>
+
+
+
+    <div class="d1 clearfix">
+      <!-- <div class='QZtbody clearfix'>
+        <div class='QZtd tdLabel'>{{qjItem}}</div>
+        <div class="d2 clearfix"> -->
+      <!-- <div class='QZtd td'
+                       data-zj="{{zjItem}}" data-qj="{{qjItem}}" data-key="{{qjItem+','+zjItem}}">
+                      <p>{{tdData[qjItem+','+zjItem]}}</p>                     
+                  </div> -->
+      <!-- </div>
+      </div> -->
+    </div>
+
+    <div class='funcBtns'>
+      <!-- <img src='imgs/qjUp.png' class='changeBtn changeTable1' data-add="{{qjLength}}"></img>
+      <img src='imgs/qjDown.png' class='changeBtn changeTable1' data-add="{{-qjLength}}"></img>
+      <img wx:if='{{qjIndex==0}}' src='../../pages/images/2_05.png' class='changeBtn' data-add="{{chose}}" bindtap='changeTable3'></img>
+      <img src='imgs/zjUp.png' class='changeBtn' data-add="8"></img>
+      <img src='imgs/zjDown.png' class='changeBtn' data-add="-8"></img> -->
+    </div>
+
+    <div class='endBtn'>
+      <div class='requery btn'>确定</div>
+      <!-- <div class='btn'>
+        <img src='imgs/saoma.png' class='saomaImg'></img>
+      </div> -->
+      <div class='cancel btn' bindtap="fh">取消</div>
+    </div>
+
+  </div>
+
+  <script src="zepto.js"></script>
+  <script src="layui/layui.all.js"></script>
+
+  <script>
+    // var qjArr = [];
+    var qjArr1 = [];
+    var qjArr2 = [];
+    var zjArr = [];
+    var demoNumQj = -36;
+    var demoNumZj = 0;
+    var demoNumQjs = 0;
+
+    while (demoNumQjs <= 36) {
+      qjArr1.push('+' + demoNumQjs.toFixed(2));
+      demoNumQjs += 0.25;
+    }
+    demoNumQjs = 0;
+    while (demoNumQjs >= -36) {
+      if (demoNumQjs == 0) {
+        qjArr2.push('+' + demoNumQjs.toFixed(2));
+      } else {
+        qjArr2.push(demoNumQjs.toFixed(2));
+      }
+
+      demoNumQjs -= 0.25;
+    }
+
+    while (demoNumZj >= -8) {
+      if (demoNumZj.toFixed(2) < 0) {
+        zjArr.push(demoNumZj.toFixed(2));
+      } else {
+        zjArr.push('+' + demoNumZj.toFixed(2));
+      }
+
+      demoNumZj -= 0.25;
+    }
+    //商品信息1：品牌；2：品类；3型号/折射率；4材质；5色号/球柱镜/容量/尺寸
+    var goods_All = {
+      brand: ["lens_brand", "gframe_brand", "sun_brand", "presbyopic_brand", "contact_brand", "caresolution_brand",
+        "accessory_brand", "lens_brand"
+      ], //品牌
+      model: ["lens_model", "gframe_model", "o1", "o1", "o1", "o1", "category",
+        "lens_model"
+      ], //品类
+      rec: ["lens_refractivity", "gframe_style", "sun_style", "presbyopic_style",
+        "contact_model", "caresolution_model", "accessory_model", "lens_refractivity"
+      ], //型号
+      mat: ["lens_material", "gframe_material", "sun_material", "presbyopic_frameMaterial", "contact_material",
+        "caresolution_material", "accessory_material"
+      ], //材质
+      col: ["", "colorNumber", "colorNumber", "", "",
+        "caresolution_rule", "accessory_size", ""
+      ], //色号
+    }
+    //console.log(qjArr1)
+
+
+    //页面逻辑
+    var zjIndex = 0,
+        zjLength = 8,
+        qjIndex = 0,
+        qjLength = 16,
+        chose = 0,
+        zjArrs = zjArr.slice(zjIndex, zjIndex + zjLength), //页面渲染的柱镜数组
+        qjArr1s = qjArr2.slice(qjIndex, qjIndex + qjLength), //页面渲染的球镜数组
+        qjArr = qjArr2,
+        degree_obj = {};
+    //console.log(qjArr1s)
+
+    //根据不同手机屏幕高度动态加载球镜长度
+    console.log(window.screen.height, window.screen.width);
+    var qjLength = Math.floor((window.screen.height - 185 - 30) / Math.ceil(window.screen.width / 750 * 60));
+    console.log(qjLength);
+
+    zjArrs = zjArr.slice(zjIndex, zjIndex + zjLength);
+    qjArr1s = qjArr2.slice(qjIndex, qjIndex + qjLength)
+    //console.log(qjArr1s)
+    //渲染表格
+    function render() {
+      //循环柱镜数组渲染柱镜表头
+      var zjHtml = "";
+      for (var zj of zjArrs) {
+        zjHtml += `
+    <div class='QZth th'>${zj}</div>
+    `
+      };
+      $(".zjBox").html(zjHtml);
+
+
+      //球镜
+      var qjHtml = "";
+      for (var qj of qjArr1s) {
+        qjHtml +=
+          `
+      <div class='QZtbody clearfix' data-qj=${qj}>
+              <div class='QZtd tdLabel'>${qj}</div>
+              <div class="d2 clearfix">
+                  
+              </div>
+          </div>
+      </div>
+      `
+      }
+      $(".d1").html(qjHtml);
+      //单元格
+      var i = 0;
+      for (var qj of qjArr1s) {
+
+        var zjHtml1 = "";
+        for (var zj of zjArrs) {
+          zjHtml1 += '<div class="QZtd td" data-zj="' + zj + '" data-qj="' + qj + '" data-key="' + qj + ',' + zj +
+            '"></div>'
+        };
+        $($(".d1").find(".d2")[i]).html(zjHtml1)
+        i++;
+      }
+
+      // console.log(zjHtml1)
+
+    }
+
+    render()
+
+    //渲染方向按钮
+    function renderImg() {
+      var imgsBtn =
+        `
+    <img src='imgs/qjUp.png' class='changeBtn changeTable1' data-add="${qjLength}"></img>
+      <img id="img2" src='imgs/qjDown.png' class='changeBtn changeTable1' data-add="${-qjLength}"></img>
+      <img id="img3" src='imgs/2_05.png' class='changeBtn changeTable3' data-add="${chose}"></img>
+      <img src='imgs/zjUp.png' class='changeBtn changeTable2' data-add="8"></img>
+      <img src='imgs/zjDown.png' class='changeBtn changeTable2' data-add="-8"></img>
+    `
+      $(".funcBtns").html(imgsBtn);
+    }
+    renderImg()
+
+    //改变表格数据
+    //纵向球镜
+    $(".funcBtns").on("tap", ".changeTable1", function () {
+      var add = $(this).data("add");
+      qjIndex += add / 1;
+     
+      if (qjIndex <= 0) {
+        qjIndex = 0;
+      } else if (qjIndex + qjLength > qjArr.length) {
+        qjIndex = qjArr.length - qjLength;
+      }
+      
+      qjArr1s = qjArr.slice(qjIndex, qjIndex + qjLength);
+      //console.log(qjArr1s)
+      qjIndex = qjIndex;
+
+      if (qjIndex == 0) {
+        $("#img2").hide();
+        $("#img3").show();
+
+      } else if (qjIndex > 0) {
+        $("#img2").show();
+        $("#img3").hide();
+      }
+      render()
+      getValue()
+    })
+
+    //正负切换事件
+    $(".funcBtns").on("tap", ".changeTable3", function () {
+      var a = $(this).data("add");
+      if (a == 0) {
+        qjArr = qjArr1;
+        chose = 1
+        // console.log(qjArr)
+        renderImg()
+      } else {
+        qjArr = qjArr2;
+        chose = 0
+        //console.log(qjArr)
+        renderImg()
+      }
+
+      qjArr1s = qjArr.slice(qjIndex, qjIndex + qjLength)
+      //console.log(qjArr1s)
+      render()
+      getValue()
+    })
+
+    //横向柱镜
+    $(".funcBtns").on("tap", ".changeTable2", function () {
+      var add = $(this).data("add")
+      zjIndex += add / 1;
+
+      if (zjIndex <= 0) {
+        zjIndex = 0;
+      } else if (zjIndex + zjLength > zjArr.length) {
+        zjIndex = zjArr.length - zjLength;
+      }
+
+      zjArrs = zjArr.slice(zjIndex, zjIndex + zjLength)
+      render();
+      getValue();
+    })
+
+    //双击出现输入框 失去焦点后显示内容 ，移除文本框 
+    function changeInput(dom) {
+      $("body").on("tap", ".td", function () {
+        // console.log(123123);
+        var key = $(this).data("key");
+        //console.log(key)
+        var that = $(this);
+        dom.find('.input').remove();
+        var inputDom = $('<input class="input" type="number" autofocus="autofocus"/>');
+        $(this).append(inputDom);
+        inputDom.focus();
+        inputDom.val(that.text());
+        //td失去焦点后把值缓存到degree_obj对象中
+       
+          $(this).find('.input').blur(function () {
+          setTimeout(function(){
+            layui.data('degree_obj', {
+            key: key,
+            value: that.find('.input').val()
+          });
+          // degree_obj[key] = that.find('.input').val()
+          that.text(that.find('.input').val());
+          that.find('.input').remove();
+          degree_obj = layui.data('degree_obj');
+
+          },100)
+        })
+        
+      })
+
+    }
+    changeInput($(".td"));
+    degree_obj = layui.data('degree_obj');
+    // console.log(degree_obj)
+
+    //遍历degree_obj把值赋给对应td
+    function getValue() {
+      for (var k in degree_obj) {
+        $("[data-key='" + k + "']").html(degree_obj[k])
+      }
+
+    }
+    getValue()
+    //清除缓存
+    //layui.data('degree_obj', null);
+  </script>
+</body>
+
+
+</html>

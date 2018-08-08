@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			
+			table {
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul class="lists">
+			<li class="list">
+				<p>商品：<span>镜片 品牌 品类 折射率</span></p>
+				<table border="1" cellspacing="0" cellpadding="0" width="100%">
+					<thead>
+						<tr>
+							<th>球镜</th>
+							<th>柱镜</th>
+							<th>价格</th>
+							<th>数量</th>
+							<th></th>
+						</tr>
+
+					</thead>
+					<tbody>
+						<tr>
+
+							<td>1</td>
+							<td>1</td>
+							<td>1</td>
+							<td>1</td>
+							<td>1</td>
+						</tr>
+
+					</tbody>
+				</table>
+
+			</li>
+		</ul>
+
+		<script src="./js/test.js"></script>
+		<script src="zepto.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			console.log(Array)
+			
+			Array.prototype.unique = function() {
+				var res = [];
+				var json = {};
+				for(var i = 0; i < this.length; i++) {
+					if(!json[this[i]]) {
+						res.push(this[i]);
+						json[this[i]] = 1;
+					}
+				}
+				return res;
+			}
+			
+			
+			
+			
+			var arr1 = []
+			arr.forEach(function(item, index) {
+				if(item.code == 200) {
+					switch(item.data[0].stock_type) {
+						case 1: //镜片
+							arr1.push({
+								stock_type: item.data[0].stock_type,
+								degree_cyl: item.data[0].degree_cyl,
+								lens_brand: item.data[0].lens_brand,
+								lens_refractivity: item.data[0].lens_refractivity,
+								lens_model: item.data[0].lens_model,
+								price: item.data[0].price,
+								unicodes: item.data[0].unicodes,
+								num: 1
+							})
+							break;
+						case 2: //镜架
+							arr1.push({
+								stock_type: item.data[0].stock_type,
+								gframe_brand: item.data[0].gframe_brand,
+								gframe_model: item.data[0].gframe_model,
+								gframe_style: item.data[0].gframe_style,
+								colorNumber: item.data[0].colorNumber,
+								unicodes: item.data[0].unicodes,
+								price: item.data[0].price,
+								num: 1
+							})
+							break;
+						case 3: //太阳眼镜
+							arr1.push({
+								stock_type: item.data[0].stock_type,
+								sun_brand: item.data[0].sun_brand,
+								o1: item.data[0].o1,
+								sun_style: item.data[0].sun_style,
+								colorNumber: item.data[0].colorNumber,
+								price: item.data[0].price,
+								unicodes: item.data[0].unicodes,
+								num: 1
+							})
+							break;
+						case 4: //隐形眼镜
+							arr1.push({
+								stock_type: item.data[0].stock_type,
+								presbyopic_brand: item.data[0].presbyopic_brand,
+								o1: item.data[0].o1,
+								presbyopic_style: item.data[0].presbyopic_style,
+								degree_cyl: item.data[0].degree_cyl,
+								price: item.data[0].price,
+								unicodes: item.data[0].unicodes,
+								num: 1
+							})
+							break;
+						case 5: //成品眼镜
+							arr1.push({
+								stock_type: item.data[0].stock_type,
+								contact_brand: item.data[0].contact_brand,
+								o1: item.data[0].o1,
+								contact_model: item.data[0].contact_model,
+								degree_cyl: item.data[0].degree_cyl,
+								price: item.data[0].price,
+								unicodes: item.data[0].unicodes,
+								num: 1
+							})
+							break;
+						case 6: //护理液
+							arr1.push({
+								stock_type: item.data[0].stock_type,
+								caresolution_brand: item.data[0].caresolution_brand,
+								o1: item.data[0].o1,
+								caresolution_model: item.data[0].caresolution_model,
+								caresolution_rule: item.data[0].caresolution_rule, //规格
+								price: item.data[0].price,
+								unicodes: item.data[0].unicodes,
+								num: 1
+							})
+							break;
+						case 7: //配件
+							arr1.push({
+								stock_type: item.data[0].stock_type,
+								accessory_brand: item.data[0].accessory_brand,
+								category: item.data[0].category,
+								accessory_model: item.data[0].accessory_model,
+								accessory_size: item.data[0].accessory_size, //大小
+								price: item.data[0].price,
+								unicodes: item.data[0].unicodes,
+								num: 1
+							})
+							break;
+					}
+				}
+			})
+			console.log(arr1)
+			var goodsObj = {};
+			arr1.forEach(function(item, index) {
+				if(goodsObj[item.stock_type]) {
+					goodsObj[item.stock_type].push(item);
+				} else {
+					goodsObj[item.stock_type] = [];
+					goodsObj[item.stock_type].push(item);
+				}
+			})
+
+			console.log(goodsObj);
+			for(var k in goodsObj) {
+				if(k == 1) {
+					var arrBrand = [];
+					var brandObj={};
+					goodsObj[k].forEach(function(item, index) {
+						var brandStr = item.lens_brand + ' ' + item.lens_model + ' ' + item.lens_refractivity + '---'+item.unicodes;
+						arrBrand.push(brandStr);
+						arrBrand=arrBrand.unique();
+					})
+					arrBrand.forEach(function(item,index){
+						brandObj[item] = [];
+					})
+					goodsObj[k].forEach(function(item, index) {
+						var brandStr = item.lens_brand + ' ' + item.lens_model + ' ' + item.lens_refractivity+ '---'+item.unicodes;
+						var flag = true;
+						brandObj[brandStr].forEach(function(item1,index1){
+							if(item1.degree_cyl==item.degree_cyl){
+								item1.num++;
+								flag=false;
+							}
+						})
+						if(flag){
+							brandObj[brandStr].push({degree_cyl:item.degree_cyl,price:item.price,num:item.num})
+						}
+					})
+					console.log(brandObj);
+					for(var k1 in brandObj){
+						var trStr ='';
+						var kArr = k1.split('---')[0].split(' ');
+						brandObj[k1].forEach(function(item,index){
+							trStr+='<tr>'+
+										'<td>'+item.degree_cyl.split(',')[0]+'</td>'+
+										'<td>'+item.degree_cyl.split(',')[1]+'</td>'+
+										'<td>'+item.price+'</td>'+
+										'<td>'+item.num+'</td>'+
+										'<td><button type="button">删除</button></td>'+
+									'</tr>'
+						})
+						var liStr = '<li class="list">'+
+							'<p>商品：<span>'+kArr.join(' ')+'</span></p>'+
+							'<table border="1" cellspacing="0" cellpadding="0" width="100%">'+
+								'<thead>'+
+									'<tr>'+
+										'<th>球镜</th>'+
+										'<th>柱镜</th>'+
+										'<th>价格</th>'+
+										'<th>数量</th>'+
+										'<th></th>'+
+									'</tr>'+
+			
+								'</thead>'+
+								'<tbody>'+
+									trStr+
+								'</tbody>'+
+							'</table>'+
+			
+						'</li>'
+						$('.lists').append($(liStr));
+					}
+					
+					
+				}
+			}
+
+			
+		</script>
+	</body>
+
+</html>

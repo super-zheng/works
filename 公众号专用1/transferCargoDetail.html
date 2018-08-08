@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<meta charset="utf-8" />
+
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+		<title></title>
+
+		<link rel="stylesheet" href="css/layui.css" />
+
+		<link rel="stylesheet" href="css/main.css" />
+
+		<style>
+			.th_type{
+				width: 30px;
+			}
+			.th_brand{
+				width: 80px;
+			}
+			.th_mode_code{
+				width: 70px;
+			}
+			.th_count{
+				width: 45px;
+			}
+			.th_price{
+				width: 60px;
+			}
+			.a{
+				width: 30px;
+			}
+			.storedetails .layui-table th{
+				padding:9px 1px;
+				text-align: center;
+			}
+			.listorder-msg .indent-list a{
+				padding: 10px 2px;
+				text-align: center;
+			}
+			.listorder-msg .indent-list td{
+				text-align: center;
+			}
+			.indent-list td{
+				height: 40px;
+			}
+
+			.goods {
+			margin-top: 5px;
+		}
+
+		.pic {
+			width: 108px;
+			height: 100px;
+			background: url(./imgs/Icon_Default_productr.png) no-repeat;
+			background-size: 100% 100%;
+			position: relative;
+		}
+
+		.goods-name {
+			width: 30%;
+			text-align: center;
+			color: #fff;
+			background: rgba(0, 95, 138, 0.4);
+			padding: 0 6px;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+
+		.goods-item {
+			display: flex;
+			position: relative;
+			margin-bottom: 5px;
+			background: #fff;
+			padding: 5px 10px;
+			box-sizing: border-box;
+		}
+
+
+		.goods-detail {
+			margin-left: 15px;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.price {
+			display: flex;
+			justify-content: space-between;
+			padding-right: 22px;
+			margin-top: 10px;
+		}
+
+		.money {
+			color: #FB5824;
+		}
+
+		.more {
+			position: absolute;
+			right: 12px;
+			top: 50px;
+		}
+
+		.discount {
+
+			color: #FC3433;
+			/*width: 43px;*/
+			height: 23px;
+			line-height: 23px;
+			text-align: center;
+			white-space: nowrap;
+		}
+
+		.pinpai {
+			display: flex;
+			justify-content: space-between;
+			padding-right: 5px;
+		}
+	.totalBox{
+		
+		
+		/* box-sizing: border-box; */
+	}
+	.totalBox div{
+		min-height: 40px;
+	}
+		.jianshu {
+			display: flex;
+			justify-content: space-between;
+			font-weight: bold;
+			align-items: center;
+			background: #fff;
+			padding:0 10px;
+		}
+		.status i{
+			
+			vertical-align: middle;
+			display: inline-block;
+			width: 20px;
+			height: 18px;
+			background: url(./imgs/store2.png) no-repeat;
+			background-size: 100% 100%;
+		}
+		.status{
+			color:#FB5824;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			margin-top:3px;
+			background: #fff;
+			padding:0 10px;
+		}
+		</style>
+
+
+	</head>
+
+	<body>
+
+		<!--调货单-->
+		<!--循环遍历，并显示数据-->
+
+		<div class="listorder-msg">
+
+			<table class="layui-table" lay-skin="nob">
+
+				<tr class="storeTr">
+
+					<td colspan="2" class="storeName">
+
+						<span class="store-icon"></span>
+
+						<span>
+
+							{$store_name}
+
+						</span>
+
+					</td>
+
+					<td class="storeState">
+
+						<span>调</span>
+
+					</td>
+
+				</tr>
+
+				<tr>
+
+					<td colspan="2">
+
+						编号：{$dingdan_info[0].ity_Number}
+
+					</td>
+
+					<td>
+
+						商品件数：{$dingdan_info[0].ity_operatPerson1}件
+
+					</td>
+
+				</tr>
+
+				<tr class="tableFooter">
+
+					<td colspan="2">时间：{$ity_date|date="Y-m-d H:i:s",###}</td>
+
+					<td>建立人：{$user_realname}</td>
+
+				</tr>
+
+			</table>
+
+			<div class="storedetails">
+
+				<!-- <table class="layui-table" lay-skin="line" class="indent" style="">
+
+					<thead>
+
+					<tr>
+						<th class="th_type">类型</th>
+
+						<th class="th_brand">品牌</th>
+
+						<th class="th_mode_code">球柱镜/颜色/规格</th>
+
+						<th class="th_count">数量</th>
+
+						<th class="th_price">单价</th>
+
+					</tr>
+
+					</thead>
+
+					<tbody>
+
+					循环遍历查询数据并展示具体商品
+
+					<foreach name="dingdan_info" item="v">
+
+						<tr class="indent-list">
+
+							<td>
+
+								<if condition="$v['stock_type'] eq 1">镜片
+
+									<elseif condition="$v['stock_type'] eq 2"/>镜架
+
+									<elseif condition="$v['stock_type'] eq 3"/>太阳眼镜
+
+									<elseif condition="$v['stock_type'] eq 4"/>成品眼镜
+
+									<elseif condition="$v['stock_type'] eq 5"/>隐形眼镜
+
+									<elseif condition="$v['stock_type'] eq 6"/>护理液
+
+									<elseif condition="$v['stock_type'] eq 7"/>眼镜配件
+
+									<else />其他
+
+								</if>
+
+							</a>
+
+							</td>
+
+							<td>{$v.brand}</td>
+
+							<td>{$v.code}</td>
+
+							<td>{$v.goodsCounts}</td>
+
+							<td class="store-price">{$v.goods_danjia}</td>
+
+						</tr>
+
+						</a>
+
+					</foreach>
+
+					<tr class="listorder-sum">
+
+						<td colspan="3"><span style="float: left">总件数：{$dingdan_info[0].ity_operatPerson1}件</span></td>
+
+						<td colspan="2">总金额：<span id="storeprice-sum">{$dingdan_info[0].ity_paidPrice}元</span></td>
+
+					</tr>
+
+					<tr class="listorder-status">
+
+						<td colspan="3"></td>
+
+						<td colspan="2">
+
+							<span class="orders-send fr">调拨中</span>
+
+						</td>
+
+					</tr>
+
+					</tbody>
+
+				</table> -->
+
+				<div class="goods">
+						<div class="goods-item">
+							<div class="pic">
+								<p class="goods-name">镜片</p>
+							</div>
+							<div class="goods-detail">
+								<div class="pinpai">
+									<p>品牌：蔡司</p>
+									<p class="discount">9.0折</p>
+								</div>
+								<p>品类：双光 非球面</p>
+								<p>折射率：299蔡司</p>
+								<p>球柱镜：0.00，-0.25</p>
+								<div class="price">
+									<p class="money">价格：￥100.00</p>
+									<p>1件</p>
+								</div>
+							</div>
+		
+							<div class="more">》</div>
+						</div>
+		
+						<div class="goods-item">
+							<div class="pic">
+								<p class="goods-name">镜架</p>
+							</div>
+							<div class="goods-detail">
+								<div class="pinpai">
+									<p>品牌：蔡司</p>
+									<p class="discount">9.0折</p>
+								</div>
+								<p>品类：双光 非球面</p>
+								<p>折射率：299蔡司</p>
+								<p>球柱镜：0.00，-0.25</p>
+								<div class="price">
+									<p class="money">价格：￥100.00</p>
+									<p>1件</p>
+								</div>
+							</div>
+		
+							<div class="more">》</div>
+						</div>
+		
+						<div class="totalBox">
+							<div class="jianshu">
+								<p>总件数: 1件</p>
+								<p>退货金额: 元</p>
+							</div>
+		
+							<div class="status">
+								
+								<span><i></i>&nbsp; 退货中</span>
+							</div>
+						</div>
+		
+					</div>
+
+			</div>
+
+
+
+		</div>
+
+		
+
+		<script type="text/javascript" src="js/layui.js" ></script>
+
+		<script>
+
+			layui.use('element', function(){
+
+			    var $ = layui.jquery
+
+			    ,element = layui.element(); //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+				
+
+				/*//总金额
+
+				var arr=[];
+
+				var sum=0;
+
+				var str = $(".store-price");
+
+				for(var i=0;i<str.length;i++){
+
+					arr.push($(".store-price").eq(i).text());
+
+				}
+
+				for(var i=0;i<arr.length;i++){
+
+					sum=sum+parseInt(arr[i]);
+
+				}
+
+				console.log(sum);
+
+				$("#storeprice-sum").text(sum);*/
+
+
+
+			});
+
+		</script>
+
+	</body>
+
+</html>
+

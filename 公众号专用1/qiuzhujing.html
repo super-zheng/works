@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>球柱镜</title>
+	<link rel="stylesheet" href="./css/base.css">
+	<link rel="stylesheet" href="./css/publicNum.css">
+	<script src="./js/adapter.js"></script>
+	<style>
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		
+	</style>
+</head>
+<body>
+	<button type="button" style="width:3rem;height: 1rem;"> 选择球柱镜</button>
+	<div class="value"></div>
+	<script src="zepto.js"></script>
+	<script src="js/publicNum.js"></script>
+	<script>
+
+		$(function(){
+			var obj = new jly_publicNum();
+			// obj.yanguang(function(e){
+			// 	console.log(e);
+			// });
+			
+			$('button').tap(function(){
+				obj.yanguang(function(e){
+					$('.value').text(JSON.stringify(e))
+				});
+			})
+		})
+
+
+	</script>
+</body>
+</html>

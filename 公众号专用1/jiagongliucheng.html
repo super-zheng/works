@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>待取件</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" type="text/css" href="css/layui.mobile.css" />
+		<link rel="stylesheet" type="text/css" href="css/publicNum.css" />
+		<style>
+			.container,body,html{
+				height: 100%;
+			}
+			.container{
+				display: flex;
+				flex-direction:column;
+			}
+			.contentLists{
+				flex: 1;
+				width: 100%;
+				background-color: #eee;
+				overflow: auto;
+			}
+			.num{
+				color:#25A9E1;
+				font-size: 12px;
+				text-align: right;
+				padding-right: 10px;
+			}
+			.adress{
+			}
+			.listItem{
+				background-color: #fff;
+				margin-bottom: 10px;
+			}
+			.itemTitle {
+				height: 60px;
+				line-height: 60px;
+				border-bottom: 1px solid #ccc;
+				padding-left: 10px;
+				font-size: 16px;
+			}
+			.uncheck{
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				background: url(imgs/nocheck_icon.png) no-repeat 0 0;
+				background-size: 100% 100%;
+				vertical-align: middle;
+			}
+			.itemMain .goods{
+				display: flex;
+			}
+			.leftCheck{
+				width: 20px;
+				height: 150px;
+				line-height: 150px;
+				padding-left: 10px;
+				display: inline-block;
+			}
+			.goodsMsg{
+				flex:1;
+            	-webkit-flex:1;
+            	border-bottom: 1px solid #ccc;
+            	height: 150px;
+            	display: flex;
+            	align-items:center;
+			}
+			.fl{
+				float: left;
+			}
+			.fr{
+				float: right;
+			}
+			.imgBox{
+				width: 120px;
+				height: 120px;
+				margin-left: 5px;
+				
+			}
+			.imgBox img{
+				display: block;
+				width:100%;
+				height: 100%;
+			}
+			.goodsDetail li{
+				font-size: 12px;
+				height: 22px;
+				padding-left: 10px;
+			}
+			.goodsDetail li b{
+				font-weight: 400;
+			}
+			.goodsDetail li b.price{
+				font-weight: 900;
+				font-size: 16px;
+				color:orange;
+			}
+			.jiesuan{
+				line-height: 30px;
+				padding-right: 10px;
+			}
+			.jiesuan b{
+				font-weight: 400;
+			}
+			.endBtn{
+				/*position: absolute;*/
+				width: 100%;
+				height: 60px;
+				line-height: 60px;
+				padding-left: 10px;
+				display: flex;
+				justify-content: space-between;
+				align-items:center;
+				padding-right: 20px;
+				box-sizing: border-box;
+			}
+			.hideChild .itemMain{
+				display: none;
+			}
+			.hideChild .jiesuan{
+				display: none;
+			}
+			.uncheck.check{
+				background: url(imgs/check_icon.png) no-repeat 0 0;
+				background-size: 100% 100%;
+			}
+			.closeList{
+				width: 16px;
+				height: 8px;
+				display: inline-block;
+				margin-left: 10px;
+				background: url(imgs/ic-xiala.png) no-repeat 0 0;
+				background-size: 100% 100%;
+			}
+			.openList{
+				background: url(imgs/ic-shangla.png) no-repeat 0 0;
+				background-size: 100% 100%;
+			}
+			header {
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				background-color: #25A9E1;
+				color:white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header> <i class="returnBtn"></i><span>新建加工单</span></header>
+		<div class="container">
+			<div class="contentLists">
+				<div class="listItem layui-clear">
+					<div class="itemTitle layui-row">
+						<div class="layui-col-xs9 adress"><i class="uncheck"></i> <span>福田区 光明宝岛眼镜店</span></div>
+						<div class="layui-col-xs3 num"><span>共计</span><span>3</span><span>件</span> <i class="closeList openList"></i></div>						
+					</div>
+					<ul class="itemMain">
+						<li class="layui-clear goods">
+							<div class="leftCheck">
+								<i class="uncheck"></i>
+							</div>
+							<div class="goodsMsg clearfix">
+								<div class="imgBox">
+									<img src="./imgs/background.jpg" alt="" />
+								</div>
+								<ul class="goodsDetail">
+									<li><span>订单号</span>：<b>2018020300091589</b></li>
+									<li><span>右眼镜片</span>：<b>依视路白晶(-2.00/-1.50)</b></li>
+									<li><span>右眼镜片</span>：<b>依视路白晶(-2.00/-1.50)</b></li>
+									<li><span>镜架</span>：<b>自提</b></li>
+									<li><span>加工工艺</span>：<b>半框标准加工</b></li>
+									<li><b class="price">￥3165.00</b></li>
+								</ul>
+							</div>
+							
+						</li>
+						<li class="layui-clear goods">
+							<div class="leftCheck">
+								<i class="uncheck"></i>
+								
+							</div>
+							<div class="goodsMsg clearfix">
+								<div class="imgBox">
+									<img src="./imgs/background.jpg" alt="" />
+								</div>
+								<ul class="goodsDetail">
+									<li><span>订单号</span>：<b>2018020300091589</b></li>
+									<li><span>右眼镜片</span>：<b>依视路白晶(-2.00/-1.50)</b></li>
+									<li><span>右眼镜片</span>：<b>依视路白晶(-2.00/-1.50)</b></li>
+									<li><span>镜架</span>：<b>自提</b></li>
+									<li><span>加工工艺</span>：<b>半框标准加工</b></li>
+									<li><b class="price">￥3165.00</b></li>
+								</ul>
+							</div>
+							
+						</li>
+						<li class="layui-clear goods">
+							<div class="leftCheck">
+								<i class="uncheck"></i>
+								
+							</div>
+							<div class="goodsMsg clearfix">
+								<div class="imgBox">
+									<img src="./imgs/background.jpg" alt="" />
+								</div>
+								<ul class="goodsDetail">
+									<li><span>订单号</span>：<b>2018020300091589</b></li>
+									<li><span>右眼镜片</span>：<b>依视路白晶(-2.00/-1.50)</b></li>
+									<li><span>右眼镜片</span>：<b>依视路白晶(-2.00/-1.50)</b></li>
+									<li><span>镜架</span>：<b>自提</b></li>
+									<li><span>加工工艺</span>：<b>半框标准加工</b></li>
+									<li><b class="price">￥3165.00</b></li>
+								</ul>
+							</div>
+							
+						</li>
+						
+					</ul>
+					
+					<p class="fr jiesuan"><span>结算方式</span>：<b>月结</b></p>
+				</div>
+				
+				
+				
+			</div>
+			<div class="endBtn">
+				<span class="checkAll"><i class="uncheck"></i> <span>全选</span></span>
+				<button type="button" class="layui-btn" style="background-color: #25A9E1;">确认取件</button>
+			</div>
+		</div>
+		<script src="layui/layui.all.js"></script>
+		<script src="zepto.js"></script>
+		<script src="js/publicNum.js"></script>
+		<script>
+			var layer = layui.layer,
+				form = layui.form;
+			$('.contentLists').on('tap','.num ',function(){
+				$(this).parent().parent().toggleClass('hideChild');
+				$(this).find('.closeList').toggleClass('openList');
+			})
+			$('.contentLists').on('tap','.adress',function(){
+				$(this).find('.uncheck').toggleClass('check');
+				if($(this).find('.uncheck').hasClass('check')){
+					$(this).parent().next().find('.uncheck').addClass('check');
+				}else{
+					$(this).parent().next().find('.uncheck').removeClass('check');
+				}
+			})
+			$('.checkAll').tap(function(){
+				$(this).find('.uncheck').toggleClass('check');
+				if($(this).find('.uncheck').hasClass('check')){
+					$('.uncheck').addClass('check');
+				}else{
+					$('.uncheck').removeClass('check');
+				}
+			})
+				
+			
+		</script>
+	</body>
+
+</html>

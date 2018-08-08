@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style type="text/css">
+			body {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.box {
+				width: 100%;
+				overflow: hidden;
+			}
+			
+			ul {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				overflow: hidden;
+				width: 1800px;
+				transition: all 0s;
+			}
+			
+			ul li {
+				width: 300px;
+				float: left;
+			}
+			
+			.card {
+				width: 280px;
+				margin: 0 auto;
+				background-color: red;
+				height: 120px;
+				text-align: center;
+				line-height: 100px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<ul>
+				<li>
+					<div class="card">4</div>
+				</li>
+				<li class="first">
+					<div class="card">1</div>
+				</li>
+				<li>
+					<div class="card">2</div>
+				</li>
+				<li>
+					<div class="card">3</div>
+				</li>
+				<li>
+					<div class="card">4</div>
+				</li>
+				<li>
+					<div class="card">1</div>
+				</li>
+
+			</ul>
+		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var aa = $('.first')[0].getBoundingClientRect();
+				var w = $('body')[0].getBoundingClientRect().width;
+				var initTrans = -300 + (w - 300) / 2;
+				var startX = 0;
+				var moveX = 0;
+				var nowTrans = initTrans;
+				$('ul').css('transform', 'translateX(' + initTrans + 'px)')
+				console.log(w);
+				$('ul').on('touchstart', function(e) {
+					$(this).css('transition-duration', '0s');
+					console.log(e.originalEvent.changedTouches[0].clientX);
+					startX = e.originalEvent.changedTouches[0].clientX;
+					initTrans = nowTrans;
+				})
+				$('ul').on('touchmove', function(e) {
+					$(this).css('transition-duration', '0s');
+					moveX = e.originalEvent.changedTouches[0].clientX;
+					nowTrans = initTrans + (moveX - startX);
+					//					console.log(initTrans+moveX-startX)
+
+					if(nowTrans >= 0) {
+						nowTrans = -1200;
+						initTrans = nowTrans;
+						startX = e.originalEvent.changedTouches[0].clientX;
+					} else if(nowTrans <= w - 1800) {
+						nowTrans = -300;
+						initTrans = nowTrans;
+						startX = e.originalEvent.changedTouches[0].clientX;
+					}
+//					console.log(nowTrans)
+					$('ul').css('transform', 'translateX(' + nowTrans + 'px)')
+				})
+				$('ul').on('touchend', function(e) {
+//					var endX = e.originalEvent.changedTouches[0].clientX;
+//					var index = Math.floor(Math.abs(nowTrans/300));
+//					
+//					
+//					nowTrans = -index*300 +(w-300)/2;
+//					if(nowTrans >= 0) {
+//						nowTrans = -1200;
+//						initTrans = nowTrans;
+//					} else if(nowTrans <= w - 1800) {
+//						nowTrans = -300;
+//						initTrans = nowTrans;
+//					}
+//					
+//					console.log(index,nowTrans)
+//					$('ul').css('transform', 'translateX(' + nowTrans + 'px)')
+				})
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="css/layui.mobile.css" />
+    <link rel="stylesheet" type="text/css" href="css/publicNum.css" />
+    <style>
+        
+        .select {
+            width: 100px;
+            height: 30px;
+            border: 1px solid #6C6C6C;
+            background: #D8D7D7;
+        }
+
+        .seach i {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: url("./imgs/searchIcon.png") no-repeat;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-around;
+            height: 60px;
+            align-items: center;
+            border-bottom: 1px solid #F1F1F1;
+        }
+
+        .picbox {
+            width: 80px;
+            height: 80px;
+            border: 1px solid red;
+        }
+
+        .goods {
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 3px solid #F1F1F1;
+            margin-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .detail {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .detail p {
+            padding-left: 10px;
+        }
+
+        .p1 {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .p2 {
+            font-size: 10px;
+        }
+    .btnbox{
+        
+        position: fixed;
+        bottom:0;
+        display: flex;
+        
+    }
+        .btnbox p{
+            width: 80px;
+            height: 30px;
+            font-size: 18px;
+            text-align: center;
+            margin:0 20px 0 20px;
+        }
+        .sure{
+            background: #0DCA81;
+            
+        }
+        .continu{
+            background: #00AEFF;
+            
+        }
+        .cancel{
+            background: #AAB1B4;          
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="header">
+            <div class="s1">
+                <label> 品牌</label>
+                <select name="city" lay-verify="" class="select">
+                    <option value=""></option>
+                    <option value="010">眼镜</option>
+                    <option value="021">眼镜</option>
+                    <option value="0571">眼镜</option>
+                </select>
+            </div>
+            <div class="s1">
+                <label> 品牌</label>
+                <select name="city" lay-verify="" class="select">
+                    <option value=""></option>
+                    <option value="010">眼镜</option>
+                    <option value="021">眼镜</option>
+                    <option value="0571">眼镜</option>
+                </select>
+            </div>
+            <div class="seach">
+                <i></i>
+            </div>
+        </div>
+
+        <div class="list">
+            <div class="goods">
+                <div class="item">
+                    <div class="picbox">
+                        <i></i>
+                    </div>
+                    <div class="detail">
+                        <p class="p1">镜片:nba</p>
+                        <p class="p2">NBAPC:抗蓝光 1.591</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="picbox">
+                        <i></i>
+                    </div>
+                    <div class="detail">
+                        <p class="p1">镜片:nba</p>
+                        <p class="p2">NBAPC:抗蓝光 1.591</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="goods">
+                <div class="item">
+                    <div class="picbox">
+                        <i></i>
+                    </div>
+                    <div class="detail">
+                        <p class="p1">镜片:nba</p>
+                        <p class="p2">NBAPC:抗蓝光 1.591</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="picbox">
+                        <i></i>
+                    </div>
+                    <div class="detail">
+                        <p class="p1">镜片:nba</p>
+                        <p class="p2">NBAPC:抗蓝光 1.591</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btnbox">
+            <p class="sure">确定</p>
+            <p class="continu">继续</p>
+            <p class="cancel">取消</p>
+        </div>
+    </div>
+
+    <script src="layui/layui.all.js"></script>
+    <script src="zepto.js"></script>
+</body>
+
+</html>

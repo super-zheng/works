@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="css/layui.mobile.css" />
+    <link rel="stylesheet" type="text/css" href="css/publicNum.css" />
+    <style>
+        .bgcolor {
+            background: #fff;
+        }
+
+        .header {
+            background: #D2D0D0;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 0 #D2D0D0; 
+        }
+
+        .now,
+        .new {
+            width: 50%;
+            height: 100%;
+            line-height: 80px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .content {
+            display: block;
+            margin-top: 20px;
+        }
+
+        .time {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .time p {
+            margin: 0 50px 0 10px;
+        }
+
+        .detail {
+            background: #F3F0F0;
+            border-radius: 6px;
+           
+        }
+
+        .table {
+            width: 100%;
+        }
+
+        .table tr {
+            text-align: center;
+        }
+
+        .table td {
+            padding: 5px;
+        }
+
+        .form {
+            background: #A19B9B;
+            margin-top: 10px;
+            border-radius: 6px;
+        }
+
+        .types {
+            margin-top: 10px;
+        }
+
+        .type-box {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .type-box p {
+            background: #5B9BD5;
+            width: 170px;
+            height: 100px;
+            border-radius: 10px;
+            font-size: 25px;
+            color: #fff;
+            line-height: 100px;
+            text-align: center;
+        }
+        .types{
+            display: none;
+            margin-top:20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="now bgcolor">现有盘点记录</div>
+        <div class="new">新建盘点</div>
+    </div>
+
+    <div class="content">
+        <div class="detail">
+            <div class="time">
+                <p>时间: 2018年6月13</p>
+                <p>盘点人: 赵xx 吴xx</p>
+            </div>
+
+
+            <table class="table">
+                <thead>
+                    <th></th>
+                    <th>结余库存</th>
+                    <th>实际库存</th>
+                    <th>确认人</th>
+                    <th>确认时间</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>镜片</td>
+                        <td>1252</td>
+                        <td>1250</td>
+                        <td>廖xx</td>
+                        <td>13日15:23</td>
+                    </tr>
+                    <tr>
+                        <td>镜架</td>
+                        <td>850</td>
+                        <td>1250</td>
+                        <td>廖xx</td>
+                        <td>13日15:23</td>
+                    </tr>
+                    <tr>
+                        <td>太阳眼镜</td>
+                        <td>125</td>
+                        <td>1250</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>成品眼镜</td>
+                        <td>1252</td>
+                        <td>1250</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>隐形眼镜</td>
+                        <td>1252</td>
+                        <td>1250</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>护眼液</td>
+                        <td>1252</td>
+                        <td>1250</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>配件</td>
+                        <td>1252</td>
+                        <td>1250</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="detail form">
+            <div class="time">
+                <p>时间: 2018年6月13</p>
+                <p>盘点人: 赵xx 吴xx</p>
+            </div>
+
+
+            <table class="table">
+                <thead>
+                    <th></th>
+                    <th>结余库存</th>
+                    <th>实际库存</th>
+                    <th>确认人</th>
+                    <th>确认时间</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>镜片</td>
+                        <td>1252</td>
+                        <td>1250</td>
+                        <td>廖xx</td>
+                        <td>13日15:23</td>
+                    </tr>
+                    <tr>
+                        <td>镜架</td>
+                        <td>850</td>
+                        <td>1250</td>
+                        <td>廖xx</td>
+                        <td>13日15:23</td>
+                    </tr>
+                    <tr>
+                        <td>太阳眼镜</td>
+                        <td>125</td>
+                        <td>1250</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>成品眼镜</td>
+                        <td>1252</td>
+                        <td>1250</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>隐形眼镜</td>
+                        <td>1252</td>
+                        <td>1250</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>护眼液</td>
+                        <td>1252</td>
+                        <td>1250</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>配件</td>
+                        <td>1252</td>
+                        <td>1250</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="types">
+        <div class="type-box">
+            <p>镜片</p>
+            <p>镜架</p>
+        </div>
+        <div class="type-box">
+            <p>太阳眼镜</p>
+            <p>成品眼镜</p>
+        </div>
+        <div class="type-box">
+            <p>隐形眼镜</p>
+            <p>护理液</p>
+        </div>
+        <div class="type-box">
+            <p>配件</p>
+            <p>其他</p>
+        </div>
+        
+    </div>
+</body>
+<script src="layui/layui.all.js"></script>
+<script src="zepto.js"></script>
+<script>   
+    $(".header").on("tap", ".new", function () {
+        $(this).addClass("bgcolor").siblings().removeClass("bgcolor");
+        $(".content").hide();
+        $(".types").show()
+    })
+    $(".header").on("tap", ".now", function () {
+        $(this).addClass("bgcolor").siblings().removeClass("bgcolor");
+        $(".content").show();
+        $(".types").hide();
+    })
+
+    $(".types").on("tap",".type-box p",function(){
+        location.href="pinpai.html"
+    })
+
+</script>
+
+</html>

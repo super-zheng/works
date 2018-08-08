@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			ul {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			
+			table {
+				text-align: center;
+			}
+			.bgRed{
+				background-color: #25afff;
+				color:white
+			}
+			td{
+				position: relative;
+			}
+			table thead th:nth-last-child(1),table tbody td:nth-last-child(1){
+				display: none;
+			}
+			.showEndTd table thead th:nth-last-child(1),.showEndTd table tbody td:nth-last-child(1){
+				display: table-cell;
+			}
+			td input{
+				position:absolute;
+				top:0px;
+				left: 0px;
+				height: 100%;
+				width: 100%;	
+				box-sizing: border-box;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button class="btn" type="button">点击</button>
+		<ul class="lists">
+			<!--<li class="list">
+				<p>商品：<span>镜片 品牌 品类 折射率</span></p>
+				<table border="1" cellspacing="0" cellpadding="0" width="100%">
+					<thead>
+						<tr>
+							<th>球镜</th>
+							<th>柱镜</th>
+							<th>价格</th>
+							<th>数量</th>
+							<th></th>
+						</tr>
+
+					</thead>
+					<tbody>
+						<tr>
+
+							<td>1</td>
+							<td>1</td>
+							<td>1</td>
+							<td>1</td>
+							<td>1</td>
+						</tr>
+
+					</tbody>
+				</table>
+
+			</li>-->
+		</ul>
+
+		<script src="./js/test.js"></script>
+		<script src="zepto.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			console.log(Array)
+
+			Array.prototype.unique = function() {
+				var res = [];
+				var json = {};
+				for(var i = 0; i < this.length; i++) {
+					if(!json[this[i]]) {
+						res.push(this[i]);
+						json[this[i]] = 1;
+					}
+				}
+				return res;
+			}
+			
+			//arr 是原始数据
+
+			//arr1是处理后的数据
+			
+			var arr1 = arr.filter(function(item,index){return item.code==200}).map(function(item,index){return item.data[0]});
+			console.log(arr1);
+
+			var storeTypeArr = ['镜片', '镜架', '太阳眼镜', '隐形眼镜', '成品眼镜', '配件', '护理液'];
+
+			var storeClass = {};
+			var class_num = 0;
+			var num = 0;
+			var timer = setInterval(function (){
+				creatGoodsTable(arr1[num]);
+				num++
+				if(num==arr1.length){
+					clearInterval(timer);
+				}
+			},2000)
+			$('.btn').tap(function(){
+				clearInterval(timer);
+				console.log('123')
+			})
+			
+			function creatGoodsTable(obj) {
+				var table_name = '';//当前创建商品的类名
+				var store_class_str='';//商品信息栏
+				var thStr = '';
+				var tdStr= '';
+				var mark1 = '';
+				switch(obj.stock_type) {
+					case 1:
+						store_class_str = storeTypeArr[obj.stock_type - 1] +' '+ obj.lens_brand + ' ' + obj.lens_model + ' ' + obj.lens_refractivity + '---' + obj.unicodes;
+						thStr = '<th>球镜</th><th>柱镜</th>' ;
+						tdStr = '<td>' + obj.degree_cyl.split(',')[0] + '</td><td>' + obj.degree_cyl.split(',')[1] + '</td>';
+						mark1 = obj.degree_cyl.replace(',','');
+						break;
+					case 2:
+						store_class_str = storeTypeArr[obj.stock_type - 1] +' '+ obj.gframe_brand + ' ' + obj.gframe_model + ' ' + obj.gframe_style + '---' + obj.unicodes;
+						thStr = '<th>色号</th>' ;
+						tdStr = '<td>'+obj.colorNumber+'</td>';
+						mark1 = obj.colorNumber;
+						break;
+					case 3:
+						store_class_str = storeTypeArr[obj.stock_type - 1] +' '+ obj.sun_brand + ' ' + obj.o1 + ' ' + obj.sun_style + '---' + obj.unicodes;
+						thStr = '<th>色号</th>' ;
+						tdStr = '<td>'+obj.colorNumber+'</td>'
+						mark1 = obj.colorNumber;
+						break;
+					case 4:
+						store_class_str = storeTypeArr[obj.stock_type - 1] +' '+ obj.presbyopic_brand + ' ' + obj.o1 + ' ' + obj.presbyopic_style + '---' + obj.unicodes;
+						thStr = '<th>球镜</th><th>柱镜</th>' ;
+						tdStr = '<td>' + obj.degree_cyl.split(',')[0] + '</td><td>' + obj.degree_cyl.split(',')[1] + '</td>';
+						mark1 = obj.degree_cyl.replace(',','');
+						break;
+					case 5:
+						store_class_str = storeTypeArr[obj.stock_type - 1] +' '+ obj.contact_brand + ' ' + obj.o1 + ' ' + obj.contact_model + '---' + obj.unicodes;
+						thStr = '<th>球镜</th><th>柱镜</th>' ;
+						tdStr = '<td>' + obj.degree_cyl.split(',')[0] + '</td><td>' + obj.degree_cyl.split(',')[1] + '</td>';
+						mark1 = obj.degree_cyl.replace(',','');
+						break;
+					case 6:
+						store_class_str = storeTypeArr[obj.stock_type - 1] +' '+ obj.caresolution_brand + ' ' + obj.o1 + ' ' + obj.caresolution_model + '---' + obj.unicodes;
+						thStr = '<th>规格</th>' ;
+						tdStr = '<td>'+obj.caresolution_rule+'</td>';
+						mark1 = obj.caresolution_rule;
+						break;
+					case 7:
+						store_class_str = storeTypeArr[obj.stock_type - 1] +' '+ obj.accessory_brand + ' ' + obj.category + ' ' + obj.accessory_model + '---' + obj.unicodes;
+						thStr = '<th>大小</th>' ;
+						tdStr = '<td>'+obj.accessory_size+'</td>';
+						mark1 = obj.accessory_size;
+						break;
+				}
+				if(storeClass[store_class_str]) {
+					table_name = storeClass[store_class_str];
+				}else {
+					storeClass[store_class_str] = 's'+ class_num;
+					table_name = storeClass[store_class_str];
+					class_num++;
+				}
+				if($('li[name='+table_name+']').length==0){
+					var liStr = '<li class="list" name ="'+table_name+'">' +
+							'<p>商品：<span>' + store_class_str.split('---')[0] + '</span></p>' +
+							'<table  border="1" bordercolor="#a0c6e5" style="border-collapse:collapse;" width="100%">' +
+							'<thead>' +
+							'<tr>' +
+							thStr+
+							'<th>价格</th>' +
+							'<th>数量</th>' +
+							'<th class="deleBtn"></th>' +
+							'</tr>' +
+
+							'</thead>' +
+							'<tbody>' +
+								'<tr class="bgRed" args="'+mark1+'">' +
+								tdStr+
+								'<td><input type="text" value="' + obj.price + '"/></td>' +
+								'<td class="num">' + 1 + '</td>' +
+								'<td class="deleBtn"><button type="button" name ="'+obj.unicode_code+'">删除</button></td>' +
+								'</tr>'
+							'</tbody>' +
+							'</table>' +
+
+							'</li>'
+							$('table').find('button').remove();
+							
+							$('table').find('tr').removeClass('bgRed');
+							$('.demo').remove();
+							$('.num').attr('name','');
+							$('.lists').prepend(liStr);
+				}else{
+					var flag = true;
+					var nowTr;
+					$('li[name='+table_name+'] tbody tr').each(function(index,item){
+						if($(item).attr('args')==mark1){
+							flag = false;
+							nowTr = $(item);
+						}
+					})
+					if(flag){
+						var trStr = '<tr class="bgRed" args="'+mark1+'">' +
+									tdStr+
+									'<td><input type="text" value="' + obj.price + '"/></td>' +
+									'<td class="num">' + 1+ '</td>' +
+									'<td class="deleBtn"><button type="button" name ="'+obj.unicode_code+'">删除</button></td>' +
+									'</tr>';
+						
+						$('table').find('button').remove();
+						$('table').find('tr').removeClass('bgRed');
+						$('.demo').remove();
+						$('.num').attr('name','');
+						$('li[name='+table_name+']').find('tbody').prepend(trStr);
+						$('.lists').prepend($('li[name='+table_name+']'));
+						
+					}else{
+						var newNum = nowTr.find('.num').text()/1+1;
+						nowTr.find('.num').text(newNum);
+						var trStr = '<tr class="bgRed demo">' +
+									tdStr+
+									'<td><input type="text" value="' + obj.price + '"/></td>' +
+									'<td class="num">' + 1 + '</td>' +
+									'<td class="deleBtn"><button type="button" name ="'+obj.unicode_code+'" real="demoBtn">删除</button></td>' +
+									'</tr>';
+						$('table').find('button').remove();
+						$('table').find('tr').removeClass('bgRed');
+						$('table .demo').remove();
+						$('.num').attr('name','');
+						$('li[name='+table_name+']').find('tbody').prepend(trStr);
+						nowTr.find('.num').attr('name','hasDemo')
+						$('.lists').prepend($('li[name='+table_name+']'));
+					}
+				}
+				$('.lists').find('li').removeClass('showEndTd');
+				$('li[name='+table_name+']').addClass('showEndTd');
+			}
+			
+			$('.lists').on('tap','.deleBtn button',function(){
+				//唯一码
+				var onlyCode = $(this).attr('name');
+				if($(this).attr('real')=='demoBtn'){
+					$(this).parent().parent().remove();
+					$('.num[name=hasDemo]').text($('.num[name=hasDemo]').text()-1);
+				}else {
+					if($(this).parents('tbody').find('tr').length==1){
+						$(this).parents('.list').remove();
+					}else{
+						$(this).parent().parent().remove();
+					}
+				}
+				$('li').removeClass('showEndTd');
+			})
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>弧形滑动</title>
+	<link rel="stylesheet" href="css/base.css">
+	<script src="js/adapter.js"></script>
+	<style>
+		html,body{
+			width: 100%;
+			height: 100%;
+		}	
+		
+		.half{
+			width: 8rem;
+			height: 4rem;
+			margin:0 auto;
+			margin-top: 3rem;
+			position: relative;
+			overflow:hidden;
+		}
+		.halfContent{
+			border-radius: 50%;
+			width: 100%;
+			height: 200%;
+			border:.02rem solid #aaa;
+			box-sizing: border-box;
+			position: relative;
+		}
+		
+		.kedu{
+			width: 100%;
+			height: 100%;
+			position: relative;
+		}
+		.kedu li{
+			width: .05rem;
+			height: 100%;
+			position: absolute;
+			background-color: #aaa;
+			top:0;
+			left: 50%;
+			transform-origin: center center;
+		}
+		.middle{
+			width: 7.4rem;
+			height: 7.4rem;
+			background-color: #fff;
+			border-radius: 50%;
+			position: absolute;
+			z-index: 99;
+			top: 50%;
+			left: 50%;
+			transform: translate(-3.7rem , -3.7rem);
+		}
+		.zhizhen{
+			width: .2rem;
+			height: 2.8rem;
+			background-color: #aaa;
+			position: absolute;
+			bottom: .2rem;
+			left: 50%;
+			transform: translate(-.1rem);
+			z-index: 99999;
+			transition: transform .3s;
+			-webkit-transform-origin: center bottom;
+			transform-origin: center bottom
+
+		}
+		.zhizhen::after{
+			content: "";
+			width: .4rem;
+			height: .4rem;
+			border-radius: 50%;
+			position: absolute;
+			bottom: -.2rem;
+			left: -.1rem;
+			background-color: #aaa;
+		}
+		.zhizhen::before{
+			content: "";
+			position: absolute;
+			width:0;
+			height: 0;
+			border:.2rem solid transparent;
+			border-bottom-color:#aaa; 
+			top:-.4rem;
+			left: -.1rem;
+		}
+		.mark{
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			background-color: red;
+			z-index: 99999;
+		}
+	</style>
+</head>
+<body>
+	<div class="half">
+		<div class="halfContent">
+			<ul class="kedu">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+	
+			</ul>
+			<div class="middle"></div>
+
+		</div>
+
+		<div class="zhizhen"></div>
+		
+
+	</div>
+
+
+
+		<p style="text-align: center;">当前角度：<span id="showRound"></span></p>	
+
+	<script src="zepto.js"></script>
+	<script>
+	$(function(){
+		getRem();
+		$('.kedu li').each(function(index,item){
+			$(item).css('transform','translateX(-.025rem) rotate('+index*10+'deg)');
+		})
+
+		// console.log($('.half')[0].getBoundingClientRect() );
+
+		var position = $('.half')[0].getBoundingClientRect() 
+		//获取圆形的坐标
+		
+		var init = {'x':position.left+position.width/2,'y':position.top+position.height}
+		$('.mark').css({'top':init.y+'px','left':init.x+'px'})
+		$('.kedu').on('touchstart',function(e){
+
+				$('.zhizhen').css('transition-duration','.3s');
+			var x = e.touches[0].clientX;
+			var y = e.touches[0].clientY;
+			
+			var round = Math.round(Math.atan2(init.x - x ,init.y -y)* 180 / Math.PI);
+			$('#showRound').text(90-round)
+			$('.zhizhen').css('transform','translateX(-.01rem) rotate('+-round+'deg)');
+
+			$(this).unbind('touchmove').on('touchmove',function(e1){
+				e1.preventDefault();
+				var x = e1.touches[0].clientX;
+				var y = e1.touches[0].clientY;
+				$('.zhizhen').css('transition-duration','0s');
+				var round = Math.round(Math.atan2(init.x - x ,init.y -y)* 180 / Math.PI);
+				if(round >90){
+					round = 90;
+				}else if(round <-90){
+					round = -90;
+				}
+				$('.zhizhen').css('transform','translateX(-.01rem) rotate('+-round+'deg)');
+				$('#showRound').text(90-round);
+			})
+
+		})
+
+
+
+
+	})
+
+
+
+	</script>
+</body>
+</html>

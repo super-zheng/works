@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>模板</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" type="text/css" href="css/layui.mobile.css" />
+		<link rel="stylesheet" type="text/css" href="css/publicNum.css" />
+		<style>
+			.layui-table td,
+			.layui-table th {
+				padding: 5px;
+			}
+			
+			table {
+				text-align: center;
+			}
+			#table{
+				width: 100%;
+				overflow: auto;
+			}
+			.layui-table th{
+				text-align: center;
+			}
+			.endTd,.endTh{
+				display: none;
+			}
+			.checkShow  li{
+				float: left;
+				width: 60px;
+				height: 32px;
+				border:1px dashed #1E9FFF;
+				border-radius: 3px;
+				text-align: center;
+				line-height: 32px;
+				margin: 10px;
+				color:#1E9FFF;
+			}
+			.checkShow  li.check{
+				background-color: #1E9FFF;
+				color:white;
+			}
+			#table1{
+				width:100%;
+				overflow: auto;
+			}
+			#table1 .layui-table{
+				width: 600px;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<div id="table">
+			<table class="layui-table">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>类别</th>
+						<th>品牌</th>
+						<th>品类<br />材质<br />系列</th>
+						<th>折射率<br />型号<br />毫升</th>
+						<th>加膜色<br />色号</th>
+						<th class="endTh num">数量</th>
+						<th class="endTh price">价格</th>
+						<td class="endTh stus">状态</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>镜片</td>
+						<td>依视路</td>
+						<td>加膜片</td>
+						<td>1.56</td>
+						<td>#adf</td>
+						<td class="endTd num">12</td>
+						<td class="endTd price">1.2</td>
+						<td class="endTd stus">在售</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>镜片</td>
+						<td>依视路</td>
+						<td>加膜片</td>
+						<td>1.56</td>
+						<td>#adf</td>
+						<td class="endTd num">12</td>
+						<td class="endTd price">1.2</td>
+						<td class="endTd stus">在售</td>					
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>镜片</td>
+						<td>依视路</td>
+						<td>加膜片</td>
+						<td>1.56</td>
+						<td>#adf</td>
+						<td class="endTd num">12</td>
+						<td class="endTd price">1.2</td>
+						<td class="endTd stus">在售</td>					
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>镜片</td>
+						<td>依视路</td>
+						<td>加膜片</td>
+						<td>1.56</td>
+						<td>#adf</td>
+						<td class="endTd num">12</td>
+						<td class="endTd price">1.2</td>
+						<td class="endTd stus">在售</td>					
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>镜片</td>
+						<td>依视路</td>
+						<td>加膜片</td>
+						<td>1.56</td>
+						<td>#adf</td>
+						<td class="endTd num">12</td>
+						<td class="endTd price">1.2</td>
+						<td class="endTd stus">在售</td>					
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>镜片</td>
+						<td>依视路</td>
+						<td>加膜片</td>
+						<td>1.56</td>
+						<td>#adf</td>
+						<td class="endTd num">12</td>
+						<td class="endTd price">1.2</td>
+						<td class="endTd stus">在售</td>					
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+		<ul class="checkShow layui-clear">
+			<li name="num" class="check">数量</li>
+			<li name="price">价格</li>
+			<li name="stus">状态</li>
+			
+		</ul>
+		
+		<div id="table1">
+			<table class="layui-table">
+				
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>类别</th>
+						<th>品牌</th>
+						<th>品类/材质/系列</th>
+						<th>折射率/型号/毫升</th>
+						<th>加膜色/色号</th>
+						<th>数量</th>
+						<th >价格</th>
+						<td>状态</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>镜片</td>
+						<td>依视路</td>
+						<td>加膜片</td>
+						<td>1.56</td>
+						<td>#adf</td>
+						<td>12</td>
+						<td >1.2</td>
+						<td >在售</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>镜片</td>
+						<td>依视路</td>
+						<td>加膜片</td>
+						<td>1.56</td>
+						<td>#adf</td>
+						<td >12</td>
+						<td>1.2</td>
+						<td >在售</td>					
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>镜片</td>
+						<td>依视路</td>
+						<td>加膜片</td>
+						<td>1.56</td>
+						<td>#adf</td>
+						<td >12</td>
+						<td>1.2</td>
+						<td >在售</td>					
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>镜片</td>
+						<td>依视路</td>
+						<td>加膜片</td>
+						<td>1.56</td>
+						<td>#adf</td>
+						<td >12</td>
+						<td>1.2</td>
+						<td >在售</td>					
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>镜片</td>
+						<td>依视路</td>
+						<td>加膜片</td>
+						<td>1.56</td>
+						<td>#adf</td>
+						<td >12</td>
+						<td>1.2</td>
+						<td >在售</td>					
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>镜片</td>
+						<td>依视路</td>
+						<td>加膜片</td>
+						<td>1.56</td>
+						<td>#adf</td>
+						<td >12</td>
+						<td>1.2</td>
+						<td >在售</td>					
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>镜片</td>
+						<td>依视路</td>
+						<td>加膜片</td>
+						<td>1.56</td>
+						<td>#adf</td>
+						<td >12</td>
+						<td>1.2</td>
+						<td >在售</td>					
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="demo"></div>
+		<script src="layui/layui.all.js"></script>
+		<script src="zepto.js"></script>
+		<script src="js/publicNum.js"></script>
+		<script>
+			
+//			$(document).on('touchstart',function(e){
+//				e.stopPropagation();
+//				return false;
+//			})
+			var layer = layui.layer,
+				form = layui.form;
+				var laypage= layui.laypage;
+				console.log(laypage.render({
+					elem:'demo',
+					count:50,
+				}))
+			var width = 0;
+//			$('table').find('col').each(function(index, item) {
+//				width += $(item).attr('width') / 1;
+//				console.log(width);
+//			})
+//			$('table').css('width', width + 'px');
+//			console.log(width)
+			$('.'+$('.check').attr('name')).show();
+			$('.checkShow li').tap(function(){
+				$(this).siblings().removeClass('check');
+				$(this).addClass('check');
+				$('.endTd,.endTh').hide();
+				$('.'+$(this).attr('name')).show();
+			})
+		</script>
+	</body>
+
+</html>

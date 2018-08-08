@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>模板</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" type="text/css" href="css/layui.mobile.css" />
+		<link rel="stylesheet" type="text/css" href="css/publicNum.css" />
+		<style>
+			html,
+			body {
+				height: 100%;
+			}
+			
+			.mobile_chooseGoods {
+				height: 100%;
+				width: 100%;
+				display: flex;
+				flex-flow: column;
+			}
+			
+			.mobile_chooseGoods_types {
+				height: 130px;
+			}
+			
+			.mobile_chooseGoods_types h3 {
+				font-size: 14px;
+				padding-left: 10px;
+				height: 40px;
+				line-height: 40px;
+			}
+			
+			.mobile_chooseGoods_typesList {}
+			
+			.mobile_chooseGoods_typesList li {
+				width: 25%;
+				height: 30px;
+				line-height: 30px;
+				margin-bottom: 10px;
+				float: left;
+			}
+			
+			.mobile_chooseGoods_type {
+				width: 80%;
+				margin: 0 auto;
+				background-color: silver;
+				text-align: center;
+				font-size: 12px;
+				color: #333;
+			}
+			
+			.mobile_chooseGoods_typesList li .mobile_chooseGoods_type.active {
+				background-color: #25AFFF;
+				color: white;
+			}
+			
+			.mobile_chooseGoods_content {
+				border-top: 1px solid #eee;
+				flex: 1;
+				display: flex;
+			}
+			
+			.mobile_chooseGoods_endBtn {
+				height: 60px;
+				background-color: red;
+			}
+			
+			.mobile_chooseGoods_content_siderBar {
+				width: 100px;
+			}
+			
+			.mobile_chooseGoods_content_details {
+				flex: 1;
+				overflow: auto;
+			}
+			
+			.mobile_chooseGoods_content_siderBar_lists li {
+				width: 80%;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				background-color: silver;
+				margin: 10px auto;
+				color: white;
+				border-radius: 3px;
+			}
+			
+			.mobile_chooseGoods_content_siderBar_lists li.active {
+				background-color: #25A9E1;
+				color: white;
+			}
+			
+			.mobile_chooseGoods_content_details_lists {
+				width: 80%;
+				margin: 0 auto;
+			}
+			
+			.mobile_chooseGoods_content_details_lists li {
+				text-align: center;
+				background-color: #e5e5e5;
+				margin: 10px 0;
+				height: 30px;
+				line-height: 30px;
+			}
+			
+			.mobile_chooseGoods_content_details_lists li.active {
+				background-color: #25AFFF;
+				color: white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mobile_chooseGoods">
+			<div class="mobile_chooseGoods_types">
+				<h3>类型</h3>
+				<ul class="mobile_chooseGoods_typesList clearfix">
+					<li name="1">
+						<div class="mobile_chooseGoods_type active">镜片</div>
+					</li>
+					<li name="2">
+						<div class="mobile_chooseGoods_type">镜架</div>
+					</li>
+					<li name="3">
+						<div class="mobile_chooseGoods_type">太阳眼镜</div>
+					</li>
+					<li name="4">
+						<div class="mobile_chooseGoods_type">成品眼镜</div>
+					</li>
+					<li name="5">
+						<div class="mobile_chooseGoods_type">隐形眼镜</div>
+					</li>
+					<li name="6">
+						<div class="mobile_chooseGoods_type">护理液</div>
+					</li>
+					<li name="7">
+						<div class="mobile_chooseGoods_type">配件</div>
+					</li>
+				</ul>
+			</div>
+			<div class="mobile_chooseGoods_content">
+				<div class="mobile_chooseGoods_content_siderBar">
+					<ul class="mobile_chooseGoods_content_siderBar_lists">
+						<li class="active" name="lens_brand">品牌</li>
+						<li name="lens_model">品类</li>
+						<li name="lens_material">材质</li>
+						<li name="lens_refractivity">折射率</li>
+					</ul>
+				</div>
+				<div class="mobile_chooseGoods_content_details">
+					<ul class="mobile_chooseGoods_content_details_lists">
+						<li>宝岛1</li>
+						<li>宝岛2</li>
+						<li>宝岛3</li>
+						<li>宝岛4</li>
+						<li>宝岛5</li>
+						<li>宝岛6</li>
+						<li>宝岛7</li>
+						<li>宝岛8</li>
+						<li>宝岛9</li>
+						<li>宝岛0</li>
+					</ul>
+				</div>
+			</div>
+			<div class="mobile_chooseGoods_endBtn">
+
+			</div>
+
+		</div>
+
+		<script src="layui/layui.all.js"></script>
+		<script src="zepto.js"></script>
+		<script src="js/publicNum.js"></script>
+		<script>
+			var layer = layui.layer,
+				form = layui.form;
+			var types = 1;
+			var select = {
+				type: 1,
+				select: 'lens_brand'
+			};
+			var tiaojian = [
+				[{
+					'name': '品牌',
+					'key': 'lens_brand'
+				}, {
+					'name': '品类',
+					'key': 'lens_model'
+				}, {
+					'name': '材质',
+					'key': 'lens_material'
+				}, {
+					'name': '折射率',
+					'key': 'lens_refractivity'
+				}],
+				[{
+					'name': '品牌',
+					'key': 'gframe_brand'
+				}, {
+					'name': '品类',
+					'key': 'gframe_model'
+				}, {
+					'name': '型号',
+					'key': 'gframe_style'
+				}, {
+					'name': '材质',
+					'key': 'gframe_material'
+				}],
+				[{
+					'name': '品牌',
+					'key': 'sun_brand'
+				}, {
+					'name': '品类',
+					'key': 'o1'
+				}, {
+					'name': '型号',
+					'key': 'sun_style'
+				}, {
+					'name': '材质',
+					'key': 'sun_material'
+				}],
+				[{
+					'name': '品牌',
+					'key': 'presbyopic_brand'
+				}, {
+					'name': '品类',
+					'key': 'o1'
+				}, {
+					'name': '材质',
+					'key': 'presbyopic_lensMaterial'
+				}, {
+					'name': '功能',
+					'key': 'presbyopic_function'
+				}],
+				[{
+					'name': '品牌',
+					'key': 'contact_brand'
+				}, {
+					'name': '品类',
+					'key': 'o1'
+				}, {
+					'name': '型号',
+					'key': 'contact_model'
+				}, {
+					'name': '材质',
+					'key': 'contact_material'
+				}],
+				[{
+					'name': '品牌',
+					'key': 'caresolution_brand'
+				}, {
+					'name': '系列',
+					'key': 'o1'
+				}, {
+					'name': '容量',
+					'key': 'caresolution_rule'
+				}],
+				[{
+					'name': '品牌',
+					'key': 'accessory_brand'
+				}, {
+					'name': '型号',
+					'key': 'accessory_model'
+				}, {
+					'name': '材质',
+					'key': 'accessory_material'
+				}, {
+					'name': '功能',
+					'key': 'accessory_function'
+				}]
+
+			]
+			$('.mobile_chooseGoods_typesList li .mobile_chooseGoods_type').click(function() {
+				// $('.mobile_chooseGoods_typesList li .mobile_chooseGoods_type').removeClass('active');
+				$(this).addClass('active').parent().siblings().children().removeClass('active')
+				types = $(this).parent().attr('name');
+
+				//设置详细列表查询参数
+				select = {
+					type: types,
+					select: tiaojian[types - 1][0].key
+				}
+				//渲染侧边栏商品参数
+				var typeStr = '';
+				tiaojian[types - 1].forEach(function(item, index) {
+					typeStr += '<li name="' + item.key + '" class="' + (index == 0 ? 'active' : '') + '">' + item.name + '</li>'
+				})
+				$('.mobile_chooseGoods_content_siderBar_lists').html(typeStr);
+				console.log(select)
+			})
+			//侧边栏点击事件
+			$('.mobile_chooseGoods_content_siderBar_lists').on('click', 'li', function() {
+				$(this).parent().find('li').removeClass('active');
+				$(this).addClass('active');
+				select.select = $(this).attr('name');
+				if(select[$(this).attr('name')]) {
+					var text = select[$(this).attr('name')];
+					delete select[$(this).attr('name')];
+
+				}
+				//根据条件对象select 发请求.拿到detail 数组					
+				var detailArr = ['1', '2', '3', '4', '5', '6'];
+				var detailStr = '';
+				detailArr.forEach(function(item, index) {
+					detailStr += '<li class="' + (text == item ? 'active' : '') + '">' + item + '</li>';
+				})
+				$('.mobile_chooseGoods_content_details_lists').html(detailStr)
+				if(text) {
+					select[$(this).attr('name')] = text;
+				}
+				console.log(select)
+			});
+			//详细参数点击事件
+			$('.mobile_chooseGoods_content_details_lists').on('click', 'li', function() {
+				if($(this).hasClass('active')) {
+					$(this).removeClass('active');
+					delete select[$('.mobile_chooseGoods_content_siderBar_lists li.active').attr('name')];
+				} else {
+					$(this).parent().find('li').removeClass('active');
+					$(this).addClass('active');
+					select[$('.mobile_chooseGoods_content_siderBar_lists li.active').attr('name')] = $(this).text();
+				}
+			});
+		</script>
+	</body>
+
+</html>
