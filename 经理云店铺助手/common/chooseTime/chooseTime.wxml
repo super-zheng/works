@@ -1,0 +1,25 @@
+<view class='headChoose'>
+    <text class='colorOrange'>{{labelStr}}</text>
+    <view class='checkTime'>
+      <view class='start'>
+        <text class='lable'>起</text>
+        <view class="section">
+          <picker mode="date" value="{{times.startTime}}" start="2000-01-01" end="{{initTimes.overTime}}" bindchange="bindDateChange" data-times="startTime">
+            <view class="picker">
+              <input type='text' disabled='true' value="{{initTimes.startTime}}"></input>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='end'>
+        <text class='lable'>止</text>
+        <view class="section">
+          <picker mode="date" value="{{initTimes.overTime}}" start="{{initTimes.startTime}}" end="{{initTimes.nowTime}}" bindchange="bindDateChange" data-times="overTime">
+            <view class="picker">
+              <input type='text' disabled='true' value="{{initTimes.overTime}}" ></input>
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+  </view>

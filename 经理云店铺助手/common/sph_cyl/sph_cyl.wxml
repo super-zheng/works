@@ -1,0 +1,14 @@
+<view class="QZtable">
+  <view class='zjTitle clearfix'>
+    <view class='QZth QZlabel'>
+      <text class='text1'>球镜</text>/
+      <text class='text2'>柱镜</text>
+    </view>
+    <view class='QZth th' wx:for='{{zjArr}}' wx:for-item='zjItem'>{{zjItem}}</view>
+  </view>
+  <view wx:for="{{qjArr}}" wx:for-item="qzItem" class='QZtbody clearfix'>
+    <view class='QZtd tdLabel'>{{qzItem}}</view>
+    <view class='QZtd td' wx:for='{{zjArr}}' wx:for-item='zjItem' data-zj="{{zjItem}}" data-qj="{{qjItem}}"></view>
+  </view>
+
+</view>

@@ -1,0 +1,33 @@
+/* pages/productdetail1/productdetail1.wxss */
+.details{
+  font-size:14px;
+
+
+}
+.title{
+  height: 40px;
+  padding-left: 10px;
+  line-height: 40px;
+  border-bottom: 1px solid #eee;
+}
+.detailLists{
+  padding: 0px 10px;
+}
+.list{
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #eee;
+}
+
+.list text{
+  width:50%;
+  float: left;
+}
+.swiper {
+  height: 400rpx;
+  width: 100%;
+}
+.swiper image {
+  height: 100%;
+  width: 100%;
+}

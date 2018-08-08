@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "选择商品",
+  "backgroundColor": "#ababaa",
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#000",
+  "navigationBarTextStyle": "white"
+}

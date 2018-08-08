@@ -1,0 +1,196 @@
+/* pages/products/products.wxss */
+.products_contain{
+  margin-left: 5px;
+  overflow: hidden;
+}
+navigator{
+  height: 40px;
+}
+.searchInput{
+  position: absolute;
+  left: 2%;
+  width:30%;
+  top:10px;
+  height: 30px;
+  border:1px solid #ccc;
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  padding-left:10px;
+  font-size: 14px;
+}
+.sectionType{
+  position: absolute;
+  top:17px;
+  right: 50px;
+  font-size: 14px;
+}
+.shopCar{
+  height: 30px;
+  width:30px;
+  position: absolute;
+  top:10px;
+  right:10px;
+}
+.searchBtn{
+  width: 60px;
+  position: absolute;
+  top:10px;
+  left:32%;
+  height: 32px;
+  font-size: 14px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+navigator{
+  padding:0px 0px 10px 10px;
+}
+.product_item {
+    /* text-align: center; */
+    overflow: hidden;
+}
+.detailMsg{
+  background-color:#eee;
+  box-sizing: border-box;
+  margin:0px 10px;
+}
+.detailMsg text{
+  font-size: 14px;
+  line-height: 20px;
+  padding-left: 10px;
+}
+.pinpai,.qzj{
+  display: block;
+}
+
+.listShow{
+  width:50%;
+  float:left;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+.product_item_but{
+  height: 95px;
+  background-color: #eee;
+  width: 98%;
+}
+.icon_money{
+  float: left;
+  color: red;
+}
+.product_image{
+  padding:10px 10px 0px 10px;
+  display:block;
+  margin-bottom: 0px;
+}
+.product_image image{
+  width:100%;
+  height: 150px;
+  display: block;
+}
+.product_item  .money{
+    color: red;
+    font-weight: bold;
+    margin:0 10px;
+}
+ .product_item .num{
+    height: 28px;
+    width: 52px;
+    font-size: 16px;
+    border-bottom: 1px solid #000;
+    float: left;
+    padding-left: 5px;
+    margin: 0px 4px;
+    color:red;
+} 
+.item text{
+  height: 35px;
+  line-height: 35px
+}
+.item image{
+  height: 30px;
+  width: 30px;
+  margin-top: 10px;
+  margin-left: 10px;
+  float: right;
+}
+.item{
+  overflow: hidden;
+  background-color: #eee;
+  margin:0px 10px;
+  box-sizing: border-box;
+}
+.scan{
+  height: 40px;
+  line-height: 40px;
+  width: 70%;
+  color: #ffffff;
+  background-color: #1AAD19;
+  margin: 20px auto;
+}
+.btn{
+  height: 30px;
+  margin: 20px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

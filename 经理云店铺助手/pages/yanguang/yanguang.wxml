@@ -1,0 +1,427 @@
+<view class='container' hidden='{{showToast}}'>
+  <view class='baseMessage'>
+    <view class='MessageItem'>
+      <view class='lable'>电话</view>
+      <view class='itemContent'>
+        <input class='messageInput' value='{{submitObj.customer_tel}}' maxlength="11" data-name="customer_tel" bindinput='changeInput' bindblur="blurInput"></input>
+      </view>
+    </view>
+    <view class='MessageItem'>
+      <view class='lable'>姓名</view>
+      <view class='itemContent'>
+        <input class='messageInput' placeholder='请输入姓名' value='{{submitObj.customer_name}}' data-name="customer_name" bindinput='changeInput'></input>
+      </view>
+    </view>
+    <view class='MessageItem'>
+      <view class='lable'>性别</view>
+      <view class='itemContent'>
+        <view class='textAlgin' bindtap='checkBox' data-name="customer_sex" data-num="1">
+          <text class='radioUncheck {{submitObj.customer_sex==1?"radioCheck":""}}'></text>
+          <text style='margin-left:.5rem'>男</text>
+        </view>
+        <view class='textAlgin' bindtap='checkBox' data-name="customer_sex" data-num="2">
+          <text class='radioUncheck {{submitObj.customer_sex==2?"radioCheck":""}}'></text>
+          <text style='margin-left:.5rem'>女</text>
+        </view>
+        <view class='textAlgin' bindtap='checkBox' data-name="customer_sex" data-num="0">
+          <text class='radioUncheck {{submitObj.customer_sex==0?"radioCheck":""}}'></text>
+          <text style='margin-left:.5rem'>其他</text>
+        </view>
+      </view>
+    </view>
+    <view class='MessageItem'>
+      <view class='lable'>标签</view>
+      <view class='itemContent color777' bindtap='chooseBiaoqian'>
+        {{(submitObj.optometry_other2==''?"请选择标签":submitObj.optometry_other2)||"请选择标签"}}
+      </view>
+      <modal hidden="{{chooseBiaoqian}}" title="请选择标签" confirm-text="确定" cancel-text="取消" bindcancel="cancel1" bindconfirm="confirm1">
+        <view class='biaoqianBox'>
+          <text bindtap='checkBiaoqian' class='{{biaoqian[0].check?"colorActive":""}}' data-num='0'>加膜</text>
+          <text bindtap='checkBiaoqian' class='{{biaoqian[1].check?"colorActive":""}}' data-num='1'>倒边</text>
+          <text bindtap='checkBiaoqian' class='{{biaoqian[2].check?"colorActive":""}}' data-num='2'>染色</text>
+          <text bindtap='checkBiaoqian' class='{{biaoqian[3].check?"colorActive":""}}' data-num='3'>明天取货</text>
+        </view>
+      </modal>
+    </view>
+    <view class='MessageItem '>
+      <view class='lable'>验光师</view>
+      <view class='itemContent color777' bindtap='chooseYANGUANG'>
+        {{(submitObj.optometry_optistName==''?"请选择验光师":submitObj.optometry_optistName)||"请选择验光师"}}
+      </view>
+
+      <modal hidden="{{chooseYanguangshi}}" title="请选择验光师" confirm-text="确定" cancel-text="取消" bindcancel="cancel2" bindconfirm="confirm2">
+        <view class='yanguangshiBox'>
+          <picker-view indicator-style="height: 50rpx;" style="width: 300rpx; height: 300rpx;" value="{{}}" bindchange="yanguangshi">
+            <picker-view-column>
+              <view wx:for="{{yanguangshi}}" style="line-height:34px" data-id="{{item.user_id}}">{{item.user_realname}}</view>
+            </picker-view-column>
+          </picker-view>
+        </view>
+      </modal>
+    </view>
+    <view class='MessageItem '>
+      <view class='lable'>用途</view>
+      <view class='itemContent'>
+        <view class='textAlgin' bindtap='checkBox' data-name="optometry_use" data-num="0">
+          <text class='radioUncheck {{submitObj.optometry_use==0?"radioCheck":""}}'></text>
+          <text style='margin-left:.5rem'>近用</text>
+        </view>
+        <view class='textAlgin' bindtap='checkBox' data-name="optometry_use" data-num="1">
+          <text class='radioUncheck {{submitObj.optometry_use==1?"radioCheck":""}}'></text>
+          <text style='margin-left:.5rem'>远用</text>
+        </view>
+        <view class='textAlgin' bindtap='checkBox' data-name="optometry_use" data-num="2">
+          <text class='radioUncheck {{submitObj.optometry_use==2?"radioCheck":""}}'></text>
+          <text style='margin-left:.5rem'>渐进</text>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 改动1 -->
+  <view class='tab clearfix'>
+    <text class='{{qiehuanId==1?"bgcolor":""}}' data-id="1" bindtap='qiehuan'>定配单\处方单</text>
+    <text class='{{qiehuanId==2?"bgcolor":""}}' data-id="2" bindtap='qiehuan'>验光单\轴性视力</text>
+    <text class='{{qiehuanId==3?"bgcolor":""}}' data-id="3" bindtap='qiehuan'>旧镜架度数</text>
+  </view>
+
+  <view class='dingpei'>
+    <!-- <view class='Title'>
+      <text>订配信息填写</text>
+    </view> -->
+    <view class='dingpeiContent'>
+      <view class='chooseRL'>
+        <view>
+          <text class='choseSmall right  {{nowCurrent==0?"RLactive":""}}' bindtap='checkDingpei' data-check="0">右（R）</text>
+          <text class='choseSmall left {{nowCurrent!=0?"RLactive":""}}' bindtap='checkDingpei' data-check="1">左（L）</text>
+        </view>
+      </view>
+      <view class='dingpeidan' hidden='{{nowCurrent!=0}}' bindtap='openToast'>
+        <view class='dingpeiItem'>
+          <text>球镜(Sph)</text>
+          <input class='dingpeiInput' disabled='true' value='{{submitObj.optometry_sph_right}}'></input>
+        </view>
+        <view class='dingpeiItem'>
+          <text>柱镜(Cyl)</text>
+          <input class='dingpeiInput' disabled='true' value='{{submitObj.optometry_cyl_right}}'></input>
+        </view>
+        <view class='dingpeiItem'>
+          <text>轴位(Axis)</text>
+          <input class='dingpeiInput' disabled='true' value='{{submitObj.optometry_OA_right}}'></input>
+        </view>
+        <view class='dingpeiItem'>
+          <text>下加光(Add)</text>
+          <input class='dingpeiInput' disabled='true' value='{{submitObj.optometry_R}}'></input>
+        </view>
+        <view class='dingpeiItem'>
+          <text>瞳距</text>
+          <view catchtap='checkHebingShow'>
+            <image src='../images/merge.png' wx:if='{{hebing}}'></image>
+            <image src='../images/separate.png' wx:if='{{!hebing}}'></image>
+          </view>
+          <input class='dingpeiInput' disabled='true' value='{{(submitObj.optometry_PD_right*(hebing?2:1))==0?"":(submitObj.optometry_PD_right*(hebing?2:1))}}'></input>
+        </view>
+        <view class='dingpeiItem'>
+          <text>近用瞳距PD</text>
+          <input class='dingpeiInput' disabled='true' value='{{submitObj.optometry_o1}}'></input>
+        </view>
+        <view class='dingpeiItem'>
+          <text>瞳高</text>
+          <input class='dingpeiInput' disabled='true' value='{{submitObj.optometry_PH_right}}'></input>
+        </view>
+        <view class='dingpeiItem'>
+          <text>矫正视力</text>
+          <input class='dingpeiInput' disabled='true' value='{{submitObj.optometry_CVA_right2}}'></input>
+        </view>
+
+
+      </view>
+      <view class='dingpeidan' hidden='{{nowCurrent==0}}' bindtap='openToast'>
+        <view class='dingpeiItem'>
+          <text>球镜(Sph)</text>
+          <input class='dingpeiInput' disabled='true' value='{{submitObj.optometry_sph_left}}'></input>
+        </view>
+        <view class='dingpeiItem'>
+          <text>柱镜(Cyl)</text>
+          <input class='dingpeiInput' disabled='true' value='{{submitObj.optometry_cyl_left}}'></input>
+        </view>
+        <view class='dingpeiItem'>
+          <text>轴位(Axis)</text>
+          <input class='dingpeiInput' disabled='true' value='{{submitObj.optometry_OA_left}}'></input>
+        </view>
+        <view class='dingpeiItem'>
+          <text>下加光(Add)</text>
+          <input class='dingpeiInput' disabled='true' value='{{submitObj.optometry_ADD}}'></input>
+        </view>
+        <view class='dingpeiItem'>
+          <text>瞳距</text>
+          <view catchtap='checkHebingShow'>
+            <image src='../images/merge.png' wx:if='{{hebing}}'></image>
+            <image src='../images/separate.png' wx:if='{{!hebing}}'></image>
+          </view>
+          <input class='dingpeiInput' disabled='true' value='{{(submitObj.optometry_PD_left*(hebing?2:1))==0?"":(submitObj.optometry_PD_left*(hebing?2:1))}}'></input>
+        </view>
+        <view class='dingpeiItem'>
+          <text>近用瞳距PD</text>
+          <input class='dingpeiInput' disabled='true' value='{{submitObj.optometry_PDjin}}'></input>
+        </view>
+        <view class='dingpeiItem'>
+          <text>瞳高</text>
+          <input class='dingpeiInput' disabled='true' value='{{submitObj.optometry_PH_left}}'></input>
+        </view>
+        <view class='dingpeiItem'>
+          <text>矫正视力</text>
+          <input class='dingpeiInput' disabled='true' value='{{submitObj.optometry_CVA_left2}}'></input>
+        </view>
+
+
+      </view>
+
+    </view>
+
+
+  </view>
+  <view class='others'>
+    <view class='Title'>
+      <!-- <text>{{nowCurrent==0?"右眼":"左眼"}}其他参数</text> -->
+      <text>其他参数</text>
+      <image class='title-img' src='{{img}}' bindtap='changeImg'></image>
+    </view>
+    <!--右眼参数  -->
+    <view wx:if="{{isZhedie}}" class='messageLists' hidden='{{!checkdingpei}}'>
+
+      <view class='list'>
+
+        <!-- <input class='listInput' placeholder='R' value='{{submitObj.optometry_jiuR}}' data-name="optometry_jiuR" bindinput='changeInput'></input>
+        <input class='listInput1' placeholder='L' value='{{submitObj.optometry_jiu}}' data-name="optometry_jiu" bindinput='changeInput'></input> -->
+        <text class='list-r'>R</text>
+        <text class='list-l'>L</text>
+      </view>
+
+      <view class='list'>
+        <text class='listText'>旧镜视力</text>
+        <input class='listInput' placeholder='0.00' value='{{submitObj.optometry_jiuR}}' data-name="optometry_jiuR" bindinput='changeInput'></input>
+        <input class='listInput1' placeholder='0.00' value='{{submitObj.optometry_jiu}}' data-name="optometry_jiu" bindinput='changeInput'></input>
+      </view>
+
+      <view class='list'>
+        <text class='listText'>裸眼视力</text>
+        <input class='listInput' placeholder='0.00' value='{{submitObj.optometry_NV_right}}' data-name="optometry_NV_right" bindinput='changeInput'></input>
+        <input class='listInput1' placeholder='0.00' value='{{submitObj.optometry_NV_left}}' data-name="optometry_NV_left" bindinput='changeInput'></input>
+      </view>
+
+      <view class='list'>
+        <text class='listText'>散瞳视力</text>
+        <input class='listInput' placeholder='0.00' value='{{submitObj.optometry_sanR2}}' data-name="optometry_sanR2" bindinput='changeInput'></input>
+        <input class='listInput1' placeholder='0.00' value='{{submitObj.optometry_san2}}' data-name="optometry_san2" bindinput='changeInput'></input>
+      </view>
+
+      <view class='list'>
+        <text class='listText'>棱镜Prism</text>
+        <input class='listInput' placeholder='0.00' value='{{submitObj.optometry_prism_right}}' data-name="optometry_prism_right" bindinput='changeInput'></input>
+        <input class='listInput1' placeholder='0.00' value='{{submitObj.optometry_prism_left}}' data-name="optometry_prism_left" bindinput='changeInput'></input>
+      </view>
+
+      <view class='list'>
+        <text class='listText'>眼底</text>
+        <input class='listInput' placeholder='0.00' value='{{submitObj.optometry_fundus_right}}' data-name="optometry_fundus_right" bindinput='changeInput'></input>
+        <input class='listInput1' placeholder='0.00' value='{{submitObj.optometry_fundus_left}}' data-name="optometry_fundus_left" bindinput='changeInput'></input>
+      </view>
+
+      <!-- <view class='list'>
+        <text class='listText'>其他</text>
+        <input class='listInput' placeholder='描述' value='{{submitObj.optometry_other2}}' data-name="optometry_other2" bindinput='changeInput'></input>
+      </view> -->
+      <view class="miaoxu">
+        <textarea placeholder="描叙" />
+      </view>
+
+
+    </view>
+    <!--左眼参数  -->
+    <!-- <view wx:if="{{isZhedie}}" class='messageLists' hidden='{{checkdingpei}}'>
+      <view class='list'>
+        <text class='listText'>旧镜视力</text>
+        <input class='listInput' placeholder='0.00' value='{{submitObj.optometry_jiu}}' data-name="optometry_jiu" bindinput='changeInput'></input>
+      </view>
+
+      <view class='list'>
+        <text class='listText'>裸眼视力</text>
+        <input class='listInput' placeholder='0.00' value='{{submitObj.optometry_NV_left}}' data-name="optometry_NV_left" bindinput='changeInput'></input>
+      </view>
+
+      <view class='list'>
+        <text class='listText'>散瞳视力</text>
+        <input class='listInput' placeholder='0.00' value='{{submitObj.optometry_san2}}' data-name="optometry_san2" bindinput='changeInput'></input>
+      </view>
+
+      <view class='list'>
+        <text class='listText'>棱镜Prism</text>
+        <input class='listInput' placeholder='0.00' value='{{submitObj.optometry_prism_left}}' data-name="optometry_prism_left" bindinput='changeInput'></input>
+      </view>
+
+      <view class='list'>
+        <text class='listText'>眼底</text>
+        <input class='listInput' placeholder='0.00' value='{{submitObj.optometry_fundus_left}}' data-name="optometry_fundus_left" bindinput='changeInput'></input>
+      </view>
+
+      <view class='list'>
+        <text class='listText'>其他</text>
+        <input class='listInput' placeholder='描述' value='{{submitObj.optometry_other2}}' data-name="optometry_other2" bindinput='changeInput'></input>
+      </view>
+
+
+    </view> -->
+
+  </view>
+  <view class='endBtn'>
+    <view class='reset' hover-class='btnActive' hover-stay-time='0' bindtap='reset'>重置</view>
+    <view class='save' hover-class='btnActive' hover-stay-time='0' bindtap='save'>保存</view>
+  </view>
+</view>
+
+<view class='yanguang' wx:if='{{showToast}}'>
+  <swiper class="swiper1" interval="1000" duration="200" circular="true" bindanimationfinish='getIndex' current='{{nowCurrent}}'>
+    <block wx:for="{{RL}}" wx:for-index="index">
+      <swiper-item class='RL'>
+        <view class='RandL'>{{item}}</view>
+
+      </swiper-item>
+    </block>
+  </swiper>
+  <swiper class="swiper2" interval="1000" duration="200" bindanimationfinish='getIndex1' current='{{nowCurrent1}}'>
+    <swiper-item>
+      <view class='page1'>
+        <view class='height50'>
+          <view class='toastTitle'>球镜SPH</view>
+          <picker-view indicator-style="height: 50rpx;" style="width: 300rpx; height: 300rpx;" value="{{moren.qjValue[nowCurrent]}}" bindchange="bindChange" data-name='optometry_sph_right,optometry_sph_left' data-arr="qjArr" data-value="qjValue">
+            <picker-view-column>
+              <view wx:for="{{initArr.qjArr}}" style="line-height:34px">{{item}}</view>
+            </picker-view-column>
+          </picker-view>
+        </view>
+        <view class='mb120 height50 firstDb'>
+          <view class='oneOf'>
+            <view class='toastTitle hasCheckBtn'>
+              <text>瞳距PD</text>
+              <view class='checkBox' bindtap='checkHebing'>
+                <image src="../images/merge.png" class='hebingImg' wx:if="{{hebing}}"></image>
+                <image src="../images/separate.png" class='hebingImg' wx:if="{{!hebing}}"></image>
+              </view>
+            </view>
+            <picker-view indicator-style="height: 50rpx;" style="width: 300rpx; height: 300rpx;" value="{{moren.pdValue[nowCurrent]}}" bindchange="bindChange" data-name="optometry_PD_right,optometry_PD_left" data-arr="pdArr" data-value="pdValue">
+              <picker-view-column>
+                <view wx:for="{{initArr.pdArr}}" style="line-height:34px">{{item}}</view>
+              </picker-view-column>
+            </picker-view>
+          </view>
+          <view class='oneOf'>
+            <view class='toastTitle hasCheckBtn'>
+              <text>矫正视力</text>
+              <view class='checkBox' catchtap='checkJiaozheng'>
+                <image src="../images/biaozhun.png" class='hebingImg' wx:if="{{jiaozheng}}"></image>
+                <image src="../images/duishu.png" class='hebingImg' wx:if="{{!jiaozheng}}"></image>
+              </view>
+            </view>
+            <picker-view indicator-style="height: 50rpx;" style="width: 300rpx; height: 300rpx;" value="{{moren.cvaValue[nowCurrent]}}" bindchange="bindChange" data-name="optometry_CVA_right2,optometry_CVA_left2" data-arr="cvaArr" data-value="cvaValue">
+              <picker-view-column>
+                <view wx:for="{{initArr.cvaArr}}" style="line-height:34px">{{item}}</view>
+              </picker-view-column>
+            </picker-view>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+
+    <swiper-item>
+      <view class='page2'>
+        <view class='height50'>
+          <view class='toastTitle'>柱镜CYL</view>
+          <picker-view indicator-style="height: 50rpx;" style="width: 300rpx; height: 300rpx;" value="{{moren.zjValue[nowCurrent]}}" bindchange="bindChange" data-name="optometry_cyl_right,optometry_cyl_left" data-arr="zjArr" data-value="zjValue">
+            <picker-view-column>
+              <view wx:for="{{initArr.zjArr}}" style="line-height:34px">{{item}}</view>
+            </picker-view-column>
+          </picker-view>
+        </view>
+        <view class='mb120 height50' catchtouchmove='demo1'>
+          <view class='toastTitle'>轴位AX</view>
+          <view class='biaopan colorBlue'>
+            <view class='yibiaopan' catchtap='setZhouwei' id='mjltest' catchtouchmove='targerMove' catchtouchend='targetLeave'>
+              <view class='zhizhen' style='transform: rotate({{-moren.axValue[nowCurrent][0]}}deg);transition:all {{transition}}s'></view>
+            </view>
+            <view class='jiajian'>
+              <text style=' margin-left:-30rpx;'>180</text>
+              <text>0</text>
+            </view>
+
+            <view class='jiajian'>
+
+              <image src='../images/plus.png' class='clickBtn plus' data-add='-1' catchtap='jiajian'></image>
+              <text>{{moren.axValue[nowCurrent][0]}}</text>
+              <image src='../images/reduce.png' class='clickBtn reduce' data-add='1' catchtap='jiajian'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class='fatherBox'>
+        <view class='page3'>
+          <view class='height50'>
+            <view class='toastTitle hasCheckBtn'>
+              <text>下加光ADD</text>
+              <view class='hideBox' data-num='0' catchtap='checkOpen'>
+                <image src='../images/onblueBtn.png' class='openBtn' wx:if="{{kaiguan[0]}}"></image>
+                <image src='../images/off_btn.png' class='openBtn' wx:if="{{!kaiguan[0]}}"></image>
+              </view>
+            </view>
+            <picker-view indicator-style="height: 50rpx;" style="width: 300rpx; height: 300rpx;" value="{{moren.addValue[nowCurrent]}}" bindchange="bindChange" data-name="optometry_R,optometry_ADD" data-arr="addArr" data-value="addValue" wx:if='{{kaiguan[0]}}'>
+              <picker-view-column>
+                <view wx:for="{{initArr.addArr}}" style="line-height:34px">{{item}}</view>
+              </picker-view-column>
+            </picker-view>
+          </view>
+          <view class='dbView '>
+            <view class='shipei1'>
+              <view class='toastTitle hasCheckBtn'>
+                <text>近用瞳距</text>
+                <view class='hideBox' data-num='1' catchtap='checkOpen'>
+                  <image src='../images/onblueBtn.png' class='openBtn' wx:if="{{kaiguan[1]}}"></image>
+                  <image src='../images/off_btn.png' class='openBtn' wx:if="{{!kaiguan[1]}}"></image>
+                </view>
+              </view>
+              <picker-view indicator-style="height: 50rpx;" style="width: 300rpx; height: 300rpx;" value="{{moren.jingyongValue[nowCurrent]}}" bindchange="bindChange" data-name="optometry_o1,optometry_PDjin" data-arr="jingyongArr" data-value="jingyongValue" wx:if='{{kaiguan[1]}}'>
+                <picker-view-column>
+                  <view wx:for="{{initArr.jingyongArr}}" style="line-height:34px">{{item}}</view>
+                </picker-view-column>
+              </picker-view>
+            </view>
+            <view class='shipei1'>
+              <view class='toastTitle hasCheckBtn'>
+                <text>瞳高</text>
+                <view class='hideBox' data-num='2' catchtap='checkOpen'>
+                  <image src='../images/onblueBtn.png' class='openBtn' wx:if="{{kaiguan[2]}}"></image>
+                  <image src='../images/off_btn.png' class='openBtn' wx:if="{{!kaiguan[2]}}"></image>
+                </view>
+              </view>
+              <picker-view indicator-style="height: 50rpx;" style="width: 300rpx; height: 300rpx;" value="{{moren.vdValue[nowCurrent]}}" bindchange="bindChange" data-name="optometry_PH_right,optometry_PH_left" data-arr="vdArr" data-value="vdValue" wx:if='{{kaiguan[2]}}'>
+                <picker-view-column>
+                  <view wx:for="{{initArr.vdArr}}" style="line-height:34px">{{item}}</view>
+                </picker-view-column>
+              </picker-view>
+            </view>
+
+
+          </view>
+        </view>
+
+
+      </view>
+    </swiper-item>
+  </swiper>
+  <view class='toastBtns'>
+    <view class='btnActive cancel ' hover-class='active' bindtap='cancelSet'>取消</view>
+    <view class='btnActive ok' hover-class='active' bindtap='resSet'>确定</view>
+  </view>
+</view>

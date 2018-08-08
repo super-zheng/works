@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "choose-goods": "../../common/chooseGoods/chooseGoods"
+  },
+  "navigationBarTitleText": "盘点",
+  "backgroundColor": "#ababaa",
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#000",
+  "navigationBarTextStyle": "white"
+}

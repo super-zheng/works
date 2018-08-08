@@ -1,0 +1,152 @@
+page{
+  display: flex;
+  justify-content: center;
+}
+.zjTitle{
+  font-size:24rpx;
+  margin: 0 auto;
+}
+.QZth{
+  background-color:#26a9e1;
+  color: white;
+  height: 60rpx;
+  line-height: 60rpx;
+  float: left;
+  text-align: center;
+  border:1rpx solid #fff;
+  box-sizing: border-box;
+  width: 82rpx;
+}
+.QZtd{
+  font-size: 28rpx;
+}
+.QZlabel{
+  /* margin-left: 8rpx; */
+  font-size: 18rpx;
+  padding: 0rpx 8rpx;
+  position: relative;
+}
+.text1{
+  position: absolute;
+  left: 5rpx;
+  top:15rpx;
+  line-height: 18rpx;
+}
+.text2{
+  position: absolute;
+  right: 5rpx;
+  bottom:15rpx;
+  line-height: 18rpx;
+}
+.tdLabel{
+  font-size: 24rpx;
+  background-color: #26a9e1;
+  color: white;
+  /* margin-left: 8rpx; */
+}
+.QZtd{
+  height: 60rpx;
+  line-height: 60rpx;
+  float: left;
+  text-align: center;
+  border:1rpx solid #fff;
+  box-sizing: border-box;
+  width: 82rpx;
+  
+}
+.QZtbody{
+  font-size:24rpx;
+  margin: 0 auto;
+}
+.QZtd.td{
+  background-color: #eee;
+}
+.QZtd.td{
+  position: relative;
+  font-size: 28rpx;
+  height: 60rpx;
+}
+/* .qj{
+  position: absolute;
+  left: 0;
+  top:0;
+  line-height: 18rpx;
+}
+.zj{
+  position: absolute;
+  right: 0;
+  bottom:0;
+  line-height: 16 rpx;
+} */
+.changeBtn{
+  width:150rpx;
+  height: 75rpx;
+}
+.funcBtns{
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 0;
+  font-size:32rpx;
+
+}
+.endShow{
+  display: flex;
+  justify-content: space-between;
+  font-size:32rpx;
+}
+.endShow .info{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 150rpx;
+  font-size:32rpx;
+  height: 50px;
+  color:#777;
+  justify-content: space-around;
+}
+.QZtd.green{
+  color:green;
+  font-weight: 900;
+}
+.QZtd.red{
+  color:red;
+  font-weight: 900;
+}
+.endBtn{
+  position: fixed;
+  bottom: 30rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.btn{
+  width: 200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 10rpx;
+}
+.requery{
+  background-color: #26a9e1;
+  color:white;
+}
+.cancel{
+  border:1px solid #777;
+  color:#777;
+}
+.QZtd.checktd{
+  background-color: #777;
+  color:white;
+}
+.saomaImg{
+  width:100rpx;
+  height:80rpx;
+}
+.header-1{
+  background: #fff;
+}
+.header-2{
+  background: #EEEEEE;
+  color: #000;
+}

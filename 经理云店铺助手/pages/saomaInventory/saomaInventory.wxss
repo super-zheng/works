@@ -1,0 +1,120 @@
+page,.pdContent{
+  min-height: 100%;
+  background-color: #e5e5e5;
+}
+.showGoods{
+  padding-bottom: 100rpx;
+}
+.title{
+  font-size: 30rpx;
+  margin: 10rpx 0;
+}
+.endBtn{
+  height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.endBtn .btn2{
+  background-color: #5FB878;
+}
+.pandianBtn{
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  width:230rpx;
+  background-color: #2a9fff;
+  margin: 0 auto;
+  color:white;
+  border-radius: 10rpx;
+}
+.outBox{
+  margin: 20rpx;
+  padding: 20rpx;
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+  margin-bottom: 30rpx;
+}
+.title{
+  font-size:36rpx;
+}
+.tr{
+  border:1px solid #ccc;
+  border-bottom: none;
+  padding-right: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.th,.td{
+  font-size:28rpx;
+  float: left;
+  box-sizing: border-box;
+  text-align: center;
+  border-right: 1rpx solid #ccc;
+}
+.lastBox{
+  position: absolute;
+  right: 0;
+  top:0;
+  width:200rpx !important;
+  border-right: none;
+}
+.lastTr{
+   border-bottom: 1rpx solid #ccc; 
+}
+.tbody .lastBox{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 70rpx;
+}
+.jia,.jian{
+  position: relative;
+  height: 45rpx;
+  display: block;
+  width: 45rpx;
+  background-color: #2a9fff;
+}
+.lastBox input{
+  width:60rpx;
+  height: 50rpx;
+  border:1rpx solid #ccc;
+  font-size: 28rpx;
+  padding-left: 10rpx;
+}
+.jia::before{
+  content: '';
+  position: absolute;
+  height: 20rpx;
+  width: 5rpx;
+  background-color: white;
+  left: 20rpx;
+  top:12.5rpx;
+}
+.jia::after{
+  content: '';
+  position: absolute;
+  width: 20rpx;
+  height: 5rpx;
+  background-color: white;
+  top: 20rpx;
+  left:12.5rpx;
+}
+.jian::after{
+  content: '';
+  position: absolute;
+  width: 20rpx;
+  height: 5rpx;
+  background-color: white;
+  top: 20rpx;
+  left:12.5rpx;
+}
+.check{
+  background-color: #eee;
+}

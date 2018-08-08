@@ -1,0 +1,59 @@
+.zjTitle{
+  font-size:24rpx;
+  margin: 0 auto;
+}
+.QZth{
+  background-color:#26a9e1;
+  color: white;
+  height: 60rpx;
+  line-height: 60rpx;
+  float: left;
+  text-align: center;
+  border:1rpx solid #fff;
+  box-sizing: border-box;
+  width: 83rpx;
+}
+.QZtd{
+  font-size: 28rpx;
+}
+.QZlabel{
+  margin-left: 8rpx;
+  font-size: 18rpx;
+  padding: 0rpx 8rpx;
+  position: relative;
+}
+.text1{
+  position: absolute;
+  left: 5rpx;
+  top:15rpx;
+  line-height: 18rpx;
+}
+.text2{
+  position: absolute;
+  right: 5rpx;
+  bottom:15rpx;
+  line-height: 18rpx;
+}
+.tdLabel{
+  font-size: 24rpx;
+  background-color: #26a9e1;
+  color: white;
+  margin-left: 8rpx;
+}
+.QZtd{
+  height: 60rpx;
+  line-height: 60rpx;
+  float: left;
+  text-align: center;
+  border:1rpx solid #fff;
+  box-sizing: border-box;
+  width: 83rpx;
+  
+}
+.QZtbody{
+  font-size:24rpx;
+  margin: 0 auto;
+}
+.QZtd.td{
+  background-color: #eee;
+}

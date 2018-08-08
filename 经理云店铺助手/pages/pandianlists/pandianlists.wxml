@@ -1,0 +1,39 @@
+<!--pages/saleslists/salelists.wxml-->
+<view class="content">
+  <view class='title'>
+    <view class="section">
+      <picker mode="date" value="{{date}}" start="2010-09-01" end="2020-09-01" bindchange="bindDateChange">
+        <view class="picker">
+          请选择盘点单日期: {{date}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view wx:for="{{pandainlists}}" wx:for-item="p1" wx:for-index="f1">
+      <view class='list' bindtap='pandiandetail' data-taking_id="{{p1.taking_id}}">
+      <view class='head'>
+        <text>{{p1.store_name}}</text>
+        <image class='orangeIcon'src="../images/store2.png"></image>
+        <view class='iconGreen'>盘</view>
+      </view>
+      <view class='mainMsg'>
+        <view class='codeAndNum clearfix'>
+          <text class='textLfet'>编号：{{p1.taking_NO}}</text>
+          <text class='textRight'>商品件数：{{p1.taking_goods_total}}件</text>
+        </view>
+        <view class='middleShow'>
+        <text>状态：</text>
+        <text class='iswaiting' wx:if="{{p1.taking_status == 0}}"> 待审核 </text>
+        <text class='isSale' wx:elif="{{p1.taking_status == 1}}"> 通过 </text>
+        <text class='disagree' wx:else> 未通过 </text>
+        <!-- <image class='smallIcon' src='../images/sale2.png'></image> -->
+        </view>
+        <view class='clearfix mt10'>
+          <text class='textLfet'>时间:{{p1.taking_time}}</text>
+          <text class='textRight'>盘点人：{{p1.users_id_realname}}</text>
+        </view>
+      </view>
+  </view>
+  </view>
+  <view class="isNull" wx:if="{{isNull}}">暂无该订单</view>
+</view>

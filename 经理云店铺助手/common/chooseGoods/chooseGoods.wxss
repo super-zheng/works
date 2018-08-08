@@ -1,0 +1,281 @@
+.container{
+  padding-top: 60px;
+  box-sizing: border-box;
+  font-size:32rpx;
+}
+.titleSearch{
+  height: 60px;
+  position: fixed;
+  width: 100% ;
+  top:0px;
+  padding: 0px 60px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.searchInput{
+  border:1px solid #ccc;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding-right: 50px;
+  box-sizing: border-box;
+}
+.ewm image{
+  width: 30px;
+  height: 30px;
+}
+.ewm{
+  position: absolute;
+  left:0px;
+  top: 0px;
+  height: 60px;
+  width:60px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.titleSearch .section{
+  position: relative;
+}
+.searchIcon{
+  width: 20px;
+  height: 20px;
+  right: 0px;
+  top:0px;
+  padding: 10px;
+  position: absolute;
+}
+.saixuan{
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  right: 0px;
+  top:0px;
+  line-height: 60px;
+  color:orange;
+  text-align: center;
+}
+.saixuan image{
+  width: 16px;
+  height: 18px;
+  vertical-align: middle;
+}
+.content{
+  display:flex;
+  width:100%;
+  margin: 0;
+  padding: 0;
+
+}
+.goodsLists{
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  justify-content: space-between;
+  align-items: baseline;
+	flex-flow: row wrap;
+}
+.goodCard{
+  width:50%;
+  /* height: 200px; */
+  display: inline-block;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.goodsBox{
+  background-color:#fbfbfb;
+  border:1px solid #eee;
+}
+.imgBox{
+  height: 120px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imgBox image{
+  max-width: 100%;
+  height: 100%;
+}
+.info{
+  margin-top: 10px;
+  font-size: 14px;
+  padding-left: 5px;
+  color:#777;
+}
+.check{
+  border-color: #25a4ff;
+}
+.siderChoose{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top:0px;
+  background-color: rgba(0, 0, 0, .1);
+  z-index: 99;
+}
+.chooseContent{
+  position: absolute;
+  right: 0px;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding-top: 181px; 
+  padding-bottom: 60px;
+}
+.goodsType{
+  position: absolute;
+  top:0px;
+  left: 0px;
+  width: 100%;
+  height: 150px;
+  border-bottom: 1px solid #ccc;
+}
+.lable{
+  padding-left: 10px;
+  height: 30px;
+  line-height: 30px;
+}
+.types{
+  display: flex;
+  justify-content: space-between;
+	flex-flow: row wrap;
+  padding:0px 10px;
+}
+.typeBtn{
+  width: 144rpx;
+  height: 72rpx;
+  background-color:rgba(0, 0, 0, .1);
+  text-align: center;
+  font-size:32rpx;
+  line-height: 72rpx;
+  margin-bottom: 10px;
+  color:#777;
+}
+.typeBtnCheck{
+  background-color: #25a4ff;
+  color:#fff;
+}
+.endButton{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.btn{
+  width: 80px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  background-color: rgba(0, 0, 0, .1);
+  color:#777;
+  border-radius: 5px;
+}
+.btn.yes{
+  background-color: #25a4ff;
+  color:white;
+}
+.detailContent{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.bigClass{
+  width:181rpx;
+  height: 100%;
+}
+.detail{
+  height: 100%;
+  flex: 1;
+  background-color: #fbfbfb;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+.bigType{
+  border:1px solid #ccc;
+  background-color: rgba(0, 0, 0, .1);
+  color:#777;
+  width: 144rpx;
+  height: 72rpx;
+  overflow:auto;
+  text-align: center;
+  line-height: 72rpx;
+  font-size: 32rpx;
+  margin:10px auto;
+  border-radius: 3px;
+}
+/* 大类点击选中样式 */
+.bigTypeCheck{
+  background-color: #25a4ff;
+  color:white;
+}
+.del{
+  width: 80%;
+  height: 72rpx;
+  background-color: #eee;
+  border-radius: 3px;
+  color: #777;
+  text-align: center;
+  line-height: 72rpx;
+  margin: 10px auto;
+}
+/* 详细信息点击选中样式 */
+.detailCheck{
+  background-color: #25a4ff;
+  color:white;
+}
+
+/*购物车样式  */
+.shopCar{
+  width: 80px;
+  height: 80px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, .6);
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAACMCAYAAACuwEE+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjBGQzlFNDcyNTczRTExRTg5MDA2QUUwRTE0NjMyQ0VEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjBGQzlFNDczNTczRTExRTg5MDA2QUUwRTE0NjMyQ0VEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MEZDOUU0NzA1NzNFMTFFODkwMDZBRTBFMTQ2MzJDRUQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MEZDOUU0NzE1NzNFMTFFODkwMDZBRTBFMTQ2MzJDRUQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6UA1GlAAAFQUlEQVR42uydX27aMByA3arvMO0AzU5QdoJmJ2h7gsEJliPQE6w7Qdsb0BMsHGAaaG97GX2fNJD2zmJhVONCCF3jv98nWQolUtz4y88/mzg5Wi6XAqApx5wCQBhAGEAYQBhAGACEAYQBhAGEAYQBhAFAGEAYQBhAGEAYQBgAhAGEAYQBhAGEAUAY8EyYu6osd5SZ+j6nGcLhqMWVj/2q3Dbcd6z2n9Ek6QqzjjAfG+67UNFmQrOkK0wduYoqulDTqvRoFpLebZRKmIH2t7OqDGkWhNnXbV0buQ/QJdXSrcof7fM7EmAiTB1zNVJaQx6DMHuZGAkxIExjYYgw5DB7yaryS68bzUOEqUMmuQuiDMLQLSFMa5QIgzBEGJJeEl8ijD+J76P2OaeJEIZuCWEQhhzGHbIb+qq2/1blG820s/uWo8qRWP0Wl6ww5i/XUI+c7LwRlu4jOvL0bSa/q/IWFw5iqqLzPEVhZJi9UNv3YnWTFTzvuvtVOdX+9lCVyxSFKary2dZJCBx5Men3RQ/avMB8XcjGSKk5fXVR6RdbchFGolfsjc2RQIBkYnOGvLVbXH1eKjslyhw0xJ4aAonUhOGWzcOwEoERJh66Ng7icw4ju6Hvanth64QEjJWcL5QI02mzX44APQI/ttk9+f58GNYqNY/G2y605IRhPgZhSHxb7pJKhCHC7BsdnRJhnv75hZb4Ik19dzQVLc/HhPBQRKJM8+6o9ad3hSBMiTB+JLxEGIQ5GJ9netdkgrVK3pybECLMTLBIv2nCKxDmeajN8WSrMCXCkPh6NUJCGBLeKJNeiblWicTX0WAglAgjZy9ZpL+7OxrbOmhIr79hPsZxdxSyMEQYByOk0IQh8d3k3EWECSXpXcNapacLxsn9zqG9wo+1Sg7zlxCFIY95/r+XCMNIiQiDMK8qyxkR5vCRkryPNUtMFpnc3mmfx7YT/xDfW53qWqVMXTB6dBnarsRJgCduos1BFIlIk4vNeRfJF9vdUajC/NS2z7ecyBS4Fy0/OCimLulHwqMjOQ91JRy+SDW0md41SyM0xz7jO1NdsfOXwJ8EegLHWlc0ETxlky6pQeKb4kgJYV5IiTDkMIeQCdYqEWEOTAJZq4QwL+6WCpoSYfahj4zko9P7NCfC1DESm78r3YrVa2AympWkdxddlc90jL+3/mAdB9MIBcK83ohJRpuzyC/uLz5IcxzBiZypUdJAWHqCgQMWwpPZ7BgizLZuKrZh9ky09HYShAG6JEAYQBhIgZME/se+WN0Tm6nPpRpxuEwiu1q95PZcq5fX80cxJ71ypCTnZ053fO9qXkOKImekOzuGz4Xw+IawWIXpqSu2s2e/e2H3Nyh5rNsG+w18lSZWYWZaZFlPeo1UtzQ0os4HYWe5hjz2RJN4oeoyUYIXRr1aezPsfyGFiaz0l5v0jO+7VSm170eW6lVox5yrepj1mmn73Ph4fmMcJfWMPMW8035udEMXlup1qW0XW5LbudhcyejlbHXswpQ1XZbrLnMbI237HGHsN0ZWM6x1ya7j59r2I8LYYWKE/m2No4f+qYN6DXfsUzSIjiS9r1y6KqlcM6nKpfouU8mkTt9SvXrGcUstIe+p5Fsn9/H8xjqsbjrfMbWcXMoJu08N9rM9P5R0lyTUvMt1A1lyy/UqlAxByhKzMOs84b1qAH0N01jNpPaEm99t+mqy8MGol/x8JTxf/cANVECEAYQBhAGEAYQBQBhAGEAYQBhAGEAYAIQBhAGEAYQBhAGEAUAYQBhAGEAYQBgAhAGEAYQBf/gnwADmsKAh53tSQwAAAABJRU5ErkJggg==);
+  background-size: 100% 100%;
+}
+.shopCar text{
+  position: absolute;
+  width:30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  color:white;
+  right: 10px;
+  top:10px;
+  font-size: 12px;
+  border-radius: 50%;
+  background-color: red;
+}
+.scal{
+  transform: scale(.8,.8);
+}
+
+/*球柱镜选择弹框样式  */
+.chooseQZ{
+  display: flex;
+  background-color: #fff;
+  justify-content: space-around;
+}
+.pickerView{
+  width:300rpx;
+}
+.pickerView picker-view{
+  margin: 0 auto;
+}
+.pickerTitle{
+  text-align: center;
+  margin: 20rpx 0;
+}

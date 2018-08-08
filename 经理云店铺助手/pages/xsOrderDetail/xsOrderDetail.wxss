@@ -1,0 +1,91 @@
+.container{
+  position: relative;
+  margin-bottom: 200rpx;
+}
+page,.container{
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color:#eee;
+  text-align: left;
+  font-size: 32rpx;
+  display: block;
+}
+.details{
+  width: 100%;
+  background-color: #fff;
+}
+.detailItem{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  height: 60rpx;
+  align-items: center;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.color777{
+  color:#777;
+}
+.colorOrange{
+  color:orange;
+}
+.goodsLists{
+  margin-top:20rpx; 
+}
+.goodsItem{
+  height: 180rpx;
+  display: flex;
+  background-color:#fff;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding:  0 20rpx;
+  justify-content: space-between;
+}
+.goodsItem image{
+  height: 160rpx;
+  width: 160rpx;
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+.goodsDetail{
+  height: 100%;
+  flex: 1;
+  padding: 10rpx 0;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.priceNum{
+  display: flex;
+  justify-content: space-between;
+}
+.bottomMessage{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 200rpx;
+  background-color:white;
+}
+.bottmBox{
+  height: 210rpx;
+}
+.colorblue{
+  color:#0094ff;
+}
+.tuisong{
+  width: 150rpx;
+  height: 60rpx;
+  background-color: #0094ff;
+  color:white;
+  text-align:center;
+  vertical-align:middle;
+  border-radius:10rpx;
+  margin:5rpx;
+  line-height:56rpx
+}

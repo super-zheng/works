@@ -1,0 +1,12 @@
+<view class="container">  
+  <view class="weui-grids">  
+    <view class="weui-grid" wx:for="{{goods}}" wx:for-index="f1"> 
+      <navigator url="../pandianproducts/pandianproducts?Ptype={{f1}}" hover-class="navigator-hover">  
+        <view class="weui-grid__icon">  
+          <image src="../images/{{item.url}}.png" mode="scaleToFill" />  
+        </view>  
+        <text class="weui-grid__label">{{item.name}}</text>  
+      </navigator>  
+    </view>  
+  </view>  
+</view> 

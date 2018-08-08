@@ -1,0 +1,65 @@
+.sales_content{
+  height: 5px;
+  width: 100%; 
+  box-shadow: 0px 4px 5px #ccc inset;
+}
+.section{
+  width: 100%;
+  text-align: center;
+  margin: 20px 0px;
+}
+.button{
+  border-top: 1px solid gainsboro;
+  margin-top: 50px
+}
+.choose_products{
+  height: 120px;
+  width: 33.3333%;
+  border: 1px #ccc solid;
+  float: left;
+  margin:0px -1px;
+}
+.choose_products image{
+  height: 100px;
+  width: 100px;
+  margin:10px auto;
+  display: block;
+}
+.empty{
+  height: 40px;
+  width: 90px;
+  background-color: grey;
+  margin: 20px 0px 0px 30px;
+  color: #fff
+}
+.sales{
+  height: 40px;
+  width: 90px;
+  background-color: grey;
+  margin: 20px 30px 0px 0px;
+  color: #fff
+}
+.section__title{
+  margin: 30px auto;
+}
+.choseMsg{
+  font-size:18px;
+  color:#aaa;
+}
+.picker{
+  font-size:18px;
+  color:#1e9fff;
+}
+.sure_store{
+  height:40px;
+  width: 70%;
+  border-radius: 5px; 
+}
+.scan{
+  height: 40px;
+  line-height: 40px;
+  width: 70%;
+  color: #ffffff;
+  background-color: #1AAD19;
+  margin: 20px auto;
+}

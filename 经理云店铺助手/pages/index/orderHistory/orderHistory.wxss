@@ -1,0 +1,98 @@
+page{
+  height: 100%;
+}
+page,.content{
+  width: 100%;
+  font-size:32rpx;
+}
+.content{
+  background-color: #eee;
+  min-height: 100%;
+}
+.colorOrange{
+  color:orange;
+}
+.headChoose{
+  height: 80rpx;
+  display: flex;
+  padding: 0 20rpx ;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkTime{
+  display: flex;
+  justify-content: space-around;
+}
+.section{
+  width: 200rpx;
+}
+.start,.end{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.lable{
+  margin:10rpx;
+}
+.picker input{
+  border:1rpx solid #ccc;
+  padding-left: 10rpx;
+}
+.zhanwei{
+  height: 120rpx;
+}
+.checkBtn{
+  height: 100%;
+  display: flex;
+  width:120rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+.endBox{
+  height: 120rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0 20rpx;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: white;
+}
+.del{
+  width:150rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color:#25a8e1;
+  text-align: center;
+  margin: 20rpx;
+  color:white;
+  border-radius: 10rpx;
+}
+.listItem{
+  height: 220rpx;
+  display: flex;
+  background-color: white;
+  margin-bottom: 2rpx;
+}
+.itemCheck{
+  width:100rpx;
+  height: 220rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.showMsg{
+  flex: 1;
+  display: flex;
+  height: 100%;
+  flex-flow: column;
+  justify-content: space-around;
+  padding-right:20rpx;
+  box-sizing: border-box;
+}
+.msg{
+  display: flex;
+  justify-content: space-between;
+}

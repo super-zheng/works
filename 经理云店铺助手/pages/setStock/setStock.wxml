@@ -1,0 +1,60 @@
+<choose-goods modal-hidden='{{hideChoose}}' bind:myevent="onGetCode" bind:getDetail="getInfo" modal-arr='{{details}}'></choose-goods>
+<view class='pageContainer'>
+  <view class='searchBox'>
+    <view class='relative'>
+      <text bindtap='quan' class='selectALL'>全选</text>
+      
+    </view>
+    <view class='search'>
+      <input type='text' class='searchInput' bindinput='sou' value="{{sou_val}}" placeholder='搜索商品'></input>
+      <image src='../images/searchIcon.png' bindtap='que' class='searchIcon'></image>
+    </view>
+    <view class='searchBtn' bindtap='openchoose'>
+      <text>筛选</text>
+      <image src='../images/saixuan.png' class='searchOrange'></image>
+    </view>
+  </view>
+  <view class='main'>
+    <view class='thead'>
+      <view class='message'></view>
+      <view class='goodsInfo'>
+        <view class='infoItem'>差值</view>
+        <view class='infoItem'>赔偿标准</view>
+        <view class='infoItem' style='display:{{ying == false?"":"none"}}'>是否处理</view>
+      </view>
+    </view>
+    <scroll-view class='tbody' scroll-y='true'>
+      <view class='block' wx:for='{{goodList}}' wx:key='pandian'>
+        <view class='message'>
+          <image src='{{item.src}}' mode='aspectFit'></image>
+          <view class='detials'>
+            <view>{{item.title}}</view>
+            <view class='smallFont'>{{item.detail}}</view>
+          </view>
+        </view>
+        <view class='goodsInfo'>
+          <view class='infoItem'>{{item.difval}}</view>
+          <view class='infoItem colorRed'>{{item.difval*item.price}}</view>
+          <view class='infoItem ' data-id="{{item.id}}" bindtap='checkGood' style='display:{{ying == false?"":"none"}}'>
+            <view class='radioUncheck {{item.check?"radioCheck":""}}'>
+            </view>
+          </view>
+        </view>
+      </view>
+     
+   
+    </scroll-view>
+  </view>
+  <view class='endBtn'>
+    <view class='creatBtn' hover-class='active' bindtap='save' style='display:{{ying == false?"":"none"}}'>调整库存</view>
+  </view> 
+</view>
+<modal
+    title="是否调整库存"
+     hidden="{{hiddenModal}}"
+     confirm-text="确定"
+     cancel-text="取消"
+     bindconfirm="listenerConfirm"
+     bindcancel="listenerCancel" >
+     备注：<input type="text" value="{{remark}}" bindinput='remark'></input>
+</modal>

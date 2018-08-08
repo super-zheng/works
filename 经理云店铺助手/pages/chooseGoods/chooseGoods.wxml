@@ -1,0 +1,115 @@
+<view class='container' catchtouchmove="{{openChoose}}">
+  <view class='titleSearch'>
+    <view class="section">
+      <input bindinput="bindKeyInput" placeholder="搜索商品" class='searchInput' value="{{inputValue}}" />
+      <image class='searchIcon' src='../images/searchIcon.png' bindtap='selectforgoods'></image>
+    </view>
+    <view class='ewm'>
+      <image src='../images/saoma.png' bindtap='saomabutton'></image>
+    </view>
+    <view class='saixuan' bindtap='openSider'>
+      <text>筛选</text>
+      <image src='../images/saixuan.png'></image>
+    </view>
+
+  </view>
+  <view class='content' catchtouchmove="{{openChoose}}">
+    <view class='goodsLists'>
+      <view class='goodCard' wx:for="{{lists}}" wx:key="navItems1">
+        <view class='goodsBox {{item.check?"check":""}}' bindtap='checkGoods' id="{{item.id}}" data-types="{{item.types}}">
+          <view class='imgBox'>
+            <image src='{{item.image}}'></image>
+          </view>
+          <view class='info'>
+            <view>{{item.type}} {{item.brand}} </view>
+            <view>{{item.caizhi}} {{item.xilie}} {{item.field}}</view>
+            <view style='color:orange;'>￥ {{item.price}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- <modal wx:if="{{qzBool}}" title="请选择球柱镜并加入购物车" confirm-text="确定" cancel-text="取消" bindcancel="cancel1" bindconfirm="confirm1" id="{{goodsId}}">
+    <view class='chooseQZ' catchtouchmove='ss'>
+      <view class='pickerView'>
+        <view class='pickerTitle'>球镜</view>
+        <picker-view indicator-style="height: 50rpx;" style="width: 200rpx; height: 300rpx;" value="{{value[0]}}" bindchange="setQZ" data-name="qjvalue" data-arr="qjArr">
+          <picker-view-column>
+            <view wx:for="{{qjArr}}" style="line-height:34px;text-align:center;">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+      <view class='pickerView'>
+        <view class='pickerTitle'>柱镜</view>
+        <picker-view indicator-style="height: 50rpx;" style="width: 200rpx; height: 300rpx;" value="{{value[1]}}" bindchange="setQZ" data-name="zjvalue" data-arr="zjArr">
+          <picker-view-column>
+            <view wx:for="{{zjArr}}" style="line-height:34px;text-align:center;">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </modal> -->
+<modal wx:if="{{qzBool}}" title="请选择球柱镜并加入购物车" confirm-text="确定" cancel-text="取消" bindcancel="cancel1" bindconfirm="confirm1" id="{{goodsId}}" catchtouchmove='ss'>
+    <view class='chooseEyes' wx:if="{{jingpian}}">
+      <view class="eyeR {{checkEye==0?'eyeActive':''}}" bindtap='chooseEyes' data-num="0">右眼</view>
+      <view class="eyeL {{checkEye==1?'eyeActive':''}}" bindtap='chooseEyes' data-num="1">左眼</view>
+    </view>
+    <view class='chooseQZ' >
+      <view class='pickerView'>
+        <view class='pickerTitle'>球镜</view>
+        <picker-view indicator-style="height: 50rpx;" style="width: 200rpx; height: 300rpx;" value="{{value[0]}}" bindchange="setQZ" data-name="qjvalue" data-arr="qjArr">
+          <picker-view-column>
+            <view wx:for="{{qjArr}}" style="line-height:34px;text-align:center;">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+      <view class='pickerView'>
+        <view class='pickerTitle'>柱镜</view>
+        <picker-view indicator-style="height: 50rpx;" style="width: 200rpx; height: 300rpx;" value="{{value[1]}}" bindchange="setQZ" data-name="zjvalue" data-arr="zjArr">
+          <picker-view-column>
+            <view wx:for="{{zjArr}}" style="line-height:34px;text-align:center;">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+      <view class='stockShow'>
+      
+        <view class='stockTitle'>库存</view>
+        <view class='colorOrange'>{{kucun}}</view>
+      </view>
+    </view>
+  </modal>
+
+  <modal wx:if="{{goodDetailHide}}" title="是否加入购物车" confirm-text="确定" cancel-text="取消" bindcancel="cancel2" bindconfirm="confirm2" id="{{goodsId}}">
+
+  </modal>
+
+
+  <view class='siderChoose' style="" catchtouchmove="{{openChoose}}" wx:if="{{openChoose}}" catchtap='closeSider'>
+    <view class='chooseContent' catchtap='emtyTap'>
+      <view class='goodsType'>
+        <view class='lable'>类型</view>
+        <view class='types'>
+          <view wx:for="{{types}}" id='{{index}}' wx:key="navItems2" class='typeBtn {{index==typeBtnCheck?"typeBtnCheck":""}}' bindtap='typeBtnCheck'>{{item}}</view>
+          <view class="typeBtn" style="height:0px"></view>
+        </view>
+      </view>
+      <view class='detailContent'>
+        <view class='bigClass'>
+          <view class='bigType {{item.key==bigType?"bigTypeCheck":""}}' wx:for="{{chooseType[typeBtnCheck]}}" id="{{item.key}}" wx:key="navItems3" bindtap='bigClassCheck'>{{item.name}}</view>
+
+        </view>
+        <scroll-view scroll-y class='detail' catchtouchmove="true">
+          <view class='del {{detailIndex[bigType]==item?"detailCheck":""}}' bindtap='checkDetail' wx:for='{{detail}}' id="{{item}}">{{item}}</view>
+
+        </scroll-view>
+      </view>
+      <view class='endButton'>
+        <view class='yes btn' bindtap='yes'>确定</view>
+        <view class='cancel btn' bindtap='closeSider'>取消</view>
+      </view>
+    </view>
+  </view>
+  <view class='shopCar' hover-class="scal" hover-start-time="0" hover-stay-time="0" bindtap='shopcar'>
+    <text>{{shopcount}}</text>
+  </view>
+</view>

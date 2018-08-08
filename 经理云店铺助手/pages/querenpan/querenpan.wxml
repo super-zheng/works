@@ -1,0 +1,48 @@
+<choose-goods modal-hidden='{{hideChoose}}' bind:myevent="onGetCode" bind:getDetail="getInfo" modal-arr='{{details}}'></choose-goods>
+<view class='pageContainer'>
+  <view class='main' >
+    <view class='thead'>
+      <view class='message'></view>
+      <view class='goodsInfo'>
+        <view class='infoItem'>库存</view>
+        <view class='infoItem'>实际盘点</view>
+        <view class='infoItem'>差值</view>
+        <view class='infoItem'>删除</view>
+      </view>
+    </view>
+    <scroll-view class='tbody' scroll-y='true' bindscrolltolower='activeBottom'>
+      <view class='block' wx:for='{{goodList}}' wx:key='querenpan'>
+        <view class='message'>
+          <image src='{{item.src}}' mode='aspectFit'></image>
+          <view class='detials'>
+            <view class='textDel'>{{item.title}}</view>
+            <view class='smallFont textDel'>{{item.detail}}</view>
+          </view>
+        </view>
+        <view class='goodsInfo'>
+          <view class='infoItem'>{{item.stock}}</view>
+          <view class='infoItem'>
+            <input type='number' class='inputNumber' value='{{item.actual}}' bindinput='inputNum' data-id='{{item.id}}'></input>
+          </view>
+          <view class='infoItem' class='colorRed'>{{item.difval}}</view>
+          <view class='infoItem' data-id="{{item.id}}" data-type="{{item.goods_type}}" bindtap='del'><image src='../images/reduce.png' class='saomaImg'></image></view>
+        </view>
+      </view>
+     
+   
+    </scroll-view>
+  </view>
+
+  <view class='endBtn'>
+    <view class='creatBtn' bindtap='save' hover-class='active'>生成盘点单</view>
+  </view> 
+</view>
+<modal
+    title="是否生成盘点"
+     hidden="{{hiddenModal}}"
+     confirm-text="确定"
+     cancel-text="取消"
+     bindconfirm="listenerConfirm"
+     bindcancel="listenerCancel" >
+     备注：<input type="text" value="{{remark}}" bindinput='taking_remark'></input>
+</modal>

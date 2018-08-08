@@ -1,0 +1,135 @@
+/* pages/saledetail/saledetail.wxss */
+page{
+  background-color: #eee;
+}
+.head{
+  background-color: white;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 40px;
+  position: relative;
+  font-size: 16px;
+}
+.orangeIcon{
+  width:20px;
+  height: 20px;
+  position: absolute;
+  left:10px;
+  top:10px;
+}
+.iconGreen{
+  width:20px;
+  height: 20px;
+  position: absolute;
+  right:10px;
+  top:10px;
+  line-height: 20px;
+  font-size: 14px;
+  color:#3ec530;
+  border:2px solid #3ec530;
+  border-radius: 50%;
+  text-align: center;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.listMsg{
+  height: 120px;
+  margin-top: 1px;
+  background-color: white;
+}
+.jifen{
+  color: #3ec530;
+  text-decoration:underline;
+}
+.msg text,.msg_jifen text{
+  font-size:14px;
+  float: left;
+
+  height: 40px;
+  line-height: 40px;
+}
+.msg text:nth-child(1){
+    width:70%;
+}
+.msg text:nth-child(2){
+    width:30%;
+}
+.msg,.msg_jifen{
+  margin:0px 10px;
+}
+.pl40{
+  box-sizing: border-box;
+}
+.main{
+  border:1px solid #ccc;
+  margin:0px 5px;
+}
+.thead,.tbody{
+  height: 70px;
+}
+.tbody{
+  background-color:white;
+  margin-top: 1px;
+}
+.thead .th{
+  font-size: 14px;
+  float: left;
+  width: 19.6666%;
+  text-align: center;
+  word-wrap:break-word;
+}
+.thead .th:nth-child(1),.thead .th:nth-child(2),.thead .th:nth-child(4),.thead .th:nth-child(5){
+  line-height: 60px;
+}
+.thead .th:nth-child(3),.thead .th:nth-child(6){
+  box-sizing: border-box;
+  padding-top: 10px;
+  padding:10px 2px;
+}
+.thead .th:nth-child(6){
+  padding:10px;
+}
+.tbody{
+  font-size: 14px;
+
+}
+.tbody .td{
+  width: 19.6666%;
+  float:left;
+  text-align: center;
+  overflow: hidden;
+}
+.tbody .td:nth-child(1),.tbody .td:nth-child(3),.tbody .td:nth-child(4),.tbody .td:nth-child(5){
+  line-height: 60px;
+}
+.tbody .td:nth-child(2),.tbody .td:nth-child(6){
+  margin-top: 10px;
+}
+.tbody .td:nth-child(6){
+  box-sizing: border-box;
+  word-wrap:break-word;
+}
+.zhekou,.youhui,.yifu,.yixiao{
+  height: 40px;
+  font-size: 14px;
+  line-height: 40px;
+  padding-left: 10px;
+  margin-top: 1px;
+  background-color:white;
+}
+.fr{
+  float:right;
+  margin-right: 10px;
+}
+.fl{
+  float: left;
+  margin-left: 10px;
+}
+.yixiao{
+  color:#3ec530;
+}

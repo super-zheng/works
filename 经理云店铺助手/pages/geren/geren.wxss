@@ -1,0 +1,40 @@
+.title{
+  text-align: center;
+  margin:20px;
+}
+.peopleIoc{
+  width: 60px;
+  height: 60px;
+}
+.head{
+  text-align: center;
+}
+.msg{
+  text-align: center;
+  font-size: 16px;
+  margin-top:10px;
+}
+.btnHistory{
+  margin:20px;
+}
+.btnHistory button{
+  margin:20px;
+}
+.nowStore{
+  margin-top:20px;
+  font-size:18px;
+}
+.bgc{
+  background-color: #eee;
+}
+.choseMsg{
+  color:#aaa;
+}
+.jifen{
+  margin-left: 20px;
+}
+.jifen_val{
+  color:red;
+  font-style:oblique;
+  text-decoration:underline;
+}

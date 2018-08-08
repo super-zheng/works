@@ -1,0 +1,152 @@
+<!--pages/shoppingcar/shoppingcar.wxml-->
+<button bindtap='Scan_ruku' class='scan'>继续扫描</button>
+<view class='products_contain clearfix'>
+  <view class='product_item'>
+    <view  wx:for="{{products}}" wx:for-item="p1" wx:for-index="f1" class="listShow">
+      <!-- 镜片 -->
+        <view wx:if="{{p1.stock_type==1}}"> 
+            <view class='fl' class='product_image'>
+            <view wx:if="{{p1.stock_imgPath}}"> 
+            <image src='http://jingliyun.com/upload_Img/GlassesLens/{{p1.stock_imgPath}}' bindtap='clickMe'></image>
+            </view>
+            <view wx:else>
+            <image src='/pages/images/Icon_Default_productr.png' bindtap='clickMe'></image> 
+            </view>
+            </view>
+            <!-- <view> </view> -->
+            <view class='detailMsg' bindtap='productdetail' data-degree_id='{{p1.degree_id}}' data-stock_type='{{p1.stock_type}}'>
+              <text class="pinpai">镜片 {{p1.goods_pinming}}</text>
+            </view>
+            <view class='item clearfix' >
+               <text class='icon_money'>¥</text> 
+               <input  class='num' bindblur='changePrice' data-degree_id='{{p1.degree_id}}' value="{{p1.price==0?p1.orderPrice:p1.price}}" placeholder="价格" /> 
+               <text class='icon_money'> × {{p1.numbers}}</text>
+            </view>
+       </view>  
+       <!-- 镜架 -->
+        <view wx:if="{{p1.stock_type==2}}"> 
+            <view class='fl' class='product_image'>
+            <view wx:if="{{p1.stock_imgPath}}"> 
+            <image src='http://jingliyun.com/upload_Img/GlassesFrame/{{p1.stock_imgPath}}' bindtap='clickMe'></image>
+            </view>
+            <view wx:else>
+            <image src='/pages/images/Icon_Default_productr.png' bindtap='clickMe'></image> 
+            </view>
+            </view>
+            <view class='detailMsg'   bindtap='productdetail' data-degree_id='{{p1.degree_id}}' data-stock_type='{{p1.stock_type}}'>
+              <text class="pinpai">镜架  {{p1.goods_pinming}}</text>
+            </view>
+            <view class='item clearfix' >
+               <text class='icon_money'>¥</text> 
+               <input  class='num' bindblur='changePrice' data-degree_id='{{p1.degree_id}}' value="{{p1.price}}" placeholder="价格" /> 
+               <text class='icon_money'> × {{p1.numbers}}</text>
+            </view>
+       </view> 
+       <!-- 太阳眼镜 -->
+        <view wx:if="{{p1.stock_type==3}}"> 
+            <view class='fl' class='product_image'>
+            <view wx:if="{{p1.stock_imgPath}}"> 
+            <image src='http://jingliyun.com/upload_Img/GlassesSun/{{p1.stock_imgPath}}' bindtap='clickMe'></image>
+            </view>
+            <view wx:else>
+            <image src='/pages/images/Icon_Default_productr.png' bindtap='clickMe'></image> 
+            </view>
+            </view>
+            <view class='detailMsg'   bindtap='productdetail' data-degree_id='{{p1.degree_id}}' data-stock_type='{{p1.stock_type}}'>
+              <text class="pinpai">太阳眼镜  {{p1.goods_pinming}}</text>
+            </view>
+            <view class='item clearfix' >
+               <text class='icon_money'>¥</text> 
+               <input  class='num' bindblur='changePrice' data-degree_id='{{p1.degree_id}}' value="{{p1.price==0?p1.orderPrice:p1.price}}" placeholder="价格" /> 
+               <text class='icon_money'> × {{p1.numbers}}</text>
+            </view>
+       </view> 
+       <!-- 成品眼镜 -->
+        <view wx:if="{{p1.stock_type==4}}"> 
+            <view class='fl' class='product_image'>
+            <view wx:if="{{p1.stock_imgPath}}"> 
+            <image src='http://jingliyun.com/upload_Img/GlassesPresbyopic/{{p1.stock_imgPath}}' bindtap='clickMe'></image>
+            </view>
+            <view wx:else>
+            <image src='/pages/images/Icon_Default_productr.png' bindtap='clickMe'></image> 
+            </view>
+            </view>
+            <view class='detailMsg'   bindtap='productdetail' data-degree_id='{{p1.degree_id}}' data-stock_type='{{p1.stock_type}}'>
+              <text class="pinpai">成品眼镜 {{p1.goods_pinming}}</text>
+            </view>
+            <view class='item clearfix' >
+               <text class='icon_money'>¥</text> 
+               <input  class='num' bindblur='changePrice' data-degree_id='{{p1.degree_id}}' value="{{p1.price==0?p1.orderPrice:p1.price}}" placeholder="价格" /> 
+               <text class='icon_money'> × {{p1.numbers}}</text>
+            </view>
+       </view> 
+       <!--隐形眼镜  -->
+        <view wx:if="{{p1.stock_type==5}}"> 
+            <view class='fl' class='product_image'>
+            <view wx:if="{{p1.stock_imgPath}}"> 
+            <image src='http://jingliyun.com/upload_Img/GlassesContact/{{p1.stock_imgPath}}' bindtap='clickMe'></image>
+            </view>
+            <view wx:else>
+            <image src='/pages/images/Icon_Default_productr.png' bindtap='clickMe'></image> 
+            </view>
+            </view>
+            <view class='detailMsg'   bindtap='productdetail' data-degree_id='{{p1.degree_id}}' data-stock_type='{{p1.stock_type}}'>
+              <text class="pinpai">隐形眼镜 {{p1.goods_pinming}}</text>
+            </view>
+            <view class='item clearfix' >
+               <text class='icon_money'>¥</text> 
+               <input  class='num' bindblur='changePrice' data-degree_id='{{p1.degree_id}}' value="{{p1.price==0?p1.orderPrice:p1.price}}" placeholder="价格" /> 
+               <text class='icon_money'> × {{p1.numbers}}</text>
+            </view>
+       </view> 
+       <!-- 护理液 -->
+        <view wx:if="{{p1.stock_type==6}}"> 
+            <view class='fl' class='product_image'>
+            <view wx:if="{{p1.stock_imgPath}}"> 
+            <image src='http://jingliyun.com/upload_Img/GlassesCareSolution/{{p1.stock_imgPath}}' bindtap='clickMe'></image>
+            </view>
+            <view wx:else>
+            <image src='/pages/images/Icon_Default_productr.png' bindtap='clickMe'></image> 
+            </view>
+            </view>
+            <view class='detailMsg'   bindtap='productdetail' data-degree_id='{{p1.degree_id}}' data-stock_type='{{p1.stock_type}}'>
+              <text class="pinpai">护理液 {{p1.goods_pinming}}</text>
+            </view>
+            <view class='item clearfix' >
+               <text class='icon_money'>¥</text> 
+               <input  class='num' bindblur='changePrice' data-degree_id='{{p1.degree_id}}' value="{{p1.price==0?p1.orderPrice:p1.price}}" placeholder="价格" /> 
+               <text class='icon_money'> × {{p1.numbers}}</text>
+            </view>
+       </view> 
+       <!-- 配件 -->
+        <view wx:if="{{p1.stock_type==7}}"> 
+            <view class='fl' class='product_image'>
+            <view wx:if="{{p1.stock_imgPath}}"> 
+            <image src='http://jingliyun.com/upload_Img/GlassesAccessory/{{p1.stock_imgPath}}' bindtap='clickMe'></image>
+            </view>
+            <view wx:else>
+            <image src='/pages/images/Icon_Default_productr.png' bindtap='clickMe'></image> 
+            </view>
+            </view>
+            <view class='detailMsg'   bindtap='productdetail' data-degree_id='{{p1.degree_id}}' data-stock_type='{{p1.stock_type}}'>
+              <text class="pinpai">配件 {{p1.goods_pinming}}</text>
+            </view>
+            <view class='item clearfix' >
+               <text class='icon_money'>¥</text> 
+               <input  class='num' bindblur='changePrice' data-degree_id='{{p1.degree_id}}' value="{{p1.price==0?p1.orderPrice:p1.price}}" placeholder="价格" /> 
+               <text class='icon_money'> × {{p1.numbers}}</text>
+            </view>
+       </view> 
+    </view>
+    <!-- <view wx:if="{{isNull}}" class='no_products'>
+      暂无此类商品
+    </view> -->
+  </view>
+</view>
+<view wx:if="{{isfinish}}" class='btn'>
+  <button bindtap='Ruku' wx:if="{{scan_type}}" class='scan'>确定入库</button>
+  <button bindtap='Tuihuo' wx:if="{{!scan_type}}" class='scan'>确定退货</button>
+</view>
+<view wx:if="{{!isfinish}}" class='btn'>
+  <button bindtap='clearproducts' class='scan'>清空商品</button>
+</view>

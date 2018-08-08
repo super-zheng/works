@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "购 物 车",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#000",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh":false
+}

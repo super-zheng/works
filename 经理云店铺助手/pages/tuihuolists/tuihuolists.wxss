@@ -1,0 +1,104 @@
+page{
+  background-color: #eee;
+}
+.picker{
+  border:1px solid #ccc;
+  padding:5px;
+  box-sizing: border-box;
+  margin: 5px 10px;
+  font-size:18px;
+  background-color: white;
+}
+.head{
+  background-color: white;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 40px;
+  position: relative;
+  font-size: 16px;
+}
+.orangeIcon{
+  width:20px;
+  height: 20px;
+  position: absolute;
+  left:10px;
+  top:10px;
+}
+.iconGreen{
+  width:20px;
+  height: 20px;
+  position: absolute;
+  right:10px;
+  top:10px;
+  line-height: 20px;
+  font-size: 14px;
+  color:#3ec530;
+  border:2px solid #3ec530;
+  border-radius: 50%;
+  text-align: center;
+}
+.mainMsg{
+  background-color: white;
+  margin-top: 1px;
+  font-size: 14px;
+  padding:10px;
+  box-sizing: border-box;
+}
+.mainMsg .textLfet{
+  float: left;
+  width: 50%;
+}
+.mainMsg .textRight{
+  float: right;
+  width:50%;
+  box-sizing: border-box;
+  padding-left: 30px;
+}
+.mainMsg .textjifen{
+  float: right;
+  width:50%;
+  box-sizing: border-box;
+  padding-left: 10px; 
+}
+.jifen_val{
+  color: #3ec530;
+  /* font-style:oblique; */
+  text-decoration:underline;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.middleShow{
+  height: 40px;
+  line-height: 40px;
+  padding-left: 40px;
+  box-sizing: border-box;
+  position: relative;
+  margin-top: 10px;
+}
+.middleShow .isSale{
+  color:#3ec530;
+}
+.smallIcon{
+  width:20px;
+  height: 20px;
+  position: absolute;
+  top:10px;
+  left: 0px;
+}
+.mt10{
+  margin-top: 10px;
+}
+.list{
+  margin-bottom:20px;
+}
+.isNull{
+  text-align: center;
+  font-size: 18px;
+  color: red;
+  margin: 20px 0px;
+}

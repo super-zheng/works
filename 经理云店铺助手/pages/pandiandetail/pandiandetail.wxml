@@ -1,0 +1,79 @@
+<!--pages/saledetail/saledetail.wxml-->
+<!-- <view wx:for="{{saledetail}}" wx:for-item="p1" wx:for-index="f1"> -->
+<view>
+  <view class='content'>
+    <view class='head'>
+        <text>{{pandaindetail[0].store_name}}</text>
+        <image class='orangeIcon'src="../images/store2.png"></image>
+        <view class='iconGreen'>盘</view>
+      </view>
+      <view class='listMsg'>
+        <view class='msg clearfix'>
+          <text>编号：{{pandaindetail[0].taking_NO}}</text>
+          <text class='pl40'>商品件数：{{pandaindetail[0].taking_goods_total}}件</text>
+        </view>
+        <view class='msg clearfix'>
+          <text>盘点时间：{{pandaindetail[0].taking_time}}</text>
+          <text class='pl40'>盘点人：{{pandaindetail[0].users_id_realname}}</text>
+        </view>
+        <view class='msg clearfix'>
+          <text>核准人：{{pandaindetail[0].users_id_realname_he}}</text>
+          <text class='pl40'>审核人：{{pandaindetail[0].users_id_review_name}}</text>
+        </view>
+
+        <view class='msg clearfix'>
+          <text>审核时间：{{pandaindetail[0].taking_reviewTime}}</text>
+          
+        </view>
+         <view class='msg clearfix'>
+          <text>审核状态：<text class='iswaiting' wx:if="{{pandaindetail[0].taking_status == 0}}" style="float:none"> 待审核 </text>
+        <text class='ispandian' wx:elif="{{pandaindetail[0].taking_status == 1}}" style="float:none"> 通过 </text>
+        <text class='disagree' wx:else style="float:none"> 未通过</text>
+        </text>
+        </view> 
+      </view>
+      <view class='main'>
+        <view class='thead clearfix'>
+          <view class='th'>类型</view>
+          <view class='th'>品牌/型号</view>
+          <view class='th'>差额</view>
+          <view class='th'>数量</view>
+          <view class='th'>单价</view>
+        </view>
+        <view class='tbody clearfix' wx:for="{{pandaindetail}}" wx:for-item="p1" wx:for-index="f1">
+          <view class='td'>{{p1.goods_type}}</view>
+          <view class='td'>{{p1.brand==''?'无':p1.taking_brand}}/{{p1.degree_colorNumber}}</view>
+          <view class='td'>{{p1.code==''?'无':p1.takingdetails_status}}</view>
+          <view class='td'>{{p1.counts==''?'0':p1.taking_number}}</view>
+          <view class='td'>{{p1.goodsPrice==''?'0':p1.taking_saleprice}}</view>
+        </view>
+        <!-- <view class='youhui'>
+          <text>优惠价：{{pandaindetail[0].youhuiPrice}}元</text>
+          <text class='fr'>抹零：{{pandaindetail[0].totalpointCutted}}元</text>
+        </view> -->
+        <!-- <view class='yifu'>
+           <view wx:if="{{pandaindetail[0].ity_status==-1}}">
+            <view class='fl'>已付金额：{{pandaindetail[0].yifu_price}}元</view>
+            <view class='fr'>未付金额：{{pandaindetail[0].weifu_price}}元</view>
+          </view> 
+          <view wx:else> 
+            <view>总销售金额：{{pandaindetail[0].taking_goods_salepricetotal}}元</view>
+
+            <view class='fl'>总销售金额：{{pandaindetail[0].yifu_price}}元</view>
+            <view class='fr'>{{pandaindetail[0].weifu_price}}元</view>
+           </view> 
+
+        </view>
+         <view class='yixiao'>
+          <text class='fr'>已销售</text>
+        </view>  -->
+
+        <view class='yifu'>
+            <view class='fl_foot'>总销售金额：{{pandaindetail[0].taking_goods_salepricetotal}}元</view>
+        </view>
+        <view class='yifu'>
+            <view class='fl_foot'>整单备注：{{pandaindetail[0].taking_remark}}</view>
+        </view>
+        </view>
+  </view>
+</view>

@@ -1,0 +1,67 @@
+<choose-goods modal-hidden='{{hideChoose}}' bind:myevent="onGetCode" bind:getDetail="getInfo" modal-arr='{{details}}'></choose-goods>
+<view class='pageContainer'>
+  <view class='searchBox'>
+    <view class='relative'>
+      <image src='../images/pandian.png' class='pandianHistory' bindtap='que'></image>
+      <text class='textNum'>{{gou.length}}</text>
+    </view>
+    <view class='search'>
+      <input type='text' class='searchInput' bindinput='sou' placeholder='搜索商品'></input>
+      <image src='../images/searchIcon.png' class='searchIcon'></image>
+    </view>
+    <view class='searchBtn' bindtap='openchoose'>
+      <text>筛选</text>
+      <image src='../images/saixuan.png' class='searchOrange'></image>
+    </view>
+  </view>
+  <view class='main' wx:if="{{types==2||types==3||types==6||types==7}}">
+    <view class='thead'>
+      <view class='message'></view>
+      <view class='goodsInfo'>
+        <view class='infoItem'>库存</view>
+        <view class='infoItem'>实际盘点</view>
+        <view class='infoItem'>差值</view>
+        <view class='infoItem'>盘点扫描</view>
+      </view>
+    </view>
+    <scroll-view class='tbody' scroll-y='true' bindscrolltolower='activeBottom'>
+      <view class='block' wx:for='{{goodList}}' wx:key='pandian'>
+        <view class='message'>
+          <image src='{{item.src}}' mode='scaleToFill'></image>
+          <view class='detials'>
+            <view class='textDel'>{{item.title}}</view>
+            <view class='smallFont textDel'>{{item.detail}}</view>
+          </view>
+        </view>
+        <view class='goodsInfo'>
+          <view class='infoItem'>{{item.stock}}</view>
+          <view class='infoItem'>
+            <input type='number' class='inputNumber' value='{{item.actual}}' bindinput='inputNum' data-id='{{item.id}}'></input>
+          </view>
+          <view class='infoItem' class='colorRed'>{{item.difval}}</view>
+          <view class='infoItem' data-id="{{item.id}}" data-s="{{index}}" data-type="{{item.goods_type}}" bindtap='sao'>
+            <image src='../images/saoma.png' class='saomaImg'></image>
+          </view>
+        </view>
+      </view>
+
+
+    </scroll-view>
+  </view>
+  <scroll-view class="qzMain" scroll-y="true" wx:if="{{types==1||types==4||types==5}}" bindscrolltolower='activeBottom'>
+    <view class='goodItem' bindtap="xiang" wx:for="{{goodList}}" data-id="{{item.id}}" data-arr="{{item.taking_brand}}" data-img="{{item.img_name}}">
+      <image src='{{item.src}}'></image>
+      <view class='details22'>
+        <view>{{item.title}}</view>
+        <view class='goodsDetails'>{{item.detail}}</view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class='endBtn' wx:if="{{types==2||types==3||types==6||types==7}}">
+    <view class='creatBtn' bindtap='save' hover-class='active'>生成盘点单号</view>
+  </view>
+</view>
+<modal title="是否生成盘点" hidden="{{hiddenModal}}" confirm-text="确定" cancel-text="取消" bindconfirm="listenerConfirm" bindcancel="listenerCancel">
+  备注：
+  <input type="text" value="{{remark}}" bindinput='taking_remark'></input>
+</modal>

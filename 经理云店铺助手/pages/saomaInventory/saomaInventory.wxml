@@ -1,0 +1,25 @@
+<view class='pdContent'>
+  <scroll-view class='showGoods' scorll-y='true'>
+    <view wx:for="{{newArr}}" wx:for-index="index" wx:for-item="item" wx:key='outBox' class='outBox'>
+      <view class='title'>{{item.title}}</view>
+      <view class='tbale'>
+        <view class='thead clearfix'>
+          <view class='tr'>
+            <view wx:for='{{item.content.head}}' wx:for-index="index1" wx:for-item="item1" wx:key="inList" class='th' style='width:{{100/(item.content.head.length-1)}}%' class="{{index1==item.content.head.length-1?'lastBox':''}} th">{{item1}}</view>
+          </view>
+        </view>
+        <view class='tbody'>
+          <view wx:for='{{item.content.body}}' wx:for-index="index2" wx:for-item="item2" wx:key='good' class='tr {{id2==item2.id2?"check":""}} clearfix {{index2==item.content.body.length-1?"lastTr":""}}'  >
+             <view class='td' wx:for='{{item2.args}}'  wx:for-index="index3" wx:for-item="item3" wx:key='args' style='width:{{100/(item2.args.length+1)}}%'>{{item3}}</view>
+             <view class='td' style='width:{{100/(item2.args.length+1)}}%'>{{item2.num-item2.stock}}</view>
+             <view class='td' class='lastBox' ><text class='jia'  data-id="{{item2.id2}}" bindtap='jia'></text><input type='number' value='{{item2.num}}' data-id="{{item2.id2}}" bindinput='changeInput'></input> <text class='jian' data-id="{{item2.id2}}" bindtap='jian'></text></view> 
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class='endBtn'>
+    <view class="pandianBtn" bindtap='addGoods'>扫码</view>
+    <view class="pandianBtn btn2">按钮</view>
+  </view>
+</view>

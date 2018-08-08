@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "销售单详情",
+  "backgroundColor": "#ababaa",
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#000",
+  "navigationBarTextStyle": "white"
+}

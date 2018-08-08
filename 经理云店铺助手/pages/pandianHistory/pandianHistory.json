@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "choose-time": "../../common/chooseTime/chooseTime"
+  },
+  "navigationBarTitleText": "盘点历史记录",
+  "backgroundColor": "#ababaa",
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#000",
+  "navigationBarTextStyle": "white"
+}

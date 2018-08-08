@@ -1,0 +1,80 @@
+<view class="cotainer">
+  <view class='searchBox'>
+    <view class="section">
+      <input bindinput="bindKeyInput" placeholder="搜索顾客" class='searchInput' />
+    </view>
+    <view hover-class="activeSearch" class='searchBtn' hover-stay-time="0" bindtap="clicksousuo">搜索</view>
+
+  </view>
+  <view class="chooseCustomer">
+    <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" scroll-into-view="{{activeId}}" bindscrolltolower="lastleft">
+      <!--  display: inline-block-->
+      <view wx:for="{{guke}}" id='name{{item.customer_id}}' wx:key="navItems" class='guke ({{activeId=="name"+item.customer_id?"active":""}})' style=" width: 75px; height: 100px; display: inline-block" bindtap="chooseGuke">
+        <image src='{{activeId=="name"+item.customer_id?"../images/ic-guke.png":"../images/ic-guke1.png"}}' class='gukeIcon'></image>
+        <view>{{item.customer_name}}</view>
+      </view>
+
+    </scroll-view>
+    <view class='addCustomer' bindtap="addvip">
+      <image src='../images/ic-add.png'></image>
+      <view>添加</view>
+    </view>
+  </view>
+  <view class="func">
+    <view class='cardBox'>
+      <view class='iconText' bindtap="chosegoods">
+        <image src='../images/ic-xuangou.png'></image>
+        <view>选择商品</view>
+      </view>
+    </view>
+    <view class='cardBox'>
+      <view class='iconText' bindtap="yanguang">
+        <image src='../images/ic-yanguang.png'></image>
+        <view>验光信息</view>
+      </view>
+    </view>
+    <view class='cardBox'>
+      <view class='iconText' bindtap="changevip">
+        <image src='../images/ic-gukexinxi.png'></image>
+        <view>会员信息</view>
+      </view>
+    </view>
+    <view class='cardBox'>
+      <view class='iconText' bindtap="shopcar">
+        <image src='../images/ic-gouwuche.png'></image>
+        <view>购物车</view>
+      </view>
+    </view>
+    <view class='cardBox'>
+      <view class='iconText' bindtap="orderhistory">
+        <image src='../images/ic-lishi.png'></image>
+        <view>历史订单</view>
+      </view>
+    </view>
+    <view class='cardBox endBox'></view>
+  </view>
+
+  <!-- <view class="footBar">
+    <view class='navTo'>
+      <view class='navbox'>
+        <image src='../images/ic-xiaoshou.png'></image>
+        <view>销售</view>
+      </view>
+    </view>
+    <view class='navTo'>
+      <view class='navbox'>
+        <image src='../images/ic-dianwu1.png'></image>
+        <view>店务</view>
+      </view>
+    </view>
+    <view class='navTo'>
+      <view class='navbox'>
+        <image src='../images/ic-geren.png'></image>
+        <view>个人</view>
+      </view>
+    </view>
+
+  </view> -->
+
+
+</view>

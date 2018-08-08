@@ -1,0 +1,24 @@
+<view class='siderChoose' wx:if='{{modalHidden}}' id='{{modalMsg}}'>
+  <view class='chooseContent'>
+    <view class='goodsType'>
+      <view class='lable'>类型</view>
+      <view class='types'>
+        <view wx:for="{{types}}" id='{{index}}' wx:key="navItems2" class='typeBtn {{index==typeBtnCheck?"typeBtnCheck":""}}' bindtap='typeBtnCheck'>{{item}}</view>
+        <view class="typeBtn" style="height:0px"></view>
+      </view>
+    </view>
+    <view class='detailContent'>
+      <view class='bigClass'>
+        <view class='bigType {{item.key==bigType?"bigTypeCheck":""}}' wx:for="{{chooseType[typeBtnCheck]}}" id="{{item.key}}" wx:key="navItems3" bindtap='bigClassCheck'>{{item.name}}</view>
+
+      </view>
+      <scroll-view scroll-y class='detail' catchtouchmove="true">
+        <view class='del {{detailIndex[bigType]==item?"detailCheck":""}}' bindtap='checkDetail' wx:for='{{modalArr}}' id="{{item}}" wx:key="navItems4">{{item}}</view>
+      </scroll-view>
+    </view>
+    <view class='endButton'>
+      <view class='yes btn' bindtap='yes' id='1231'>确定</view>
+      <view class='cancel btn' bindtap='closeSider'>取消</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,27 @@
+<view class='main'>
+  <view class='title'>个人中心</view>
+  <view class='head'>
+    <image src='../images/tab_ic_girl_selected.png' class='peopleIoc'></image>
+    <view class='msg'>
+      <text class='position'>导购员：</text><text class='name'>{{user_realname}}</text><text class='jifen'>积分：</text><text class='jifen_val'>{{user_integral}}</text>
+    </view> 
+    <view class='nowStore' >
+      <view class="section" wx:if='{{choseStore}}'>
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{all_store_name}}">
+          <view class="picker">
+            <text class='choseMsg'>门店选择</text>：{{all_store_name[index]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class='btnHistory'>
+      <!-- <button bindtap="salelists">销售记录</button> -->
+      <button bindtap="pandianlists">盘点记录</button>
+      <button bindtap="tuihuolists">退货记录</button>
+      <button bindtap="clearData">清理缓存数据</button>
+      <!-- <button bindtap="changeUser">切换账号</button> -->
+    </view>
+    
+  </view>
+
+</view>

@@ -1,0 +1,51 @@
+<view class="container">
+  <view class='content'>
+   <view class='list' wx:for='{{lists}}' wx:key="id">
+    <view class='leftBox'>
+      <view class='checkBtn' id='{{item.id}}' bindtap='checkList'>
+        <view class='uncheck {{item.check?"check":""}}'></view>
+      </view>
+      <view class='imgBox'>
+         <image src='../images/jingpian.png' mode='aspectFit'></image>   
+      </view>
+    </view>
+    <view class='rightBox'>
+      <view class='showMessage' wx:if='{{!item.edit}}'>
+        <view class='detail'>
+           <view class='message'>{{item.message}}</view> 
+            <view class='kucun'><text >￥{{item.price}}</text><text style='font-size:.7rem;line-height:1.2rem;' class='{{item.stock<item.num?"colorRed":""}}'>库存：{{item.stock}}</text></view>
+        </view>
+        <view class='edit'  >
+          <image src='../images/edit.png' wx:if='{{item.check}}' bindtap='openEdit' data-id='{{item.id}}'></image>
+          <text>x {{item.num}}</text>
+        </view>
+      </view>
+      <view class='func' wx:if='{{item.edit}}'>
+        <view class='stockAdd'>
+          <view class='stockBox'>
+            <text class='reduce' data-add='-1' bindtap='numAdd' data-id='{{item.id}}'></text>
+            <input class='num' bindinput='setnum' type='number' data-kuncun='{{item.stock}}' data-id='{{item.id}}' value='{{item.num}}'></input>
+            <text class='add' data-add='1' bindtap='numAdd' data-id='{{item.id}}'></text>
+          </view>
+        </view>
+        <view class='rightBtns'>
+          <view class='succ' bindtap='succ' data-id='{{item.id}}'>完成</view>
+        </view>
+      </view>
+    </view>
+   </view>
+   
+  </view>
+  
+  <view class='footbar'>
+      <view class='checkBtn' bindtap='checkAll'>
+      <view class='uncheck {{checked?"check":""}}'></view>
+      </view>
+      <view class='endBox'>
+         <text class='checkAllText'>全选</text>
+      <text style='font-size:.9rem;margin-left:10px'>合计： <text style='color:orange'>￥{{totalPrice}}</text> </text>
+      <text class='del' bindtap='delList'>删除</text>
+      <text class='toOrder' bindtap='upload'>下单</text>
+      </view> 
+  </view>
+</view>

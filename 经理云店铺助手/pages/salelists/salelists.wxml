@@ -1,0 +1,37 @@
+<!--pages/saleslists/salelists.wxml-->
+<view class="content">
+  <view class='title'>
+    <view class="section">
+      <picker mode="date" value="{{date}}" start="2010-09-01" end="2020-09-01" bindchange="bindDateChange">
+        <view class="picker">
+          请选择销售单日期: {{date}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view wx:for="{{salelists}}" wx:for-item="p1" wx:for-index="f1">
+      <view class='list' bindtap='saledetail' data-ity_id="{{p1.ity_id}}">
+      <view class='head'>
+        <text>{{p1.store_name}}</text>
+        <image class='orangeIcon'src="../images/store2.png"></image>
+        <view class='iconGreen'>销</view>
+      </view>
+      <view class='mainMsg'>
+        <view class='codeAndNum clearfix'>
+          <text class='textLfet'>编号：{{p1.ity_Number}}</text>
+          <text class='textRight'>商品件数：{{p1.totalcounts}}件</text>
+        </view>
+        <view class='middleShow'>
+        <text class='isSale'>已销售</text>
+        <image class='smallIcon' src='../images/sale2.png'></image>
+        <text class='textjifen'>整单积分：<text class='jifen_val'>{{p1.jifen}}</text></text>
+        </view>
+        <view class='clearfix mt10'>
+          <text class='textLfet'>时间:{{p1.ity_date}}</text>
+          <text class='textRight'>建立人：{{p1.user_realname}}</text>
+        </view>
+      </view>
+  </view>
+  </view>
+  <view class="isNull" wx:if="{{isNull}}">暂无该订单</view>
+</view>

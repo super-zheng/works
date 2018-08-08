@@ -1,0 +1,62 @@
+<view class="QZtable">
+  <view class='zjTitle clearfix'>
+    <view class='QZth QZlabel'>
+      <text class='text1'>球镜</text>/
+      <text class='text2'>柱镜</text>
+    </view>
+    <view class='QZth th' wx:for='{{zjArr}}' wx:for-item='zjItem'>{{zjItem}}</view>
+  </view>
+  <view wx:for="{{qjArr}}" wx:for-item="qjItem" class='QZtbody clearfix'>
+    <view class='QZtd tdLabel'>{{qjItem}}</view>
+    <view class='QZtd td {{(thisTap==(qjItem+","+zjItem))?"checktd":""}} {{(tdData[qjItem+","+zjItem]!=stockData[qjItem+","+zjItem])?(((tdData[qjItem+","+zjItem]?tdData[qjItem+","+zjItem]:0)>(stockData[qjItem+","+zjItem]?stockData[qjItem+","+zjItem]:0))?"green":"red"):""}}' wx:for='{{zjArr}}' wx:for-item='zjItem' data-zj="{{zjItem}}" data-qj="{{qjItem}}" bindtap='tapTd' data-key="{{qjItem+','+zjItem}}">
+      <text wx:if="{{thisTap!=(qjItem+','+zjItem)}}">{{tdData[qjItem+','+zjItem]}}</text>
+      <!-- <view class="qj">{{qjItem}}</view><view class="zj">{{zjItem}}</view> -->
+      <input class='setInput' type='number' value="{{tdData[qjItem+','+zjItem]}}" wx:if="{{thisTap==(qjItem+','+zjItem)}}" bindblur="blurInput" focus='true' data-key="{{qjItem+','+zjItem}}" bindinput='changeValue'></input>
+    </view>
+  </view>
+  <view class='funcBtns'>
+    <image src='{{img1}}' class='changeBtn' bindtap='changeTable1' data-add="{{qjLength}}"></image>
+    <image wx:if='{{qjIndex!=0}}' src='{{img2}}' class='changeBtn' data-add="{{-qjLength}}" bindtap='changeTable1'></image>
+    <image wx:if='{{qjIndex==0}}' src='../../pages/images/2_05.png' class='changeBtn' data-add="{{chose}}" bindtap='changeTable3'></image>
+    <image src='{{img3}}' class='changeBtn' data-add="8" bindtap='changeTable2'></image>
+    <image src='{{img4}}' class='changeBtn' data-add="-8" bindtap='changeTable2'></image>
+  </view>
+    <view class="endShow" wx:if="{{nowStatus!=''}}">
+      <view class="info">
+        <text>球镜</text>
+        <text>{{nowStatus[0]}}</text>
+      </view>
+      <view class="info">
+        <text>柱镜</text>
+        <text>{{nowStatus[1]}}</text>
+      </view>
+      <view class="info">
+        <text>库存</text>
+        <text>{{stock}}</text>
+      </view>
+      <view class="info">
+        <text>实际盘点</text>
+        <text>{{shiji}}</text>
+      </view>
+
+      <view class="info">
+        <text>差值</text>
+        <text>{{shiji-stock}}</text>
+      </view>
+    </view>
+    <view class='endBtn'>
+      <view class='requery btn' bindtap='save'>确定</view>
+      <view class='btn' bindtap='sao'><image src='../images/saoma.png' class='saomaImg'></image></view>
+      <view class='cancel btn' bindtap="fh">取消</view>
+    </view>
+</view>
+
+<modal
+    title="是否生成盘点"
+     hidden="{{hiddenModal}}"
+     confirm-text="确定"
+     cancel-text="取消"
+     bindconfirm="listenerConfirm"
+     bindcancel="listenerCancel" >
+     备注：<input type="text" value="{{remark}}" bindinput='taking_remark'></input>
+</modal>

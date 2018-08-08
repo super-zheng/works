@@ -1,0 +1,47 @@
+ 
+<view class='container'>
+  <view class='messageList'>
+    <text class='lable'>电话</text>
+    <input type='number' class='inputs' placeholder='请输入电话号码' bindinput="phoneNumber" value='{{customer_tel}}' focus='{{toPhone}}' ></input>
+  </view>
+  <view class='messageList'>
+    <text class='lable'>姓名</text>
+    <input type='text' class='inputs' placeholder='请输入姓名' bindinput="customerName" value='{{customer_name}}'></input>
+  </view>
+  <view class='messageList'>
+    <text class='lable'>性别</text>
+    <view class='checkSex'>
+      <view class='checkItem' bindtap='checkSex' data-sex='1'>
+        <text class='radioUncheck {{customer_sex==1?"radioCheck":""}}'></text>
+        <text>男</text>
+      </view>
+      <view class='checkItem' bindtap='checkSex' data-sex='2'>
+        <text class='radioUncheck {{customer_sex==2?"radioCheck":""}}'></text>
+        <text>女</text>
+      </view>
+      <view class='checkItem' bindtap='checkSex' data-sex='0'>
+        <text class='radioUncheck {{(customer_sex==0)?"radioCheck":""}}'></text>
+        <text>其他</text>
+      </view>
+    </view>
+  </view>
+  <view class='messageList'>
+    <text class='lable'>生日</text>
+    <view class="section">
+      
+      <picker mode="date" value="{{customer_birthday}}" start="1920-01-01" end="{{endTime}}" bindchange="bindDateChange">
+        <view class="picker">
+          <input type='text' disabled='true' value="{{customer_birthday}}" placeholder='请选择生日'></input>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class='messageList beizhu' style='margin-top:20rpx'>
+    <text class='lable'>备注</text>
+    <textarea type='text' class='inputs' placeholder='请输入备注'  bindblur="bindTextAreaBlur" value='{{vip_remarks}}'></textarea>
+  </view>
+  <view class='endBtn'>
+    <view class='btnActive qingkong btns ' bindtap='qingkong'>清空</view>
+    <view class='btnActive save btns' bindtap='yanzheng'>保存</view>
+  </view>
+</view>

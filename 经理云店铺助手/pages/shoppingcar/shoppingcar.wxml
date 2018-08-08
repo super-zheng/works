@@ -1,0 +1,65 @@
+<view class='content'>
+  <view class='lists'>
+    <view class='list clearfix' wx:for='{{details}}' bindtouchstart="moveStart" bindtouchend='isMove' style='left:{{left[index]}}px' data-index='{{index}}'>
+      <view class='showMsg' style='{{showMsgWidth}}'>
+        <view class='choseImg' bindtap='clikImg' data-imgindex="{{item.degree_id}}" data-degree_id="{{item.degree_id}}">
+        <image src='../images/{{choseImg[index]||"cart_ic_check_box_normal"}}.png'></image></view>  
+       <view class='goodsImg'>
+       <block wx:if="{{item.stock_imgPath}}">
+          <image wx:if="{{item.stock_type==1}}" src='http://jingliyun.com/upload_Img/GlassesLens/{{item.stock_imgPath}}.jpg'></image>   
+          <image wx:elif="{{item.stock_type==2}}" src='http://jingliyun.com/upload_Img/GlassesFrame/{{item.stock_imgPath}}.jpg'></image>  
+          <image wx:elif="{{item.stock_type==3}}" src='http://jingliyun.com/upload_Img/GlassesSun/{{item.stock_imgPath}}.jpg'></image>  
+          <image wx:elif="{{item.stock_type==4}}" src='http://jingliyun.com/upload_Img/GlassesPresbyopic/{{item.stock_imgPath}}.jpg'></image>  
+          <image wx:elif="{{item.stock_type==5}}" src='http://jingliyun.com/upload_Img/GlassesContact/{{item.stock_imgPath}}.jpg'></image>  
+          <image wx:elif="{{item.stock_type==6}}" src='http://jingliyun.com/upload_Img/GlassesCareSolution/{{item.stock_imgPath}}.jpg'></image>  
+          <image wx:elif="{{item.stock_type==7}}" src='http://jingliyun.com/upload_Img/GlassesAccessory/{{item.stock_imgPath}}.jpg'></image>  
+       </block>
+       <block wx:else>
+          <image src='/pages/images/Icon_Default_productr.png'></image>
+       </block>         
+       </view>
+       <view class='MsgAndNum' style='width:{{windowWidth-180}}px'>
+          <view class='showMsgs' bindtap='productdetail' data-degree_id='{{item.degree_id}}' data-stock_type='{{item.stock_type}}'>
+            <view wx:if="{{item.stock_type==1}}">镜片 {{item.lens_brand}}  {{item.degree_cyl}} {{item.lens_colorFilm}}   {{item.lens_refractivity}}</view>
+            <text wx:if="{{item.stock_type==2}}">镜架 {{item.gframe_brand}} {{item.gframe_model}} {{item.gframe_style}} {{item.gframe_material}} {{item.degree_colorNumber}}</text>
+            <text wx:if="{{item.stock_type==3}}">太阳眼镜 {{item.sun_brand}} {{item.sun_model}} {{item.sun_style}} {{item.sun_material}} {{item.degree_colorNumber}}</text>
+            <text wx:if="{{item.stock_type==4}}">成品眼镜 {{item.presbyopic_brand}} {{item.degree_cyl}} {{item.presbyopic_model}} {{item.presbyopic_style}} {{item.presbyopic_frameMaterial}}</text>
+            <text wx:if="{{item.stock_type==5}}">隐形眼镜 {{item.contact_brand}}{{item.contact_watercontent}}{{item.degree_cyl}} {{item.contact_usetime}} {{item.contact_model}} {{item.contact_material}}</text>
+            <text wx:if="{{item.stock_type==6}}">护理液 {{item.caresolution_brand}}{{item.caresolution_rule}}{{item.caresolution_model}}</text>
+            <text wx:if="{{item.stock_type==7}}">配件 {{item.accessory_brand}} {{item.accessory_function}} {{item.accessory_size}} {{item.accessory_model}} {{item.accessory_material}}</text>
+          </view>
+          <!-- <view class='price'>¥{{item.price}}</view><view class='numbers'>库存：{{item.numbers}}</view> -->
+          <view><text class='price'>¥{{item.price}}</text><text class='numbers'>库存：{{item.numbers}}</text></view>
+          <view class='num'>
+              <view class='jian' bindtap='jian' data-degree_id='{{item.degree_id}}'>
+                <view></view>
+              </view>
+              <view class='shu'>
+                 <view class='shu_num'>{{item.number}}</view>
+                <!-- {{item.number}} -->
+              </view>
+              <view class='jia'  bindtap='jia' data-degree_id='{{item.degree_id}}' data-numbers='{{item.numbers}}'>
+                <view></view>
+                <view></view>
+              </view>
+          </view>
+       </view>
+      </view>
+      <view class='deleBtn' bindtap='delete' data-degree_id='{{item.degree_id}}' style='{{deleWidth}}'>删除</view>
+    </view>
+    <view class="foot">
+      <view class='img' bindtap='choseAll'>
+        <image src='../images/{{checkThis[checkImg]}}.png' ></image>
+      </view>
+      <view class='checked_all' bindtap='choseAll'>
+        (全选)
+      </view>
+      <view class='heji'>
+        合计：{{sumprice}}
+      </view>
+      <view class='save' bindtap='saleProduct'>
+        下 单
+      </view>
+    </view>
+  </view>
+</view>

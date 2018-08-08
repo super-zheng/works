@@ -1,0 +1,11 @@
+<view class="section" wx:if='{{choseStore}}'>
+  <view class='store'>
+  <view>当前店铺：{{name}}</view>
+  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+    <picker-view-column>
+      <view wx:for="{{all_store_name}}" style="line-height: 50px">{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+  </view>
+  <button bindtap='sure_store' class="sure_store" class='scan'>确定</button>
+</view>

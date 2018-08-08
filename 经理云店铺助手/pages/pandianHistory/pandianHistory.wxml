@@ -1,0 +1,19 @@
+<view>
+  <choose-time label-str="{{labelStr}}" bind:getTimes='getTimes' init-times="{{times}}"></choose-time>
+  <view class='content'>
+    <block wx:for="{{lists}}" wx:key="pandianHistory">
+      <view class='listItem' bindtap='detail' data-id="{{item.id}}" data-st="{{item.st}}">
+        <view class='numberAndTime'>
+          <view>{{item.number}}</view>
+          <view>{{item.time}}</view>
+        </view>
+        <view class='names'>
+          <text>盘点人：{{item.Inventory}}</text>
+          <text>审核人：{{item.accounting}}</text>
+          <text>此单状态：{{item.status}}</text>
+        </view>
+      </view>
+    </block>
+
+  </view>
+</view>

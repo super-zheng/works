@@ -1,0 +1,262 @@
+<scroll-view scroll-y='{{scrollMe}}' bindtouchstart='mainStart' bindtouchend='mainEnd' bindscroll="demo"  >
+  <view class='startTitle'>
+<!-- <image style="width: 100px; height: 100px;" src='/pages/images/info_ic_commodity_default.png'></image> -->
+  <view class='title'>
+    <view  calss="shoppingcar" bindtap='shoppingcar'>
+      <image  class='shopCar' src='../images/shopngCar.png' ></image>
+    </view>
+
+    <view class="scan" bindtap='scan'>
+      <image src='../images/scan.png'></image>
+    </view>
+    <view  bindtap='shoppingcar' hidden="{{goodsNum==0}}" class="goodsNum">{{goodsNum}}</view>
+
+    <input type='text' placeholder='搜索' class='searchInput' bindinput='searchContent'/>
+    <button type='default' class='searchBtn'  bindtap='search'>搜索</button>
+  </view>
+   <view class="section sectionType" bindtap='clickMe1'>
+     筛选：{{TypeName}}
+    </view>
+</view>
+<view class='products_contain clearfix'>
+  <view class='product_item'>
+    <view  wx:for="{{products}}" wx:for-item="p" wx:for-index="f" class="listShow" >
+    <!-- 镜片 -->
+      <view wx:if="{{thisType==0}}" bindtap='clickMe' data-stock_id='{{p.stock_id}}'>
+        <view class='fl' class='product_image'>
+          <image wx:if='{{p.stock_imgPath}}' src='http://jingliyun.com/upload_Img/GlassesLens/{{p.stock_imgPath}}' ></image>
+          <image wx:else src='/pages/images/Icon_Default_productr.png' ></image>
+        </view>
+        <view class='detailMsg'>
+          <text class="pinpai">镜片 {{p.lens_brand}} </text>
+          <text class="pinpai">{{p.lens_model}} {{p.lens_refractivity}}</text>
+        </view>
+      </view>
+    <!-- 镜架 -->
+      <view wx:elif="{{thisType==1}}" bindtap='clickMe_jingjia' data-stock_id='{{p.stock_id}}'>
+        <view class='fl' class='product_image'>
+          <image wx:if='{{p.stock_imgPath}}' src='http://jingliyun.com/upload_Img/GlassesFrame/{{p.stock_imgPath}}' ></image>
+          <image wx:else src='/pages/images/Icon_Default_productr.png' ></image>
+        </view>
+        <view class='detailMsg'>
+          <text class="pinpai">镜架 {{p.gframe_brand}} </text>
+          <text class="pinpai">{{p.gframe_model}} {{p.gframe_style}}</text>
+        </view>
+      </view>
+      <!-- 太阳眼镜 -->
+      <view wx:elif="{{thisType==2}}" bindtap='clickMe_jingjia' data-stock_id='{{p.stock_id}}'>
+        <view class='fl' class='product_image'>
+          <image wx:if='{{p.stock_imgPath}}' src='http://jingliyun.com/upload_Img/GlassesSun/{{p.stock_imgPath}}' ></image>
+          <image wx:else src='/pages/images/Icon_Default_productr.png' ></image>
+        </view>
+        <view class='detailMsg'>
+          <text class="pinpai">太阳眼镜 {{p.sun_brand}} </text>
+          <text class="pinpai">{{p.sun_model}} {{p.sun_style}}</text>
+        </view>
+      </view>
+      <!-- 成品眼镜 -->
+      <view wx:if="{{thisType==3}}" bindtap='clickMe' data-stock_id='{{p.stock_id}}'>
+        <view class='fl' class='product_image'>
+          <image wx:if='{{p.stock_imgPath}}' src='http://jingliyun.com/upload_Img/GlassesPresbyopic/{{p.stock_imgPath}}' ></image>
+          <image wx:else src='/pages/images/Icon_Default_productr.png' ></image>
+        </view>
+        <view class='detailMsg'>
+          <text class="pinpai">成品眼镜 {{p.presbyopic_brand}} </text>
+          <text class="pinpai">{{p.presbyopic_frameMaterial}} {{p.presbyopic_style}}</text>
+        </view>
+      </view>
+      <!-- 隐形眼镜 -->
+      <view wx:if="{{thisType==4}}" bindtap='clickMe' data-stock_id='{{p.stock_id}}'>
+        <view class='fl' class='product_image'>
+          <image wx:if='{{p.stock_imgPath}}' src='http://jingliyun.com/upload_Img/GlassesContact/{{p.stock_imgPath}}' ></image>
+          <image wx:else src='/pages/images/Icon_Default_productr.png' ></image>
+        </view>
+        <view class='detailMsg'>
+          <text class="pinpai">隐形眼镜  {{p.contact_brand}} </text>
+          <text class="pinpai">{{p.contact_model}} {{p.o1}}</text>
+        </view>
+      </view>
+      <!-- 护理液 -->
+      <view wx:if="{{thisType==5}}"> 
+            <view class='fl' class='product_image'>
+            <view wx:if="{{p.stock_imgPath}}"> 
+            <image src='http://jingliyun.com/upload_Img/GlassesCareSolution/{{p.stock_imgPath}}' bindtap='clickMe'></image>
+            </view>
+            <view wx:else>
+            <image src='/pages/images/Icon_Default_productr.png' ></image> 
+            </view>
+            </view>
+            <view class='detailMsg'>
+              <text class="pinpai">护理液 {{p.caresolution_brand}}{{p.caresolution_model}}{{p.caresolution_rule}} </text>
+            </view>
+            <view class='item clearfix'>
+               <text class='money fl'>¥{{p.price}}</text>
+               <text class='num fl'>库存：{{p.numbers}}</text>
+             <image class='add_icon' bindtap='add_product' src='/pages/images/list_ic_add.png' 
+               data-degree_id="{{p.degree_id}}" 
+              ></image>
+            <view wx:if="{{isShow==p.degree_id}}" class="smallMark"  animation="{{animationData[p.degree_id]}}"></view>   
+            </view>
+       </view> 
+      <!-- 配件 -->
+        <view wx:if="{{thisType==6}}"> 
+            <view class='fl' class='product_image'>
+            <view wx:if="{{p.stock_imgPath}}"> 
+            <image src='http://jingliyun.com/upload_Img/GlassesAccessory/{{p.stock_imgPath}}' bindtap='clickMe'></image>
+            </view>
+            <view wx:else>
+            <image src='/pages/images/Icon_Default_productr.png' bindtap='clickMe'></image> 
+            </view>
+            </view>
+            <view class='detailMsg'>
+              <text class="pinpai">{{p.accessory_brand}} {{p.accessory_model}} {{p.accessory_function}}配件</text>
+            </view>
+            <view class='item clearfix'>
+               <text class='money fl'>¥{{p.price}}</text>
+               <text class='num fl'>库存：{{p.numbers}}</text>
+             <image class='add_icon' bindtap='add_product' src='/pages/images/list_ic_add.png' 
+               data-degree_id="{{p.degree_id}}" 
+              ></image>
+            <view wx:if="{{isShow==p.degree_id}}" class="smallMark"  animation="{{animationData[p.degree_id]}}"></view>   
+            </view>
+       </view> 
+      
+    </view>
+  </view>
+</view>
+<view wx:if="{{isNull}}" class='no_products'>
+         暂无此类商品 
+</view>
+<!-- <navigator url="/pages/sales/sales" open-type="navigateBack"  hover-class="navigator-hover">
+ <image style="width: 100px; height: 100px;" src='/pages/images/info_ic_commodity_default.png'></image> 
+保存
+</navigator> -->
+<view class='{{searchView}}' style=' transform: translateX({{translateX}}px);' bindtouchstart='touchStart' bindtouchend='touchEnd'>
+  <view class='searchContent'>
+    <view class='submit' bindtap='submit'><button>确定</button></view>
+    <view class='rightTable'>
+    <!-- 镜片 -->
+      <view wx:if="{{thisType==0}}">
+        <view  wx:for='{{choseGoodsType[0]}}' wx:for-item='mainItem' wx:for-index='mainIndex'>
+          <text bindtap='thisClick' data-thisindex='{{mainIndex}}' class='{{tableClass[mainItem.tableClass]}}'>{{mainItem.name}}</text>
+        </view>
+      </view>
+      <!-- 镜架 -->
+      <view wx:elif="{{thisType==1}}">
+        <view  wx:for='{{choseGoodsType[1]}}' wx:for-item='mainItem' wx:for-index='mainIndex'>
+          <text bindtap='thisClick' data-thisindex='{{mainIndex}}' class='{{tableClass[mainItem.tableClass]}}'>{{mainItem.name}}</text>
+        </view>
+      </view>
+      <!-- 太阳眼镜 -->
+      <view wx:elif="{{thisType==2}}">
+        <view  wx:for='{{choseGoodsType[2]}}' wx:for-item='mainItem' wx:for-index='mainIndex'>
+          <text bindtap='thisClick' data-thisindex='{{mainIndex}}' class='{{tableClass[mainItem.tableClass]}}'>{{mainItem.name}}</text>
+        </view>
+      </view>
+      <!-- 成品眼镜 -->
+      <view wx:if="{{thisType==3}}">
+        <view  wx:for='{{choseGoodsType[3]}}' wx:for-item='mainItem' wx:for-index='mainIndex'>
+          <text bindtap='thisClick' data-thisindex='{{mainIndex}}' class='{{tableClass[mainItem.tableClass]}}'>{{mainItem.name}}</text>
+        </view>
+      </view>
+      <!-- 隐形眼镜 -->
+      <view wx:if="{{thisType==4}}">
+        <view  wx:for='{{choseGoodsType[4]}}' wx:for-item='mainItem' wx:for-index='mainIndex'>
+          <text bindtap='thisClick' data-thisindex='{{mainIndex}}' class='{{tableClass[mainItem.tableClass]}}'>{{mainItem.name}}</text>
+        </view>
+      </view>
+      <!-- 护理液 -->
+      <view wx:if="{{thisType==5}}">
+        <view  wx:for='{{choseGoodsType[5]}}' wx:for-item='mainItem' wx:for-index='mainIndex'>
+          <text bindtap='thisClick' data-thisindex='{{mainIndex}}' class='{{tableClass[mainItem.tableClass]}}'>{{mainItem.name}}</text>
+        </view>
+      </view>
+      <!-- 配件 -->
+      <view wx:if="{{thisType==6}}">
+        <view  wx:for='{{choseGoodsType[6]}}' wx:for-item='mainItem' wx:for-index='mainIndex'>
+          <text bindtap='thisClick' data-thisindex='{{mainIndex}}' class='{{tableClass[mainItem.tableClass]}}'>{{mainItem.name}}</text>
+        </view>
+      </view>
+      <!-- <view wx:else>
+        <view  wx:for='{{choseGoodsType[6]}}' wx:for-item='mainItem' wx:for-index='mainIndex'>
+          <text bindtap='thisClick' data-thisindex='{{mainIndex}}' class='{{tableClass[mainItem.tableClass]}}'>{{mainItem.name}}</text>
+        </view>
+      </view> -->
+      
+    </view>
+    <view class='seachCotent'>
+        <view wx:for="{{choseGoodsType[thisType][contentIndex].lists}}" wx:for-item='listItem' wx:for-index='listIndex' class="choseClick">
+          <text bindtap='clickDetail' data-clickname='{{listItem}}' data-clickindex='{{listIndex}}' class='{{litters[choseGoodsType[thisType][contentIndex].chose[listIndex]]}}'> {{listItem}}</text>
+        </view>
+    </view>
+  
+  </view> 
+</view>
+
+</scroll-view>
+
+
+<!-- 镜片-----球柱镜选择 -->
+<view class='content' wx:if='{{(thisType==0||thisType==3||thisType==4)&&showQZJ}}'>
+  <view class='title'>
+    <text>球镜SPH</text>
+    <text>柱镜CYL</text>
+  </view>
+  <view class='eyes'>
+    <text class='rightEye'>R</text>
+    <text class='leftEye'>L</text>
+  </view>
+  <view>
+   
+   <picker-view indicator-style="height: 30px; " style="width:100%; height: 150px;" value='{{value1}}'  bindchange="bindChange1">
+    <picker-view-column>
+      <view wx:for="{{qjArr}}" style="line-height:30px;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{zjArr}}" style="line-height:30px;">{{item}}</view>
+    </picker-view-column>
+     
+    
+  </picker-view> 
+  <picker-view indicator-style="height: 30px; " style="width:100%; height: 150px;" value='{{value2}}'  bindchange="bindChange2">
+    <picker-view-column>
+      <view wx:for="{{qjArr}}" style="line-height:30px;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{zjArr}}" style="line-height:30px;">{{item}}</view>
+    </picker-view-column>
+     
+    
+  </picker-view>
+</view>
+<view class='stock'>
+  <text class='stockText1'>库存 : <text class='colorRed'>{{kucun1}}</text></text> 
+  <text class='stockText2'>库存 : <text class='colorRed'>{{kucun2}}</text></text>
+
+</view>
+<view class='btn'>
+  
+  <button class='isFail' bindtap='closeQZJ2'>取消</button>
+  <button class='isOk' bindtap='closeQZJ1' bindtap='sureProduct'>确定</button>
+</view>
+</view>
+
+
+<!-- 镜架-----选择色号 -->
+ <view  wx:if='{{(thisType==1||thisType==2)&&showQZJ}}'>
+  <view class="container" class="zn-uploadimg">  
+      <button type="primary"bindtap="modalinput">modal有输入框</button>   
+  </view>  
+  <modal hidden="{{hiddenmodalput}}" title="请选择色号" confirm-text="确定"  bindconfirm="confirm_jingjia"  cancel-text="取消" bindcancel="cancel">  
+  <view>
+    <picker-view indicator-style="height: 50px;" style="width: 80%; height: 300px;" value="{{value}}" bindchange="bindChange_jingjia">
+      <picker-view-column>
+        <view wx:for="{{colors}}" style="line-height: 50px" class='pickerText'>{{index}}</view>
+      </picker-view-column>
+    </picker-view>
+    <view class='stock_j'>
+      <text class='stockText1'>库存 : <text class='colorRed'>{{jj_number}}</text></text> 
+    </view>
+  </view>
+  </modal> 
+</view>

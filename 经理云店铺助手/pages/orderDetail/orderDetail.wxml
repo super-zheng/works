@@ -1,0 +1,336 @@
+<view class='content'>
+  <view class='header'>
+    <image src='../images/store2.png'></image>
+    <text class="p1"> 洛亚视光-江南西店</text>
+    <text class="xiao">销</text>
+  </view>
+  <view class="detail">
+    <view class="ordernum">
+      <text>销售单号：123456789123456</text>
+      <text class="processing">加工中</text>
+    </view>
+    <view class="people">
+      <text>销售人员：卢佳豪</text>
+      <text class="cashier">收银员：卢佳豪</text>
+    </view>
+    <view class="time">
+      销售时间：2018-07-15 01:20:30
+    </view>
+  </view>
+
+  <view class="goods">
+    <view wx:for="{{3}}" class="goods-item">
+      <view class='picbox'>
+        <text class="goods-name">镜片</text>
+        <image class="pic" src='../images/Icon_Default_productr.png'></image>
+      </view>
+      <view class="goods-detail">
+        <view class="pinpai">
+          <text>品牌：蔡司</text>
+          <text class="discount">9.0折</text>
+        </view>
+        <text>品类：双光 非球面</text>
+        <text>品类：双光 非球面</text>
+        <text>球柱镜：0.00，-0.25</text>
+        <view class="price">
+          <text class="money">价格：￥100.00</text>
+          <text>1件</text>
+        </view>
+      </view>
+
+      <view class="more">》</view>
+    </view>
+  </view>
+
+  <view class="price-box">
+    <view class="price-detail">
+      <text>优惠价:￥400.00</text>
+      <text>套餐:无</text>
+      <text>整单折扣:无</text>
+      <text class="zero">抹零:无</text>
+    </view>
+
+    <view class="price-detail pd2">
+      <text class="should">应收:￥360.00</text>
+      <text>已收:￥160.00</text>
+      <text class="weishou">未收:￥200.00</text>
+    </view>
+  </view>
+
+  <!-- 结算方式 -->
+  <view class="setelement">
+    <text class="jiesuan">结算方式</text>
+    <view class="cash">
+      <text class="cash-p1">现金：￥160.00</text>
+      <text>微信:￥160.00</text>
+      <text>微信:￥160.00</text>
+    </view>
+    <view class="cash alipay">
+      <text>支付宝:￥160.00</text>
+      <text>优惠券:￥160.00</text>
+      <text>折扣券:￥160.00</text>
+    </view>
+  </view>
+
+  <!-- 验光单号 -->
+  <view class="jgxinxi">
+    <text>验光信息</text>
+    <image bindtap='changeEvent1' src='{{picUrl1}}'></image>
+  </view>
+  <view class="optometry" wx:if="{{!zhedie1}}">
+    <view class="single-number">
+      <text>验光单号：123456789123456</text>
+      <text class="completed">已完成</text>
+    </view>
+
+    <view class="vip-detail">
+      <image class="avatar" src='../images/tab_ic_girl_selected.png'></image>
+      <view class="infor">
+        <view class="name">
+          <text>会员姓名：王力（男)</text>
+          <text>TCL:185****4962</text>
+        </view>
+        <view class="beizhu">
+          <view class='beizhu-input'>
+            <input type="text" class="input" placeholder='备注' />
+          </view>
+          <text class="jifen">积分：100</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="time-picker">
+      <text>验光师：卢佳豪</text>
+      <!-- <view class="layui-inline">
+        <picker mode="date" id="picker" value="{{time}}" bindchange="bindTimeChange">
+          <view class="picker">
+            验光时间: {{time}}
+          </view>
+        </picker>
+      </view> -->
+      <view class="tui-picker-content">
+        <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+          <view class="tui-picker-detail">
+            验光时间: {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="table-container">
+      <view class="table">
+        <view class="tr">
+          <view class="th">近用</view>
+          <view class="th">球镜SPH</view>
+          <view class="th">柱镜CYL</view>
+          <view class="th">轴位AX</view>
+          <view class="th">矫正视力CVA</view>
+          <view class="th">下加光ADD</view>
+        </view>
+        <view class="tr" wx:for="{{2}}">
+          <view class="td">内容</view>
+          <view class="td"></view>
+          <view class="td"></view>
+          <view class="td"></view>
+          <view class="td"></view>
+          <view class="td"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="yanguang">
+      <textarea class="desc" placeholder="验光备注"></textarea>
+    </view>
+  </view>
+
+  <!-- 加工单号 -->
+  <view class="jgxinxi">
+    <text>加工信息</text>
+    <image bindtap='changeEvent' src="{{picUrl}}"></image>
+  </view>
+
+  <view class="process" wx:if="{{!zhedie}}">
+    <view class="single-number">
+      <text>加工单号：123456789123456</text>
+      <text class="completed">质检中</text>
+    </view>
+    <view class="principal">
+      <text>创建人：卢佳豪</text>
+      <text>收件人：卢佳豪</text>
+      <text>派送人：卢佳豪</text>
+    </view>
+    <view class="danju-time">单据时间：2018-07-15 01:20:30</view>
+
+    <view class="table-container">
+      <view class="table">
+        <view class="tr">
+          <view class="th">SHR</view>
+          <view class="th">CYL</view>
+          <view class="th">AXI轴位</view>
+          <view class="th">add</view>
+          <view class="th">瞳距</view>
+          <view class="th">瞳高</view>
+        </view>
+        <view class="tr" wx:for="{{2}}">
+          <view class="td">内容</view>
+          <view class="td"></view>
+          <view class="td"></view>
+          <view class="td"></view>
+          <view class="td"></view>
+          <view class="td"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="list">
+      <view wx:for="{{2}}" class="goods-item goods-d2">
+        <view class='picbox'>
+          <text class="goods-name">L</text>
+          <image class="pic" src='../images/Icon_Default_productr.png'></image>
+        </view>
+        <view class="goods-detail">
+          <view class="pinpai">
+            <text>品牌：蔡司</text>
+            <text class="discount self">自提供</text>
+          </view>
+          <text>品类：双光 非球面</text>
+          <text>品类：双光 非球面</text>
+          <text>球柱镜：0.00，-0.25</text>
+          <view class="price">
+            <text class="money">价格：￥100.00</text>
+            <text>1件</text>
+          </view>
+        </view>
+
+        <view class="more">》</view>
+      </view>
+
+
+    </view>
+
+    <text class="list-title">加工工艺: 割边 钻孔*2</text>
+
+    <view class="yanguang">
+      <textarea class="desc" placeholder="镜片加工备注"></textarea>
+    </view>
+
+    <view class='bao'>
+      <view class="goods-item goods-d2">
+        <view class='picbox'>
+          <text class="goods-name">镜片</text>
+          <image class="pic" src='../images/Icon_Default_productr.png'></image>
+        </view>
+        <view class="goods-detail">
+          <view class="pinpai">
+            <text>品牌：蔡司</text>
+          </view>
+          <text>型号：JB1003</text>
+          <text>色号：C1/50TR</text>
+          <view class="price">
+            <text class="money">价格：￥100.00</text>
+            <text>1件</text>
+          </view>
+        </view>
+
+        <view class="more">》</view>
+      </view>
+    </view>
+
+    <text class="list-title">加工类型: 金框标准加工</text>
+
+    <view class="table-container">
+      <view class="table">
+        <view class="tr">
+          <view class="th">边缘厚度</view>
+          <view class="th">中心厚度</view>
+          <view class="th">基弯</view>
+          <view class="th">厚薄</view>
+          <view class="th">基弯相配</view>
+          <view class="th">方向</view>
+        </view>
+        <view class="tr" wx:for="{{2}}">
+          <view class="td">内容</view>
+          <view class="td"></view>
+          <view class="td"></view>
+          <view class="td"></view>
+          <view class="td"></view>
+          <view class="td"></view>
+        </view>
+      </view>
+    </view>
+    <view class="yanguang">
+      <textarea class="desc" placeholder="镜框加工备注"></textarea>
+    </view>
+
+    <view class="table-container">
+      <!-- <view class="table">
+        <view class="tr">
+          <view class="th">球柱镜/色号/规格</view>
+          <view class="th">件数</view>
+          <view class="th">单价</view>
+          <view class="th">折扣</view>
+          <view class="th">小计</view>
+        </view>
+        <view class="tr" wx:for="{{arrGuige}}">
+          <view class="td td4">{{item.guige}}</view>
+          <view class="td td4">{{item.jianshu}}</view>
+          <view class="td td4">{{item.price}}</view>
+          <view class="td td1 td4">{{item.zhekou}}</view>
+          <view class="td td2 td4">{{item.total}}</view>
+        </view>
+      </view> -->
+      <view class='table4'>
+        <view class='tr4'>
+          <view class='th4'>球柱镜/色号/规格</view>
+          <view class='th4'>件数</view>
+          <view class='th4'>单价</view>
+          <view class='th4'>折扣</view>
+          <view class='th4'>小计</view>
+        </view>
+        <view class='tr4' wx:for="{{arrGuige}}">
+          <view class='td4'>{{item.guige}}</view>
+          <view class='td4'>{{item.jianshu}}</view>
+          <view class='td4'>{{item.price}}</view>
+          <view class='td4 td1'>{{item.zhekou}}</view>
+          <view class='td4 td2'>{{item.total}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="offer">
+      <view class="price-detail">
+      <text>优惠价:￥400.00</text>
+      <text>套餐:无</text>
+      <text>整单折扣:无</text>
+      <text class="zero">抹零:无</text>
+    </view>
+
+    <view class="price-detail pd2">
+      <text class="should">应收:￥360.00</text>
+      <text>已收:￥160.00</text>
+      <text class="weishou">未收:￥200.00</text>
+    </view>
+    </view>
+
+    <view class="setelement">
+      <text class="jiesuan">结算方式</text>
+      <view class="cash">
+        <text class="cash-p1">现金：￥160.00</text>
+        <text>微信:￥160.00</text>
+        <text>微信:￥160.00</text>
+      </view>
+      <view class="cash alipay">
+        <text>支付宝:￥160.00</text>
+        <text>优惠券:￥160.00</text>
+        <text>折扣券:￥160.00</text>
+      </view>
+    </view>
+
+
+  </view>
+
+
+
+
+
+</view>

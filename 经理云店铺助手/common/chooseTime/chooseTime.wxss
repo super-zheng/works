@@ -1,0 +1,31 @@
+
+.colorOrange{
+  color:orange;
+}
+.headChoose{
+  height: 80rpx;
+  display: flex;
+  padding: 0 20rpx ;
+  font-size: 30rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkTime{
+  display: flex;
+  justify-content: space-around;
+}
+.section{
+  width: 200rpx;
+}
+.start,.end{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.lable{
+  margin:10rpx;
+}
+.picker input{
+  border:1rpx solid #ccc;
+  padding-left: 10rpx;
+}

@@ -1,0 +1,57 @@
+<view class='container'>
+  <view class='details'>
+    <view class='detailItem'>
+      <text>销售单号</text>
+      <text class='color777'>{{pageObj.orderNum}}</text>
+    </view>
+    <view class='detailItem'>
+      <text>销售时间</text>
+      <text class='color777'>{{pageObj.orderTime}}</text>
+    </view>
+    <view class='detailItem'>
+      <text>姓名</text>
+      <text class='color777'>{{pageObj.name}}</text>
+    </view>
+    <view class='detailItem'>
+      <text>电话</text>
+      <text class='color777'>{{pageObj.phone}}</text>
+    </view>
+    <view class='detailItem'>
+      <text>地址</text>
+      <text class='color777'>{{pageObj.adress}}</text>
+    </view>
+    <view class='detailItem'>
+      <text>状态</text>
+      <text class='{{color[pageObj.status]}}'>{{orderStaus[pageObj.status]}}</text>
+    </view>
+  </view>
+  <view class='goodsLists'>
+    <view class='goodsItem' wx:for="{{goodsLists}}" wx:key="id">
+      <image src="{{item.src}}" mode="aspectFit"></image>
+      <view class='goodsDetail'>
+        <view > {{item.message}}</view>
+        <view class='priceNum'>
+          <text class='colorOrange'>￥{{item.price}}</text>
+          <text class='color777'>x {{item.num}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='bottmBox'></view>
+  <view class='bottomMessage'>
+    <view class='detailItem'>
+      <text>商品数量</text>
+      <text class='color777'>{{nums}}</text>
+    </view>
+    <view class='detailItem'>
+      <text>商品合计</text>
+      <text class='color777'>￥{{money}}</text>
+    </view>
+    <view class='detailItem'>
+      <text class='colorOrange'>实收</text>
+      <text class='colorOrange'>￥{{pageObj.shihsou}}</text>
+       <view bindtap='sends' class="tuisong" wx:if="{{pageObj.status==200}}">再次推送</view> 
+    </view>
+    
+  </view>
+</view>

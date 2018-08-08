@@ -1,0 +1,442 @@
+/* pages/products/products.wxss */
+.products_contain{
+  margin-left: 5px;
+  /* overflow: hidden; */
+  margin-top:80px;
+}
+.mark3{
+  position: absolute;
+  top:0px;
+  right: 0px;
+ 
+
+}
+.title{
+  position: relative;
+  width: 100%;
+  height: 50px;
+  top:0px;
+  left:0px;
+  
+  /* z-index: 9; */
+  background-color:white;
+}
+.startTitle{
+  height: 80px;
+  position: fixed;
+  top:0px;
+  left:0px;
+  width: 100%;
+   z-index: 9; 
+}
+.searchInput{
+  position: absolute;
+  left: 2%;
+  width:60%;
+  top:10px;
+  height: 30px;
+  border:1px solid #ccc;
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  padding-left:10px;
+  font-size: 14px;
+}
+.sectionType{
+  /* position: absolute;
+  top:17px;
+  right: 55px; */
+  font-size: 14px;
+  margin-right: 10px;
+  height: 30px;
+  background-color:#eee;
+  margin-left: 14px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 13px;
+}
+.shoppingcar{
+  height: 50px;
+  width:50px;
+  background-color: red
+}
+.shopCar{
+  height: 30px;
+  width:30px;
+  position: absolute;
+  top:10px;
+  right:20px;
+}
+ .scan image{
+  height: 37px;
+  width: 37px;
+  position: absolute;
+  top:8px;
+  left:73%;
+}
+.searchBtn{
+  width: 60px;
+  position: absolute;
+  top:10px;
+  left:65%;
+  height: 32px;
+  font-size: 14px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+navigator{
+  padding:0px 0px 10px 10px;
+}
+/* .product_item {
+     text-align: center; 
+     overflow: hidden;
+}*/
+
+.detailMsg{
+  background-color:#eee;
+  box-sizing: border-box;
+  margin:0px 10px;
+}
+.detailMsg text{
+  font-size: 14px;
+  line-height: 20px;
+  padding-left: 10px;
+}
+.pinpai,.qzj{
+  display: block;
+}
+.pinpai{
+  width: 100%;
+  height:20px;
+  overflow: hidden; 
+}
+
+.listShow{
+  width:50%;
+  float:left;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+.product_image{
+  padding:10px 10px 0px 10px;
+  display:block;
+}
+.product_image image{
+  width:100%;
+  height: 150px;
+}
+.pr_image{
+  margin: 0px;
+  background-color: #eee;
+}
+.product_item  .money{
+    color: red;
+    font-weight: bold;
+    margin:0 10px;
+}
+.product_item .num{
+    color: grey;
+    font-size: 12px;
+    /* margin-right: 20px */
+}
+.item text{
+  height: 45px;
+  line-height: 45px
+}
+.item image{
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  right: 0px;
+  top: 8px;
+}
+.item{
+  /* overflow: hidden; */
+  background-color: #eee;
+  margin:0px 10px;
+  box-sizing: border-box;
+  position: relative;
+  /* z-index: 3; */
+}
+.smallMark{
+  width:20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  right: 5px;
+  bottom:10px;
+  z-index: 999; 
+  transition: all 1s;
+  /* display: none; */
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.goodsNum{
+  width:20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  right: 25px;
+  top:15px;
+  /* z-index: 99; */
+  line-height: 20px;
+  font-size: 10px;
+  color:white;
+  text-align: center;
+}
+.no_products{
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: red;
+  font-size: 16px;
+}
+.searchView{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top:0px;
+  left:0px;
+  background-color: rgba(0, 0, 0, .4);
+  z-index: 10000;
+  transition: all .4s;
+}
+scroll-view{
+    overflow: auto;
+    height: 100%;
+}
+page{
+  overflow-y: hidden;
+  height: 100%;
+}
+.searchContent{
+  width: 70%;
+  float: right;
+  height: 100%;
+  background-color:whitesmoke;
+  position: relative;
+  padding-top: 60px;
+  padding-right: 60px;
+  box-sizing: border-box;
+}
+.rightTable{
+  position: absolute;
+  right: 0px;
+  top:60px;
+  width: 60px;
+  height: 100%;
+  font-size: 16px;
+}
+.rightTable text{
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 2px;
+  background-color:#eee;
+}
+.seachCotent{
+  width: 100%;
+  height: 100%;
+
+}
+.choseClick{
+  display: block;
+  width: 50%;
+  height: 40px;
+  float: left;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 40px;
+  font-size: 16px;
+  margin:5px 0px;
+  overflow: hidden;
+}
+.choseClick text{
+  padding:5px;
+  display: inline-block;
+  line-height: 28px;
+  vertical-align: top;
+  background-color:#eee;
+  min-width: 80%;
+  box-sizing: border-box;
+}
+.rightTable .tableClass{
+  background-color: #1e9fff;
+  color:white;
+}
+.searchContent .litters{
+  background-color:green;
+  color:white;
+}
+
+
+
+/* pages/qiuzhujing/qiuzhujing.wxss */
+picker-view-column view{
+  text-align: center;
+}
+.content{
+  position: fixed;
+  top:0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 999999999999;
+  box-sizing: border-box;
+  padding:0px 60px;
+  background-color:white;
+}
+.content .title{
+  margin:20px 0px; 
+}
+.content .title text{
+  display: inline-block;
+  width:50%;
+  text-align: center;
+  color:#1e9fff;
+
+}
+.content picker-view{
+  margin:20px 0px;
+}
+.content .eyes{
+  position: absolute;
+  top:45px;
+  left: 0px;
+  width:60px;
+  height: 360px;
+  color:#1e9fff;
+}
+.content .eyes text{
+  width: 100%;
+  height: 50%;
+  display: block;
+  text-align: center;
+  font-size: 22px;
+}
+.content .rightEye{
+  line-height: 240px;
+}
+.content .leftEye{
+  line-height: 222px;
+}
+.content .stock{
+  width:80px;
+  height: 360px;
+  /* background-color:aquamarine; */
+  position: absolute;
+  right: 0px;
+  top:45px;
+}
+.stock_j{
+  width:80px;
+  height: 360px;
+  /* background-color:aquamarine; */
+  position: absolute;
+  right: 0px;
+  top:194px;
+  font-size: 14px;
+}
+.content .stock .stockText1,.content .stock .stockText2{
+  display: block;
+  width: 100%;
+  height: 50%;
+  font-size: 14px;
+  color: silver;
+}
+.content .stock .stockText1{
+  line-height: 240px;
+}
+
+.content .stock .stockText2{
+  line-height: 222px;
+}
+.content .isOk{
+  width:80px;
+  background-color: #1e9fff;
+  color:white;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  margin: 10px;
+}
+.content .isFail{
+  width: 80px;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  margin:10px;
+}
+.btn{
+  margin-top:30px;
+  text-align: center;
+}
+.colorRed{
+  color:red;
+}
+/* 镜架   选择色号*/
+.pickerText{
+  color:#333;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

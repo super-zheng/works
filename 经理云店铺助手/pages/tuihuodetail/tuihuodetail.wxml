@@ -1,0 +1,45 @@
+<!--pages/saledetail/saledetail.wxml-->
+<!-- <view wx:for="{{saledetail}}" wx:for-item="p1" wx:for-index="f1"> -->
+<view>
+  <view class='content'>
+    <view class='head'>
+        <text>{{saledetail[0].store_name}}</text>
+        <image class='orangeIcon'src="../images/store2.png"></image>
+        <view class='iconGreen'>退</view>
+      </view>
+      <view class='listMsg'>
+        <view class='msg'>
+          <text>编号：{{saledetail[0].ity_Number}}</text>
+          <text class='pl40'>商品件数：{{saledetail[0].totalcounts}}件</text>
+        </view>
+        <view class='msg'>
+          <text>时间：{{saledetail[0].ity_date}}</text>
+          <text class='pl40'>建立人：{{saledetail[0].user_realname}}</text>
+        </view>
+      </view>
+      <view class='main'>
+        <view class='thead clearfix'>
+          <view class='th'>类型</view>
+          <view class='th'>品牌/型号</view>
+          <view class='th'>球柱镜/色号/规格</view>
+          <view class='th'>数量</view>
+          <view class='th'>单价</view>
+        </view>
+        <view class='tbody clearfix' wx:for="{{saledetail[1]}}" wx:for-item="p1" wx:for-index="f1">
+          <view class='td'>{{p1.goodsType}}</view>
+          <view class='td'>{{p1.goods_pinming==''?'无':p1.goods_pinming}}</view>
+          <view class='td'>{{p1.degree_colorNumber==''?'无':p1.degree_colorNumber}}</view>
+          <view class='td'>{{p1.goodsCounts==''?'0':p1.goodsCounts}}</view>
+          <view class='td'>{{p1.goods_danjia==''?'0':p1.goods_danjia}}</view>
+        </view>
+        <view class='yifu'>
+            <view class='fr'>退货金额：{{saledetail[0].glasses_price}}元</view>
+        </view>
+        <view class='yixiao'>
+          <text class='fr' wx:if="{{p1.ity_operatPerson3 == 99}}"> 已作废 </text>
+          <text class='fr' wx:elif="{{p1.ity_operatPerson3 == 101}}"> 已完成 </text>
+          <text class='fr' wx:else> 退货中 </text>
+        </view>
+      </view>
+  </view>
+</view>

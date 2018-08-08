@@ -1,0 +1,20 @@
+<view class="container">  
+  <view class="weui-grids">  
+    <view class="weui-grid" wx:for="{{goods}}" wx:for-index="f1"> 
+      <navigator url="../products/products?Ptype={{f1}}" hover-class="navigator-hover">  
+        <view class="weui-grid__icon">  
+          <image src="../images/{{item.url}}.png" mode="scaleToFill" />  
+        </view>  
+        <text class="weui-grid__label">{{item.name}}</text>  
+      </navigator>  
+    </view>  
+  </view>  
+</view>  
+
+<modal hidden="{{hiddenmodalput}}" title="最新公告" confirm-text="确定"  bindconfirm="confirm" no-cancel="true"> 
+<view class='MsgContent'>
+  <view class='MsgPerson'>{{new_person}} :</view>
+  <view class='Msgtext'>{{new_content}}</view>
+  <view class='MsgTime'>{{new_time}}</view>
+</view> 
+</modal>  

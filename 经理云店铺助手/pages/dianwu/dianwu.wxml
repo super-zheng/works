@@ -1,0 +1,22 @@
+<!--pages/dianwu/dianwu.wxml-->
+<view class='content'>
+  <view class='scan_ruku' bindtap="Scan">
+      <image  data-scan_type='ruku' src='/pages/images/saomaruku.png'></image>
+  </view>
+  <view class='scan_tuihuo' bindtap="Scan">
+      <image  data-scan_type='tuihuo' src='/pages/images/saomatuihuo.png'></image>
+  </view>
+  <view class='scan_tuihuo' bindtap="Pandian">
+      <image  data-scan_type='tuihuo' src='/pages/images/saomapandian.png'></image>
+  </view>
+  <view class='scan_tuihuo' bindtap="Pandian_1">
+      <image  data-scan_type='pandian_1' src='/pages/images/saomapandian.png'></image>
+  </view>
+</view>
+
+
+
+
+<modal hidden="false" title="" confirm-text="" cancel-text="确定" bindcancel="cancel" bindconfirm="confirm" no-cancel="{{nocancel}}">
+扫描失败，请重试！
+</modal>

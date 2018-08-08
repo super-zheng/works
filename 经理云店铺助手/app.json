@@ -1,0 +1,84 @@
+{
+  "pages": [
+    "pages/sph_cyl/sph_cyl",
+    "pages/sph_cyl1/sph_cyl1",
+    "pages/saledetail/saledetail",
+    "pages/products/products",
+    "pages/saledetail1/saledetail1",
+    "pages/orderDetail/orderDetail",
+    "pages/login/login",   
+    "pages/scancontent/scancontent",
+    "pages/addMember/addMember",
+    "pages/xiaoshou/xiaoshou",
+    "pages/yanguang/yanguang",
+    "pages/salelists/salelists", 
+    "pages/saomaInventory/saomaInventory",
+    "pages/tuihuocontent/tuihuocontent",
+    "pages/querenpan/querenpan",
+    "pages/productdetail/productdetail", 
+    "pages/index/index",
+    "pages/choosestore/choosestore",
+    
+    "pages/chooseGoods1/chooseGoods1",
+    "pages/chooseGoods/chooseGoods",
+    
+    "pages/sales/sales",
+    "pages/dianwu/dianwu",
+    "pages/xsOrderDetail/xsOrderDetail",
+    
+    
+    "pages/test/test",
+    "pages/shoppingcar/shoppingcar",
+    "pages/shopCar/shopCar",  
+    "pages/tuihuodetail/tuihuodetail",
+    "pages/geren/geren",
+    "pages/setStock/setStock",  
+    "pages/pandiandetail/pandiandetail",
+    "pages/pandianlists/pandianlists",
+    "pages/pandianHistory/pandianHistory",
+    "pages/pandiansales/pandiansales",
+    "pages/pandianproducts/pandianproducts",
+    "pages/pandian1/pandian",
+    "pages/pandian/pandian",    
+    "pages/orderHistory/orderHistory",      
+    "pages/logs/logs",
+    "pages/tuihuolists/tuihuolists"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#ababaa",
+    "enablePullDownRefresh": true
+  },
+    "tabBar": {
+      "backgroundColor": "#fff",
+      "color": "#ccc",
+      "selectedColor": "#30a2de",
+      "borderStyle": "white",
+      "fontSize": "16px",
+      "list": [
+        {
+          "pagePath": "pages/xiaoshou/xiaoshou",
+          "iconPath": "pages/images/ic-xiaoshou.png",
+          "selectedIconPath": "pages/images/ic-xiaoshou1.png",
+          "text": "销售"
+        },
+        {
+          "pagePath": "pages/dianwu/dianwu",
+          "iconPath": "pages/images/ic-dianwu1.png",
+          "selectedIconPath": "pages/images/ic-dianwu.png",
+          "text": "店务"
+        },
+        {
+          "pagePath": "pages/geren/geren",
+          "iconPath": "pages/images/ic-geren.png",
+          "selectedIconPath": "pages/images/ic-geren1.png",
+          "text": "个人"
+        }
+      ]
+    },
+    
+  "debug": true
+}

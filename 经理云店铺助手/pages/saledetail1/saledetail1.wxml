@@ -1,0 +1,73 @@
+<!--pages/saledetail/saledetail.wxml-->
+<!-- <view wx:for="{{saledetail}}" wx:for-item="p1" wx:for-index="f1"> -->
+<view>
+  <view class='content'>
+    <view class='head'>
+      <text>{{store_name}}</text>
+      <image class='orangeIcon' src="../images/store2.png"></image>
+      <view class='iconGreen'>销</view>
+    </view>
+    <view class='listMsg'>
+      <view class='msg'>
+        <text>编号：{{ity_Number}}</text>
+        <text class='pl40'>商品件数：{{totalcounts}}件</text>
+      </view>
+      <view class='msg'>
+        <text>时间：{{ity_date}}</text>
+        <text class='pl40'>建立人：{{user_realname}}</text>
+      </view>
+      <view class='msg_jifen'>
+        <text>整单积分：</text>
+        <text class='jifen'>{{jifen}}</text>
+      </view>
+    </view>
+    <view class='main'>
+      <view class='thead clearfix'>
+        <view class='th'>类型</view>
+        <view class='th'>品牌/型号</view>
+        <view class='th'>球柱镜/色号/规格</view>
+        <view class='th'>数量</view>
+        <view class='th'>单价</view>
+        <view class='th'>积分</view>
+      </view>
+      <view class='tbody clearfix' wx:for="{{saledetail}}" wx:for-item="p1" wx:for-index="f1">
+        <view class='td'>{{p1.goodsTypes}}</view>
+        <view class='td'>{{p1.brand==''?'无':p1.brand}}</view>
+        <view class='td'>{{p1.code==''?'无':p1.code}}</view>
+        <view class='td'>{{p1.counts==''?'0':p1.counts}}</view>
+        <view class='td'>{{p1.goodsPrice==''?'0':p1.goodsPrice}}</view>
+        <view class='td'>0</view> 
+      </view>
+      <view class='zhekou'>
+        <text wx:if="{{wholediscount==10}}">整单折扣：无折扣</text>
+        <text wx:else>整单折扣：{{wholediscount}}折</text>
+      </view>
+      <view class='youhui'>
+        <text>优惠价：{{youhuiPrice}}元</text>
+        <!-- <text class='fr' wx:if="{{totalpointCutted==yifu_price+weifu_price}}">抹零：无</text>
+          <text class='fr' wx:elif="{{totalpointCutted==yifu_price}}">抹零：无</text>  -->
+        <text class='fr' wx:if="{{totalpointCutted==''}}">抹零：无</text>
+        <text class='fr' wx:else>抹零：{{totalpointCutted}}元</text>
+      </view>
+      <view class='yifu'>
+        <view wx:if="{{ity_status==-1}}">
+          <view class='fl'>已付金额：{{yifu_price}}元</view>
+          <view class='fr'>未付金额：{{weifu_price}}元</view>
+        </view>
+        <view wx:else>
+          <!-- <view class='fr'>已付金额：{{balancePrice}}元</view> -->
+          <view class='fr'>已付金额：{{yifu_price}}元</view>
+        </view>
+
+      </view>
+      <view class='yixiao'>
+        <text class='fr'>已销售</text>
+        <canvas class='canvas' canvas-id='canvas'></canvas>
+        <!-- <button bindtap='tapHandler' data-code='123abc456efg000'>转为二维码</button>    data-code为生成二维码所依据的字符串，这里将其写死了，实际应改为{{变量名}}  -->
+      </view>
+
+
+
+    </view>
+  </view>
+</view>

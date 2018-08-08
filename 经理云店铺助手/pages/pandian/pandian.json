@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "盘 点",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#000",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": false
+}

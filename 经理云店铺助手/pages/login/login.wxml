@@ -1,0 +1,36 @@
+<view class='content'>
+  <view class='title'>
+    <image src='../images/ic-jingliyun.png' class='loginImg'></image>
+    <text>经理云助手</text>
+  </view>
+  <view class='inputs'>
+    <form bindsubmit="formSubmit">
+      <view class="section">
+        <input name="tel" maxlength="11" auto-focus class="name" bindinput="username"/>
+        <text class='label'>账号：</text>
+      </view>
+      <view class="section">
+        <input name="pwd" password="true" auto-focus class="passWord" bindinput="password"/>
+        <text class='label'>密码：</text>
+      </view>
+      <text class='smallText'>忘记密码</text>
+      <view>
+        <button formType="submit" class='log' bindtap="logins">登录</button>
+      </view>
+    </form>
+  </view>
+
+</view>
+<image src='../images/loginBg.png' class='bgImg'></image>
+
+
+<modal title="请选择店铺" confirm-text="确定" bindconfirm="confirm" cancel-text="取消" bindcancel="closemodal" hidden="{{modalshow}}">
+  <view catch:tocuhmove="zuzhi">
+    <picker-view indicator-style="height: 50px;" style="width: 100%; height: 200px;" value="{{[1]}}" bindchange="bindChange">
+       <picker-view-column>
+        <view wx:for="{{store}}" style="line-height: 50px" id="{{item.store_id}}">{{item.store_name}}</view>
+      </picker-view-column>
+     
+    </picker-view>
+  </view>
+</modal>

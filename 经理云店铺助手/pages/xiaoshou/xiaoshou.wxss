@@ -1,0 +1,154 @@
+.container{
+  background-color: #aaa;
+}
+.searchInput {
+  border: 1px solid #ccc;
+  height: 38px;
+  line-height: 38px;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 40px;
+  font-size: 18px;
+  position: relative;
+}
+/*.searchInput::after{
+  content: '';
+  position: absolute;
+  right: 10px;
+  top:10px;
+  width:20px;
+  height: 20px;
+   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjREMDVBMjlFNTc0MDExRTg5NUJCOTNERThDQkREMDJDIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjREMDVBMjlGNTc0MDExRTg5NUJCOTNERThDQkREMDJDIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NEQwNUEyOUM1NzQwMTFFODk1QkI5M0RFOENCREQwMkMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NEQwNUEyOUQ1NzQwMTFFODk1QkI5M0RFOENCREQwMkMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz65TxpjAAAFPElEQVR42ryYWWxUZRiGz+lMO92orFOWAUWkgpZNUEQixCW4ceF24YVbosZY9M4bvdIbE73QGDXeGC8M4cKY6IW7VVxwo9WoMyCggihFaGkJY9My7ZTx/ZLnJD/H007LLH/ypO2cnjPv+f5v+z8/nU57k1i+qBPzxMViiVghlotW0SIK4qToFQfEL+IP8Zs4KnJRD25vb5/wi+Pe5NZScanYKJaJpFgo5ob+bwE/LxGXIXaf+Fp0iR5viquYwNlirbhRrBcbnGt50Y9l8nxWKxJiliN+K/d1is9FmvtKFjhD3CYeEqtFjM/H2LY9WCcQaVvciLgl3NPGPRuw6A3iNfGm+LcUgeZnD4tr+CIPEWaFr8Tf4nfRx+djzvMSjsg2xF0nGsSVXDfr7hCHzkWg+dsj4kHRxPb9IHaJ98T3YqjIcw/icy343wFe1iJiDa5jgt/g2vjR6USxz9s9LbY54sxiL4udROm5LAuqLaJDXIG7WAA9L1617VY0F6JurAn53L0ERBOfvSueE5+WIM5DzAfiGfGZI/oOcfN44twtjuFr97EN5lff4dAfEQClLgum90W9aMY314m7MpmMudAhCc1HWdC2NoUjr+Yz2/eX2NZyiAvWGSxpLrPfifA7sWjkFlvuWiU283aB35nlhr3yryECzp5/goi/m6iPFJjkLVbxt/nbW2KwzNYLVoGK8rb4GfeyyrNOW90cJbCNutqM7wWppJLLtnq3+Eac5rOrqe3/E7iUvOSROI/wgEquAu6zz0nWK52icJZAu7AY39hNki14lV/2HccwiP0+PypQAoFzRFb8KI571VvHqOujVJbZ8sPasMAUqWaYqMpVUaAl8MPOd1pEnxcWOMPpUkar4H/hlDPgpDML1BZZMeYKTDg+UaiS/wVrlCgO95O+K3DEaRZq3ItVWHGOEkHJHYGCKzDr/B4PNRCVXvW0ZAlny7OqyWOuwCP8blE0kzeq1rK0cgFCPTqmU+Eg2YOjTqOTmVNFgfMoFHVsbZ+sNxIWmCbUrQe8XJxfRYGzSNA++XcgKlHv5WzhcxZZWIVA8TlgrXS6GOsJu6MEWj3M4KCNtOZrKyywhrp7Fa5VoAVLR/3jP3QVe/nHm8TtRLRfIevN5GixnMJg9T8j/xuKEmhJ8idE+kTUJjrseIVy33qMMJ/ecLv4daJD02H6wC5K3hpOdpucA3u51rXiMUYpOaYNrzvpLvLQlEfcduqhmf4WclKOLmeoxG2dxnMfwM89isSfpJczxY6dp2jDd1K87dqt4nEsWcpK4NtP8eLuUddGIpvVIDRE3Rjr6OhwG8gso7JaUo699YW0ZCmnRcpPUlgz/mbH2Xs4mNXiRjW4z3RSTba3t/dgMpnMjzdZOGtsJx4lUC5y6uQnHBv302xmcYFRpxup58VaOetcz9AoKGddZIy5WC+oXJ3BBEPbnS0mMEYZsre+35lSjSGolwFlN4Okk+yAnW0WEWQrqLX1PK9AWX1WvEMefJKtD+LgS/GCBY5EDk4kMFiLOJJuZXi5OHT9OFY87TQcLRFnCysEX4iPGSb1O365DSu7Z+ZXbOxigVMsz/0FNoH6lsHPMmrodH62RjShJ6ir/VhtF/e7k6wco5DA/zc6lcx2qkGB0+1PckYdrBQNRYqavYBIbORLBtnuo6SPHmY8fRM8swFxT5At4k5t7pxqpehhMprAt5qwZBAAg6SrYbY95zTE3jhD9GFZyl7iRfxwixOoqakKLIQbynIsCwiJ/JAsUMck1l66tZrtfTGRI/jqDmY2tgb+E2AAKl1zh5SaSRwAAAAASUVORK5CYII=); 
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  }*/
+.searchBox {
+  padding: 10px 20px;
+  padding-right: 80px;
+  position: relative;
+  background-color: #fff;
+}
+
+.searchBtn {
+  position: absolute;
+  width: 60px;
+  text-align: center;
+  height: 38px;
+  line-height: 38px;
+  right: 10px;
+  top: 10px;
+  font-size: 18px;
+  color: #43abde;
+}
+
+.activeSearch {
+  background-color: #43abde;
+  color: #fff;
+}
+.chooseCustomer{
+  padding-right: 80px;
+  position: relative;
+  height: 100px;
+  margin-top: 20px;
+  background-color: #fff;
+}
+.addCustomer{
+  position: absolute;
+  right: 10px;
+  top:0px;
+  width: 60px;
+  height: 100px;
+  font-size: 14px;
+  color:#aaa;
+  text-align: center;
+}
+.addCustomer image{
+  width: 40px;
+  height: 40px;
+}
+.gukeIcon{
+  width: 50px;
+  height: 50px;
+}
+.guke{
+  text-align: center;
+  font-size: 14px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.active{
+  width:80px !important;
+  transition: all .2s;
+}
+.active image{
+  width:70px;
+  height: 70px;
+  transition: all .2s;
+}
+.func{
+  height: 220px;
+  display: flex;
+  padding: 10px;
+  margin-top: 10px;
+	flex-flow: row wrap;
+  justify-content:space-around ;
+}
+.cardBox{
+  width:30%;
+  height: 50%;
+  background-color: #30a2de;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.cardBoxL::before{
+  content:'';
+  display: block;
+  width:100%;
+  height: 100%;
+}
+.endBox{
+  height: 0;
+}
+.iconText{
+  height: 100%;
+}
+.iconText image{
+  width: 75px;
+  height: 75px;
+}
+.iconText view{
+  width: 100%;
+  font-size: 16px;
+  color:#fff;
+  height: 16px;
+  line-height: 16px;
+}
+.footBar{
+  height: 70px;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  justify-content: space-around;
+  display: flex;
+  background-color: red;
+}
+.navTo{
+  width: 33.333%;
+  height: 70px;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.navbox image{
+  width:40px;
+  height: 40px;
+}
+.navbox {
+  font-size: 14px;
+  color:#ccc;
+}
